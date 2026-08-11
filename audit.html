@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free AI Visibility Audit | Get Noticed AI</title>
+  <meta name="description" content="Find out if ChatGPT, Google Maps, and Gemini know your business exists. Free local SEO audit in 60 seconds.">
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','151296705452066');fbq('track','PageView');
+  </script>
+  <!-- GTM -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P7QNFT5J');</script>
+  <!-- GHL Affiliate -->
+  <script type="text/javascript">(function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://link.msgsndr.com/js/am.js',t.onload=t.onreadystatechange=function(){var t=this.readyState;if(!t||"complete"==t||"loaded"==t)try{affiliateManager.init('bIhbyuZTNUS8HhLTLckS','https://backend.leadconnectorhq.com','.getnoticedai.com')}catch(t){}};var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)})();</script>
+  <style>
+    :root {
+      --primary: #3FA896;
+      --primary-dark: #2d7a6b;
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #1c2330;
+      --border: rgba(255,255,255,.08);
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --red: #f85149;
+      --green: #3fb950;
+      --yellow: #d29922;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+
+    /* NAV */
+    nav { display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; border-bottom:1px solid var(--border); }
+    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:700; font-size:1.1rem; }
+    .brand-icon { width:36px; height:36px; background:var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; }
+    .nav-cta { background:var(--primary); color:#fff; padding:.5rem 1.25rem; border-radius:50px; text-decoration:none; font-weight:600; font-size:.9rem; }
+
+    /* HERO */
+    .hero { text-align:center; padding:4rem 1.5rem 2rem; max-width:760px; margin:0 auto; }
+    .eyebrow { display:inline-block; background:rgba(63,168,150,.15); color:var(--primary); border:1px solid rgba(63,168,150,.3); padding:.35rem 1rem; border-radius:50px; font-size:.8rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1.5rem; }
+    .hero h1 { font-size:clamp(2rem,5vw,3.2rem); font-weight:800; line-height:1.15; margin-bottom:1.25rem; }
+    .hero h1 span { color:var(--primary); }
+    .hero p { font-size:1.15rem; color:var(--muted); max-width:560px; margin:0 auto 2.5rem; line-height:1.7; }
+
+    /* STEP INDICATOR */
+    .steps { display:flex; align-items:center; justify-content:center; gap:.5rem; margin-bottom:2.5rem; }
+    .step { display:flex; align-items:center; gap:.4rem; font-size:.85rem; color:var(--muted); }
+    .step.active { color:var(--text); }
+    .step-num { width:26px; height:26px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:.75rem; font-weight:700; }
+    .step.active .step-num { background:var(--primary); border-color:var(--primary); color:#fff; }
+    .step.done .step-num { background:var(--green); border-color:var(--green); color:#fff; }
+    .step-line { width:32px; height:1px; background:var(--border); }
+
+    /* CARD */
+    .card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:2rem; max-width:600px; margin:0 auto 2rem; }
+
+    /* FORM */
+    .form-group { margin-bottom:1.25rem; }
+    label { display:block; font-size:.85rem; font-weight:600; color:var(--muted); margin-bottom:.5rem; letter-spacing:.04em; text-transform:uppercase; }
+    input, select { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:.85rem 1rem; color:var(--text); font-size:1rem; outline:none; transition:border-color 180ms; }
+    input:focus, select:focus { border-color:var(--primary); }
+    select option { background:var(--surface2); }
+    .btn { width:100%; background:var(--primary); color:#fff; border:none; border-radius:50px; padding:1rem; font-size:1.05rem; font-weight:700; cursor:pointer; transition:background 180ms, transform 100ms; margin-top:.5rem; }
+    .btn:hover { background:var(--primary-dark); }
+    .btn:active { transform:scale(.98); }
+    .btn:disabled { opacity:.6; cursor:not-allowed; }
+
+    /* RESULTS */
+    #results { display:none; }
+    .score-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem; }
+    @media(max-width:480px) { .score-grid { grid-template-columns:1fr; } }
+    .score-card { background:var(--surface2); border:1px solid var(--border); border-radius:12px; padding:1.25rem; text-align:center; }
+    .score-card .label { font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:.5rem; }
+    .score-card .value { font-size:1.8rem; font-weight:800; }
+    .score-card .sub { font-size:.8rem; color:var(--muted); margin-top:.25rem; }
+    .red { color:var(--red); }
+    .green { color:var(--green); }
+    .yellow { color:var(--yellow); }
+
+    .heatmap { display:grid; grid-template-columns:repeat(8,1fr); gap:4px; margin:1.5rem 0; }
+    .hm-cell { aspect-ratio:1; border-radius:4px; }
+
+    .ai-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; margin:1rem 0; }
+    .ai-badge { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:.75rem; text-align:center; font-size:.8rem; }
+    .ai-badge .ai-name { font-weight:700; margin-bottom:.3rem; }
+    .ai-badge .ai-status { font-size:.75rem; }
+
+    .competitor-list { list-style:none; }
+    .competitor-list li { display:flex; align-items:center; justify-content:space-between; padding:.75rem 0; border-bottom:1px solid var(--border); font-size:.9rem; }
+    .competitor-list li:last-child { border-bottom:none; }
+    .rank-badge { background:var(--surface2); border-radius:6px; padding:.2rem .6rem; font-size:.75rem; font-weight:700; }
+
+    .revenue-box { background:linear-gradient(135deg,rgba(248,81,73,.1),rgba(248,81,73,.05)); border:1px solid rgba(248,81,73,.3); border-radius:12px; padding:1.5rem; text-align:center; margin:1.5rem 0; }
+    .revenue-box .amount { font-size:2.5rem; font-weight:800; color:var(--red); }
+    .revenue-box .label { font-size:.9rem; color:var(--muted); margin-top:.5rem; }
+
+    .cta-box { background:linear-gradient(135deg,rgba(63,168,150,.15),rgba(63,168,150,.05)); border:1px solid rgba(63,168,150,.3); border-radius:16px; padding:2rem; text-align:center; margin-top:2rem; }
+    .cta-box h3 { font-size:1.4rem; font-weight:800; margin-bottom:.75rem; }
+    .cta-box p { color:var(--muted); margin-bottom:1.5rem; font-size:.95rem; }
+    .cta-btn { display:inline-block; background:var(--primary); color:#fff; padding:1rem 2.5rem; border-radius:50px; font-weight:700; font-size:1.05rem; text-decoration:none; transition:background 180ms; }
+    .cta-btn:hover { background:var(--primary-dark); }
+
+    /* GATE OVERLAY */
+    #gate { display:none; position:fixed; inset:0; background:rgba(13,17,23,.95); z-index:100; align-items:center; justify-content:center; padding:1.5rem; }
+    #gate.show { display:flex; }
+    .gate-card { background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:2.5rem; max-width:480px; width:100%; text-align:center; }
+    .gate-card h2 { font-size:1.6rem; font-weight:800; margin-bottom:.75rem; }
+    .gate-card p { color:var(--muted); margin-bottom:1.75rem; font-size:.95rem; line-height:1.6; }
+    .gate-card .form-group { text-align:left; }
+    .consent { display:flex; align-items:flex-start; gap:.75rem; margin:.75rem 0; font-size:.8rem; color:var(--muted); line-height:1.5; }
+    .consent input[type=checkbox] { width:16px; height:16px; flex-shrink:0; margin-top:2px; accent-color:var(--primary); }
+
+    /* SOCIAL PROOF */
+    .proof { display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap; padding:1.5rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin:2rem 0; }
+    .proof-item { text-align:center; }
+    .proof-item .num { font-size:1.4rem; font-weight:800; color:var(--primary); }
+    .proof-item .desc { font-size:.75rem; color:var(--muted); }
+
+    /* SPINNER */
+    .spinner { width:40px; height:40px; border:3px solid var(--border); border-top-color:var(--primary); border-radius:50%; animation:spin 1s linear infinite; margin:1.5rem auto; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    footer { text-align:center; padding:2rem; color:var(--muted); font-size:.8rem; border-top:1px solid var(--border); margin-top:3rem; }
+    footer a { color:var(--primary); text-decoration:none; }
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7QNFT5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav>
+  <a class="brand" href="/">
+    <div class="brand-icon">&#128205;</div>
+    Get Noticed AI
+  </a>
+  <a class="nav-cta" href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Free Opportunity Estimate - No Credit Card</div>
+  <h1>See Where Your Local Visibility <span>May Be Leaking</span></h1>
+  <p>Answer three quick questions to receive a transparent local-SEO opportunity estimate. A verified rank, heatmap, and competitor audit requires a live review of your Google Business Profile.</p>
+
+  <!-- STEP INDICATOR -->
+  <div class="steps">
+    <div class="step active" id="step-1-ind">
+      <div class="step-num">1</div>
+      <span>Your Business</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" id="step-2-ind">
+      <div class="step-num">2</div>
+      <span>Target Keywords</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" id="step-3-ind">
+      <div class="step-num">3</div>
+      <span>Your Report</span>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 1: BUSINESS INFO -->
+<div class="card" id="step-1">
+  <div class="form-group">
+    <label>Business Name *</label>
+    <input type="text" id="biz-name" placeholder="e.g. Joe's HVAC &amp; Cooling" autocomplete="organization">
+  </div>
+  <div class="form-group">
+    <label>Business Category *</label>
+    <select id="biz-category">
+      <option value="">Select your industry...</option>
+      <option>HVAC / Heating & Cooling</option>
+      <option>Plumbing</option>
+      <option>Electrician</option>
+      <option>Roofing</option>
+      <option>Landscaping / Lawn Care</option>
+      <option>Dental / Orthodontics</option>
+      <option>Chiropractic / Physical Therapy</option>
+      <option>Legal / Law Firm</option>
+      <option>Real Estate</option>
+      <option>Restaurant / Food Service</option>
+      <option>Auto Repair</option>
+      <option>Cleaning Services</option>
+      <option>Pest Control</option>
+      <option>Moving Company</option>
+      <option>Salon / Spa / Beauty</option>
+      <option>Gym / Fitness</option>
+      <option>Veterinarian / Pet Services</option>
+      <option>Insurance Agency</option>
+      <option>Financial Services</option>
+      <option>Other Local Business</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>City &amp; State *</label>
+    <input type="text" id="biz-city" placeholder="e.g. Tampa, FL" autocomplete="address-level2">
+  </div>
+  <button class="btn" onclick="goStep2()">See My Opportunity Estimate &rarr;</button>
+</div>
+
+<!-- STEP 2: KEYWORDS -->
+<div class="card" id="step-2" style="display:none;">
+  <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.25rem;">What do customers search for when they need your services? Pick up to 3.</p>
+  <div class="form-group">
+    <label>Primary Keyword *</label>
+    <input type="text" id="kw1" placeholder="e.g. HVAC repair near me">
+  </div>
+  <div class="form-group">
+    <label>Keyword 2 (optional)</label>
+    <input type="text" id="kw2" placeholder="e.g. AC installation Tampa">
+  </div>
+  <div class="form-group">
+    <label>Keyword 3 (optional)</label>
+    <input type="text" id="kw3" placeholder="e.g. emergency heating repair">
+  </div>
+  <button class="btn" onclick="generateReport()">Show My Opportunity Estimate &rarr;</button>
+  <button onclick="goBack()" style="width:100%;background:none;border:none;color:var(--muted);cursor:pointer;margin-top:.75rem;font-size:.85rem;">&#8592; Back</button>
+</div>
+
+<!-- GENERATING SPINNER -->
+<div class="card" id="step-generating" style="display:none;text-align:center;">
+  <div class="spinner"></div>
+  <h3 style="margin-bottom:.5rem;">Preparing Your Opportunity Estimate...</h3>
+  <p style="color:var(--muted);font-size:.9rem;">This quick estimate does not claim to be a verified Google Maps rank or live competitor audit.</p>
+  <div id="progress-text" style="color:var(--primary);font-size:.85rem;margin-top:1rem;">Reviewing your service and market details...</div>
+</div>
+
+<!-- RESULTS (gated) -->
+<div id="results">
+  <div style="max-width:600px;margin:0 auto;">
+
+    <div class="card" style="text-align:center;border-color:rgba(248,81,73,.3);">
+      <div style="font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Audit Complete for</div>
+      <div id="result-biz-name" style="font-size:1.4rem;font-weight:800;margin-bottom:1.5rem;"></div>
+
+      <div class="score-grid">
+        <div class="score-card">
+          <div class="label">Google Maps Rank</div>
+          <div class="value red" id="result-rank">#14</div>
+          <div class="sub">for your primary keyword</div>
+        </div>
+        <div class="score-card">
+          <div class="label">Monthly Searches</div>
+          <div class="value yellow" id="result-searches">1,240</div>
+          <div class="sub">people searching near you</div>
+        </div>
+        <div class="score-card">
+          <div class="label">AI Visibility</div>
+          <div class="value red" id="result-ai-score">1/6</div>
+          <div class="sub">AI platforms know you</div>
+        </div>
+        <div class="score-card">
+          <div class="label">Profile Health</div>
+          <div class="value yellow" id="result-health">42%</div>
+          <div class="sub">optimization score</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">Estimated Monthly Revenue Lost</h3>
+      <div class="revenue-box">
+        <div class="amount" id="result-revenue">$8,400</div>
+        <div class="label">going to competitors who outrank you each month</div>
+      </div>
+      <p style="font-size:.85rem;color:var(--muted);">Based on <span id="result-searches-2">1,240</span> monthly searches, your current rank of <span id="result-rank-2">#14</span>, and average customer value for your industry. Businesses ranking in the top 3 capture 68% of all clicks.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">Local Ranking Heat Map</h3>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem;">Green = visible. Red = invisible. Each cell represents a different area of <span class="result-city-span">your city</span>.</p>
+      <div class="heatmap" id="heatmap"></div>
+      <p style="font-size:.75rem;color:var(--muted);margin-top:.75rem;text-align:center;">Most of your city cannot find you on Google Maps.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">AI Search Visibility</h3>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem;">When customers ask AI assistants for recommendations, does your business come up?</p>
+      <div class="ai-grid" id="ai-grid"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">Who Is Beating You Right Now</h3>
+      <ul class="competitor-list" id="competitor-list"></ul>
+    </div>
+
+    <div class="card" style="background:linear-gradient(135deg,rgba(63,168,150,.08),rgba(63,168,150,.03));">
+      <h3 style="margin-bottom:.75rem;">AI Analysis Summary</h3>
+      <p style="font-size:.9rem;color:var(--muted);line-height:1.7;" id="ai-summary"></p>
+    </div>
+
+    <div class="cta-box">
+      <h3>Fix This Automatically - No Agency Needed</h3>
+      <p>Get Noticed AI handles everything that's wrong in this report - automatically, every day, without you lifting a finger. Posts, reviews, citations, AI visibility, and ranking reports all on autopilot.</p>
+      <a class="cta-btn" href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank">Start Fixing My Rankings &rarr;</a>
+      <p style="font-size:.8rem;color:var(--muted);margin-top:1rem;">No contracts. Cancel anytime. Early bird pricing available - use code EARLYBIRD.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROOF STRIP -->
+<div class="proof" style="max-width:600px;margin:2rem auto;">
+  <div class="proof-item"><div class="num">62+</div><div class="desc">Citation directories</div></div>
+  <div class="proof-item"><div class="num">6</div><div class="desc">AI platforms tracked</div></div>
+  <div class="proof-item"><div class="num">24/7</div><div class="desc">Automated posting</div></div>
+  <div class="proof-item"><div class="num">$0</div><div class="desc">Setup fee</div></div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Infinite Intelligence Ventures LLC | Get Noticed AI</p>
+  <p style="margin-top:.5rem;"><a href="/privacy.html" target="_blank">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html" target="_blank">Terms of Service</a> &nbsp;|&nbsp; <a href="/">Back to Home</a></p>
+</footer>
+
+<script>
+  // ---- DATA ----
+  let bizData = {};
+
+  const industrySearches = {
+    'HVAC / Heating & Cooling': [980, 1240, 1560, 2100],
+    'Plumbing': [1100, 1450, 1800, 2400],
+    'Electrician': [820, 1050, 1380, 1900],
+    'Roofing': [640, 890, 1200, 1650],
+    'Landscaping / Lawn Care': [750, 1020, 1380, 1800],
+    'Dental / Orthodontics': [1200, 1580, 2100, 2800],
+    'Chiropractic / Physical Therapy': [680, 920, 1250, 1700],
+    'Legal / Law Firm': [540, 780, 1100, 1500],
+    'Real Estate': [1400, 1900, 2500, 3400],
+    'Restaurant / Food Service': [2200, 3100, 4200, 5800],
+    'Auto Repair': [890, 1180, 1560, 2100],
+    'Cleaning Services': [620, 840, 1120, 1500],
+    'Pest Control': [480, 650, 880, 1200],
+    'Moving Company': [560, 760, 1020, 1380],
+    'Salon / Spa / Beauty': [940, 1280, 1700, 2300],
+    'Gym / Fitness': [780, 1050, 1400, 1900],
+    'Veterinarian / Pet Services': [680, 920, 1240, 1680],
+    'Insurance Agency': [420, 580, 780, 1050],
+    'Financial Services': [380, 520, 700, 950],
+    'Other Local Business': [600, 820, 1100, 1500],
+    'default': [750, 1000, 1350, 1800]
+  };
+
+  const industryValue = {
+    'HVAC / Heating & Cooling': 850, 'Plumbing': 620, 'Electrician': 480,
+    'Roofing': 3200, 'Landscaping / Lawn Care': 280, 'Dental / Orthodontics': 1200,
+    'Chiropractic / Physical Therapy': 380, 'Legal / Law Firm': 2800,
+    'Real Estate': 8500, 'Restaurant / Food Service': 45, 'Auto Repair': 320,
+    'Cleaning Services': 180, 'Pest Control': 220, 'Moving Company': 680,
+    'Salon / Spa / Beauty': 95, 'Gym / Fitness': 480, 'Veterinarian / Pet Services': 240,
+    'Insurance Agency': 1200, 'Financial Services': 2400, 'Other Local Business': 400,
+    'default': 500
+  };
+
+  // ---- STEP NAVIGATION ----
+  function goStep2() {
+    const name = document.getElementById('biz-name').value.trim();
+    const cat = document.getElementById('biz-category').value;
+    const city = document.getElementById('biz-city').value.trim();
+    if (!name || !cat || !city) { alert('Please fill in all fields.'); return; }
+    bizData.name = name; bizData.category = cat; bizData.city = city;
+    document.getElementById('step-1').style.display = 'none';
+    document.getElementById('step-2').style.display = 'block';
+    document.getElementById('step-1-ind').className = 'step done';
+    document.getElementById('step-2-ind').className = 'step active';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function goBack() {
+    document.getElementById('step-2').style.display = 'none';
+    document.getElementById('step-1').style.display = 'block';
+    document.getElementById('step-2-ind').className = 'step';
+    document.getElementById('step-1-ind').className = 'step active';
+  }
+
+  function generateReport() {
+    const kw1 = document.getElementById('kw1').value.trim();
+    if (!kw1) { alert('Please enter at least one keyword.'); return; }
+    bizData.kw1 = kw1;
+    bizData.kw2 = document.getElementById('kw2').value.trim();
+    bizData.kw3 = document.getElementById('kw3').value.trim();
+
+    document.getElementById('step-2').style.display = 'none';
+    document.getElementById('step-generating').style.display = 'block';
+    document.getElementById('step-2-ind').className = 'step done';
+    document.getElementById('step-3-ind').className = 'step active';
+
+    const msgs = [
+      'Reviewing your business category...',
+      'Reviewing your target market...',
+      'Preparing a local visibility checklist...',
+      'Identifying the first optimization priorities...',
+      'Preparing your next steps...'
+    ];
+    let i = 0;
+    const pt = document.getElementById('progress-text');
+    const interval = setInterval(() => {
+      if (i < msgs.length) { pt.textContent = msgs[i++]; }
+      else { clearInterval(interval); buildResults(); }
+    }, 900);
+  }
+
+  function buildResults() {
+    const business = bizData.name || 'your business';
+    const city = bizData.city || 'your market';
+    const keyword = bizData.kw1 || 'your primary service';
+    const results = document.getElementById('results');
+    results.innerHTML = `<div style="max-width:600px;margin:0 auto;">
+      <div class="card" style="text-align:center;border-color:rgba(63,168,150,.35);">
+        <div style="font-size:.8rem;color:var(--primary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;font-weight:800;">Local visibility opportunity estimate</div>
+        <h2 style="margin-bottom:1rem;">${business}</h2>
+        <p style="color:var(--muted);line-height:1.7;">This is a planning estimate based on the service, city, and keyword you entered—not a verified Google Maps ranking, AI-search result, heatmap, competitor list, or revenue calculation.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:.8rem;">Your first local-visibility priorities</h3>
+        <ul style="color:var(--muted);line-height:1.9;padding-left:1.2rem;">
+          <li>Confirm that your Google Business Profile is verified and complete.</li>
+          <li>Make sure your core service—${keyword}—and service area—${city}—are accurately represented.</li>
+          <li>Publish useful updates, respond to reviews, and keep your business information consistent across major directories.</li>
+          <li>Use a verified rank-tracking audit before making a revenue or ranking decision.</li>
+        </ul>
+      </div>
+      <div class="cta-box">
+        <h3>Want a verified audit?</h3>
+        <p>Call or text us and we will explain the exact information needed to review your Google Business Profile and prepare a real next-step assessment.</p>
+        <a class="cta-btn" href="tel:+17272709961">Call or Text (727) 270-9961</a>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:1rem;">No obligation. No fabricated scores. Just a clear review of what can actually be improved.</p>
+      </div>
+    </div>`;
+    document.getElementById('step-generating').style.display = 'none';
+    results.style.display = 'block';
+    window.scrollTo({top: results.offsetTop - 20, behavior:'smooth'});
+  }
+</script>
+</body>
+</html>
