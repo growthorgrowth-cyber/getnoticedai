@@ -528,6 +528,22 @@ document.querySelectorAll('input,select,textarea').forEach(el => {
     this.closest('.field')?.classList.remove('has-error');
   });
 });
+
+// Public safety guard: this static site never accepts sensitive client access or files directly.
+// A secure native GHL form will replace this handoff after configuration and testing.
+document.getElementById('onboarding-form').innerHTML = `
+  <div class="form-header">
+    <span class="eyebrow">Secure Client Onboarding</span>
+    <h1>Your private onboarding link is on its way</h1>
+    <p>To protect your Google Business Profile access, business assets, and client data, onboarding is completed through a secure invitation—not through a public website form.</p>
+  </div>
+  <div class="section-card" style="max-width:620px;margin:0 auto;text-align:center;">
+    <h2 class="section-title" style="justify-content:center;">What happens next</h2>
+    <p class="section-desc">After your payment or beta invitation is confirmed, we send your secure onboarding link directly. The process takes about 10 minutes after you receive it.</p>
+    <p style="color:var(--muted);margin:0 auto 1.5rem;max-width:48ch;">If you were invited by Get Noticed AI and have not received your link, call or text us. Please do not send Google passwords, payment details, or sensitive account access by email or text.</p>
+    <a class="btn-submit" style="display:inline-block;text-decoration:none;" href="sms:+17272709961?body=Hi%20Eric%2C%20I%20need%20my%20secure%20Get%20Noticed%20AI%20onboarding%20link.">Text for My Secure Link</a>
+    <p class="form-note">Or call <a href="tel:+17272709961">(727) 270-9961</a>.</p>
+  </div>`;
 </script>
 
 </body>
