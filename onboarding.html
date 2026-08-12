@@ -21,7 +21,12 @@
     #intake { width:100%; min-height:1040px; border:1px solid var(--line); border-radius:18px; background:#07111a; overflow:hidden; }
     .state { max-width:650px; margin:72px auto; padding:32px; text-align:center; border:1px solid var(--line); border-radius:18px; background:var(--surface); }
     .state h2 { margin:0 0 10px; font-size:1.35rem; }
-    .state a { display:inline-block; margin-top:20px; color:#fff; background:var(--accent); padding:11px 16px; text-decoration:none; border-radius:9px; font-weight:800; }
+    .state form { display:grid; gap:12px; margin:22px auto 0; max-width:420px; text-align:left; }
+    .state label { color:var(--muted); font-size:.88rem; font-weight:700; }
+    .state input,.state select { width:100%; border:1px solid var(--line); background:#07111a; color:var(--text); border-radius:9px; padding:12px; font:inherit; }
+    .state button { border:0; color:#fff; background:var(--accent); padding:12px 16px; text-decoration:none; border-radius:9px; font:inherit; font-weight:800; cursor:pointer; }
+    .state button:disabled { opacity:.65; cursor:wait; }
+    .state small { display:block; color:var(--muted); line-height:1.45; margin-top:8px; }
     @media (max-width:650px) { .intro { display:block; } .secure { display:inline-block; margin-top:14px; } main { padding:24px 14px; } #intake { min-height:1220px; border-radius:12px; } }
   </style>
 </head>
@@ -35,7 +40,20 @@
     const token = new URLSearchParams(window.location.search).get('token');
     const mount = document.getElementById('mount');
     if (!token || token.length < 32) {
-      mount.innerHTML = '<section class="state"><h2>Your private onboarding link is on its way</h2><p>For your protection, client onboarding is available only through a private invitation sent after payment is confirmed.</p><a href="sms:+17272709961?body=Hi%20Eric%2C%20I%20need%20my%20secure%20Get%20Noticed%20AI%20onboarding%20link.">Text for My Secure Link</a></section>';
+      mount.innerHTML = '<section class="state"><h2>Request your secure onboarding link</h2><p>Enter the email address you used when you purchased. If it matches a paid Get Noticed AI account, we will send a private link by email and text.</p><form id="request-link"><label>Purchase email<input type="email" name="email" autocomplete="email" required placeholder="you@business.com"></label><label>Plan<select name="plan"><option value="Growth">Growth</option><option value="Authority">Authority</option></select></label><button type="submit">Send my secure link</button><small id="request-status">For security, we show the same confirmation whether or not an email is on file.</small></form></section>';
+      document.getElementById('request-link').addEventListener('submit', async event => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const button = form.querySelector('button');
+        button.disabled = true;
+        button.textContent = 'Sending…';
+        try {
+          await fetch('https://gnaonboard-84sydfuq.manus.space/api/request-onboarding-link', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ email: form.email.value, plan: form.plan.value }) });
+          document.getElementById('request-status').textContent = 'If the email matches a paid account, your secure link is on its way. Check your inbox and text messages.';
+        } catch (_) {
+          document.getElementById('request-status').textContent = 'We could not confirm delivery right now. Please text (727) 270-9961 for help.';
+        } finally { button.disabled = false; button.textContent = 'Send my secure link'; }
+      });
     } else {
       const iframe = document.createElement('iframe');
       iframe.id = 'intake';
