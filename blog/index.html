@@ -295,6 +295,47 @@
     </div>
   </section>
 
+  <section class="section-sm" aria-labelledby="checklist-title">
+    <div class="container">
+      <div class="blog-checklist">
+        <div>
+          <span class="eyebrow">Free 5-minute checklist</span>
+          <h2 id="checklist-title">Find the local-visibility gaps costing you calls.</h2>
+          <p>Use this practical checklist to spot the five issues that most often keep a local business out of Google Maps results and AI recommendations.</p>
+          <ul class="checklist-points">
+            <li>Confirm the profile, category, services, and hours Google sees.</li>
+            <li>Check the review and response signals buyers see first.</li>
+            <li>Identify the citation and AI-search gaps worth fixing next.</li>
+          </ul>
+        </div>
+        <form id="blog-lead-form" class="blog-lead-form" novalidate>
+          <div>
+            <label for="blog-lead-name">First name</label>
+            <input id="blog-lead-name" name="name" type="text" autocomplete="given-name" required>
+          </div>
+          <div>
+            <label for="blog-lead-email">Business email</label>
+            <input id="blog-lead-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <label class="consent" for="blog-lead-consent"><input id="blog-lead-consent" name="consent" type="checkbox" required><span>I agree to receive the checklist and relevant local-visibility follow-up from Get Noticed AI. I can opt out at any time. See the <a href="/privacy.html">Privacy Policy</a>.</span></label>
+          <button class="btn btn-primary" type="submit">Show me the checklist</button>
+          <p id="blog-lead-status" class="blog-lead-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div id="blog-checklist-content" class="answer-box" hidden style="margin-top:var(--sp6);">
+        <h2>Your 5-minute local-visibility checklist</h2>
+        <ul>
+          <li><strong>Search your own brand and service:</strong> check whether your correct business name, phone number, hours, category, and primary service appear consistently.</li>
+          <li><strong>Open your Google Business Profile:</strong> make sure every service, service area, holiday hour, and contact method is current.</li>
+          <li><strong>Review your last 10 reviews:</strong> reply to every legitimate review, and make the next request part of your completed-job process.</li>
+          <li><strong>Check three core directories:</strong> compare Google, Facebook, and Yelp for exact name, address, and phone consistency.</li>
+          <li><strong>Ask an AI assistant:</strong> search for the best provider in your city and record whether you appear, which competitors do, and what sources are cited.</li>
+        </ul>
+        <p><strong>Next step:</strong> use the <a href="/audit.html">free visibility audit</a> for a structured estimate based on your business, city, and target keyword.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section-sm">
     <div class="container">
       <div class="cta-section">
@@ -347,5 +388,65 @@
     <span>Powered by AI. Built for local businesses.</span>
   </div>
 </footer>
+<script>
+(() => {
+  const form = document.getElementById('blog-lead-form');
+  if (!form) return;
+  const status = document.getElementById('blog-lead-status');
+  const checklist = document.getElementById('blog-checklist-content');
+  const webhook = 'https://services.leadconnectorhq.com/hooks/bIhbyuZTNUS8HhLTLckS/webhook-trigger/d9c39448-1751-40cf-a650-3f136597e32d';
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const name = document.getElementById('blog-lead-name').value.trim();
+    const email = document.getElementById('blog-lead-email');
+    const consent = document.getElementById('blog-lead-consent').checked;
+    if (!name || !email.checkValidity() || !consent) {
+      status.textContent = 'Enter your name, a valid email, and confirm consent to continue.';
+      return;
+    }
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    status.className = 'blog-lead-status';
+    status.textContent = 'Saving your checklist request…';
+    try {
+      const response = await fetch(webhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name: name,
+          last_name: '',
+          email: email.value.trim(),
+          phone: '',
+          business_name: '',
+          business_category: '',
+          city_state: '',
+          keyword_1: '',
+          keyword_2: '',
+          keyword_3: '',
+          source: 'blog-visibility-checklist',
+          consent: true,
+          consent_timestamp: new Date().toISOString()
+        })
+      });
+      if (!response.ok) throw new Error('CRM handoff failed');
+      if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'blog_checklist_submit', lead_source: 'blog-visibility-checklist' });
+      status.className = 'blog-lead-status success';
+      status.textContent = 'Saved. Your checklist is ready below.';
+      checklist.hidden = false;
+      checklist.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      form.reset();
+    } catch (_) {
+      status.textContent = 'We could not confirm delivery. Please try again or use the free audit instead.';
+    } finally {
+      button.disabled = false;
+    }
+  });
+})();
+</script>
+<!-- Get Noticed AI CRM external tracking -->
+<script src="https://link.getnoticedai.com/js/external-tracking.js" data-tracking-id="tk_fe47b95ddb0b4430a78a80bbbcf0ce96"></script>
+<!-- End Get Noticed AI CRM external tracking -->
 </body>
 </html>
