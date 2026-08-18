@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free AI Visibility Audit | Get Noticed AI</title>
-  <meta name="description" content="Find out if ChatGPT, Google Maps, and Gemini know your business exists. Free local SEO audit in 60 seconds.">
+  <meta id="page-description" name="description" content="Find out if ChatGPT, Google Maps, and Gemini know your business exists. Free local SEO audit in 60 seconds.">
   <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -148,9 +148,9 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="eyebrow">Free Opportunity Estimate - No Credit Card</div>
-  <h1>See Where Your Local Visibility <span>May Be Leaking</span></h1>
-  <p>Answer three quick questions to receive a transparent local-SEO opportunity estimate. A verified rank, heatmap, and competitor audit requires a live review of your Google Business Profile.</p>
+  <div class="eyebrow" id="audit-eyebrow">Free Opportunity Estimate - No Credit Card</div>
+  <h1 id="audit-title">See Where Your Local Visibility <span>May Be Leaking</span></h1>
+  <p id="audit-lede">Answer three quick questions to receive a transparent local-SEO opportunity estimate. A verified rank, heatmap, and competitor audit requires a live review of your Google Business Profile.</p>
 
   <!-- STEP INDICATOR -->
   <div class="steps">
@@ -200,6 +200,7 @@
       <option>Cleaning Services</option>
       <option>Pest Control</option>
       <option>Moving Company</option>
+      <option>Medical Spa</option>
       <option>Salon / Spa / Beauty</option>
       <option>Gym / Fitness</option>
       <option>Veterinarian / Pet Services</option>
@@ -296,7 +297,23 @@
 <script>
   // Signal Map form flow: capture only consented contact details before revealing the estimate.
   const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/bIhbyuZTNUS8HhLTLckS/webhook-trigger/d9c39448-1751-40cf-a650-3f136597e32d';
+  const campaignIndustry = new URLSearchParams(window.location.search).get('industry');
   let bizData = {};
+
+  function customizeForIndustry() {
+    if (campaignIndustry !== 'med-spa') return;
+    document.title = 'Free Med Spa Visibility Audit | Get Noticed AI';
+    document.getElementById('page-description').content = 'Find the local-visibility gaps preventing prospective patients from finding and evaluating your medical spa.';
+    document.getElementById('audit-eyebrow').textContent = 'Free med-spa visibility review — no credit card';
+    document.getElementById('audit-title').innerHTML = 'See where prospective patients <span>may stop finding you.</span>';
+    document.getElementById('audit-lede').textContent = 'Answer three quick questions to receive a practical medical-spa local-visibility estimate. A verified ranking, heatmap, and competitor review requires a live review of your Google Business Profile.';
+    document.getElementById('biz-category').value = 'Medical Spa';
+    document.getElementById('kw1').placeholder = 'e.g. med spa near me';
+    document.getElementById('kw2').placeholder = 'e.g. Botox near me';
+    document.getElementById('kw3').placeholder = 'e.g. laser hair removal [city]';
+  }
+
+  customizeForIndustry();
 
   function setStep(active) {
     [1, 2, 3, 4].forEach((number) => {
@@ -373,7 +390,8 @@
       keyword_1: bizData.kw1 || '',
       keyword_2: bizData.kw2 || '',
       keyword_3: bizData.kw3 || '',
-      source: 'audit-form',
+      source: campaignIndustry === 'med-spa' ? 'med-spa-page-audit' : 'audit-form',
+      campaign_industry: campaignIndustry || '',
       consent: true,
       consent_timestamp: new Date().toISOString()
     };
