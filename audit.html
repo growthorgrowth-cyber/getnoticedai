@@ -381,12 +381,17 @@
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 6500);
     try {
-      await fetch(WEBHOOK_URL, {
+      const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
         signal: controller.signal
       });
+      if (response.ok) {
+        if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'audit_form_submit', lead_source: 'audit-form' });
+      }
     } catch (_) {
       // The estimate remains available if a network interruption delays the CRM handoff.
     } finally {
