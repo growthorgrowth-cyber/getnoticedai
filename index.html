@@ -173,6 +173,15 @@ header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--bg)
 .logos-row{display:flex;justify-content:center;gap:var(--sp4);flex-wrap:wrap;}
 .logos-row span{font-size:var(--xs);font-weight:600;color:var(--faint);padding:var(--sp2) var(--sp4);border-radius:var(--r-full);border:1px solid var(--divider);}
 
+/* ===== INDUSTRY GUIDES ===== */
+.industry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp5);}
+.industry-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--sp7);display:flex;flex-direction:column;align-items:flex-start;min-height:270px;transition:transform var(--ease),border-color var(--ease),box-shadow var(--ease);}
+.industry-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:var(--sh-lg);}
+.industry-num{font-family:var(--fd);font-size:var(--xs);font-weight:700;letter-spacing:.1em;color:var(--primary);margin-bottom:var(--sp6);}
+.industry-card h3{font-size:var(--xl);margin-bottom:var(--sp3);}
+.industry-card p{font-size:var(--sm);line-height:1.7;color:var(--muted);margin-bottom:var(--sp6);}
+.industry-card .btn{margin-top:auto;}
+
 /* ===== FEATURES ===== */
 .feature-block{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp16);align-items:center;margin-bottom:var(--sp20);}
 .feature-block:nth-child(even) .f-copy{order:2;}
@@ -321,7 +330,7 @@ footer{border-top:1px solid var(--divider);padding-block:var(--sp12);}
   .float-badge{display:none;}
 }
 @media(max-width:640px){
-  .feat-grid,.citation-grid{grid-template-columns:1fr;}
+  .feat-grid,.citation-grid,.industry-grid{grid-template-columns:1fr;}
   .hero-stats{gap:var(--sp6);}
   .logos-row{gap:var(--sp2);}
   .toggle-opt{padding:var(--sp3) var(--sp6);font-size:var(--sm);}
@@ -369,11 +378,10 @@ footer{border-top:1px solid var(--divider);padding-block:var(--sp12);}
     </a>
     <nav class="navlinks" aria-label="Main navigation">
       <a href="#features">Features</a>
+      <a href="#industries">Industries</a>
       <a href="#citations">Citations</a>
       <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
       <a href="/blog/">Blog</a>
-      <a href="/partner.html">Partner Program</a>
       <a href="/audit.html" style="color:var(--primary);font-weight:700;">Free Audit</a>
     </nav>
     <div class="nav-actions">
@@ -390,6 +398,7 @@ footer{border-top:1px solid var(--divider);padding-block:var(--sp12);}
 
 <nav class="mobile-nav" id="mobileNav">
   <a href="#features" data-close-menu>Features</a>
+  <a href="#industries" data-close-menu>Industries</a>
   <a href="#citations" data-close-menu>Citations</a>
   <a href="#pricing" data-close-menu>Pricing</a>
   <a href="#faq" data-close-menu>FAQ</a>
@@ -490,6 +499,37 @@ footer{border-top:1px solid var(--divider);padding-block:var(--sp12);}
     </div>
   </div>
 </div>
+
+<!-- ===== INDUSTRY GUIDES ===== -->
+<section class="section section-alt" id="industries">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Who we help</span>
+      <h2>Built for the local businesses where trust starts in search.</h2>
+      <p>Explore practical local-visibility systems for the industries where customers compare providers before they call, book, or request an estimate.</p>
+    </div>
+    <div class="industry-grid">
+      <article class="industry-card">
+        <span class="industry-num">01 / PLUMBING</span>
+        <h3>Plumbers</h3>
+        <p>Stay easier to find when urgent searches turn into phone calls, with a clearer Google Business Profile, consistent local data, review workflows, and answer-ready service content.</p>
+        <a href="/local-seo-for-plumbers/" class="btn btn-ghost">Explore plumber SEO →</a>
+      </article>
+      <article class="industry-card">
+        <span class="industry-num">02 / ROOFING</span>
+        <h3>Roofers</h3>
+        <p>Build a stronger local-search presence before storm-season demand, with current business details, useful service explanations, review operations, and citation consistency.</p>
+        <a href="/local-seo-for-roofers/" class="btn btn-ghost">Explore roofer SEO →</a>
+      </article>
+      <article class="industry-card">
+        <span class="industry-num">03 / MEDICAL SPAS</span>
+        <h3>Medical spas</h3>
+        <p>Give prospective patients a clearer way to understand your services, business details, review standards, and local presence while keeping the marketing workflow practical.</p>
+        <a href="/local-seo-for-med-spas/" class="btn btn-ghost">Explore med-spa SEO →</a>
+      </article>
+    </div>
+  </div>
+</section>
 
 <!-- ===== FEATURES ===== -->
 <section class="section" id="features">
