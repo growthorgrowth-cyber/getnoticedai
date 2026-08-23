@@ -1,1202 +1,897 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Noticed AI — AI-Powered Local SEO That Runs Itself</title>
-<meta name="description" content="Get Noticed AI automates your Google Business Profile 24/7: posts, reviews, citations, and AI search visibility on Google Maps, ChatGPT, and Gemini. Set up in 10 minutes.">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Get Noticed AI | Google Business Profile Optimization</title>
+<meta name="description" content="Nova runs your Google Business Profile 24/7, building citations, posting, and answering reviews so you rank on Google Maps, ChatGPT, and Gemini. Set up in 10 minutes." />
+<meta name="theme-color" content="#0e6b5b" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+<!-- Self-hosted fonts (local files in assets/fonts, no CDN dependency) -->
+<style>
+  @font-face { font-family: "Sora"; src: url("assets/fonts/sora-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Sora"; src: url("assets/fonts/sora-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Sora"; src: url("assets/fonts/sora-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Manrope"; src: url("assets/fonts/manrope-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Manrope"; src: url("assets/fonts/manrope-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Manrope"; src: url("assets/fonts/manrope-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Manrope"; src: url("assets/fonts/manrope-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Manrope"; src: url("assets/fonts/manrope-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+
+<style>
+  :root {
+    --paper: #faf8f3;
+    --paper-2: #f1eee6;
+    --card: #ffffff;
+    --ink: #17211d;
+    --ink-soft: #4a5a53;
+    --ink-faint: #7c8b84;
+    --pine: #0e6b5b;
+    --pine-dark: #0a544a;
+    --pine-deep: #083f38;
+    --mint: #43b48f;
+    --mint-soft: #e2f1ea;
+    --line: #e4e0d6;
+    --star: #f0a93b;
+    --danger: #b3332d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Manrope", system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  h1, h2, h3, h4 { font-family: "Sora", sans-serif; letter-spacing: -0.02em; }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+  ::selection { background: var(--mint-soft); color: var(--pine-deep); }
+
+  .wrap { max-width: 72rem; margin: 0 auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+  .section { padding-block: 4.5rem; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    border-radius: 9999px; padding: 0.35rem 0.8rem;
+    font-family: "Sora", sans-serif; font-weight: 600; font-size: 0.75rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--pine-deep); background: var(--mint-soft);
+  }
+  .sec-head { max-width: 40rem; margin: 0 auto; text-align: center; }
+  .sec-head h2 { margin-top: 1rem; font-size: clamp(1.75rem, 3.2vw, 2.5rem); font-weight: 700; line-height: 1.1; }
+  .sec-head .sub { margin-top: 1rem; font-size: 1.125rem; color: var(--ink-soft); }
+
+  /* ---- buttons: each intent has its own treatment ---- */
+  .btn-audit {
+    display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center;
+    border-radius: 999px; padding: 0.95rem 1.6rem;
+    font-family: "Sora", sans-serif; font-weight: 700; font-size: 1rem; color: #fff;
+    background: linear-gradient(135deg, var(--pine) 0%, var(--pine-dark) 100%);
+    box-shadow: 0 12px 24px -10px rgba(10,84,74,.55);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(10,84,74,.6); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center;
+    border-radius: 999px; padding: 0.9rem 1.5rem;
+    font-family: "Sora", sans-serif; font-weight: 600; font-size: 1rem;
+    color: var(--pine-deep); background: #fff; border: 1px solid var(--line);
+    transition: border-color .15s, background .15s, transform .15s;
+  }
+  .btn-ghost:hover { border-color: var(--pine); background: var(--mint-soft); transform: translateY(-1px); }
+  .btn-text {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: "Sora", sans-serif; font-weight: 700; font-size: 0.95rem;
+    color: var(--pine); border-bottom: 2px solid var(--pine); padding-bottom: 2px;
+  }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center;
+    border-radius: 999px; padding: 0.9rem 1.5rem;
+    font-family: "Sora", sans-serif; font-weight: 700; font-size: 1rem;
+    color: var(--pine-deep); background: #fff;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -12px rgba(0,0,0,.35); }
+
+  /* ---- forms (plain HTML, no submission logic wired) ---- */
+  .field-label { display: block; font-family: "Sora", sans-serif; font-weight: 600; font-size: 0.8rem; margin-bottom: 0.4rem; color: var(--ink); }
+  .field-input {
+    width: 100%; border-radius: 0.75rem; border: 1px solid var(--line);
+    background: #fff; padding: 0.8rem 1rem; font-size: 1rem; color: var(--ink);
+    font-family: "Manrope", sans-serif; transition: border-color .15s, box-shadow .15s;
+  }
+  .field-input::placeholder { color: var(--ink-faint); }
+  .field-input:focus { outline: none; border-color: var(--pine); box-shadow: 0 0 0 3px var(--mint-soft); }
+  .form-note { margin-top: 0.5rem; font-size: 0.75rem; color: var(--ink-faint); }
+  .dark .form-note { color: rgba(255,255,255,.7); }
+  .dark .field-label { color: #fff; }
+  .dark .field-input { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: #fff; }
+  .dark .field-input::placeholder { color: rgba(255,255,255,.6); }
+
+  /* ---- top bar + nav ---- */
+  .topbar { background: var(--pine-deep); color: #fff; text-align: center; padding: 0.6rem 1rem; font-size: 0.9rem; }
+  .topbar b { color: var(--mint); }
+  .topbar code { background: rgba(255,255,255,.15); border-radius: 4px; padding: 0.1rem 0.4rem; font-weight: 700; }
+  .nav {
+    position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between;
+    height: 4rem; background: rgba(250,248,243,.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 0.65rem; font-family: "Sora", sans-serif; font-weight: 700; font-size: 1.125rem; }
+  .brand .mark { width: 2.25rem; height: 2.25rem; border-radius: 0.75rem; background: var(--pine); display: grid; place-items: center; color: #fff; }
+  .nav-links { display: flex; gap: 1.75rem; font-size: 0.875rem; font-weight: 600; color: var(--ink-soft); }
+  .nav-links a:hover { color: var(--pine); }
+  .nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+  @media (max-width: 820px) { .nav-links { display: none; } }
+
+  /* ---- hero ---- */
+  .hero { position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(60% 50% at 85% 0%, #e2f1ea 0%, rgba(226,241,234,0) 60%),
+      radial-gradient(40% 40% at 5% 100%, #f1eee6 0%, rgba(241,238,230,0) 60%);
+  }
+  .hero-grid { position: relative; display: grid; gap: 2.5rem; align-items: center; padding: 3.5rem 1.25rem 4rem; }
+  @media (min-width: 64rem) { .hero-grid { grid-template-columns: 1.05fr 1fr; padding-top: 4.5rem; } }
+  .hero h1 { margin-top: 1.1rem; font-size: clamp(2.25rem, 5.2vw, 3.75rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; }
+  .hero p.lead { margin-top: 1.1rem; max-width: 36rem; font-size: 1.125rem; color: var(--ink-soft); line-height: 1.6; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.6rem; }
+  .hero-bullets { display: flex; flex-wrap: wrap; gap: 0.6rem 1.25rem; margin-top: 1.4rem; font-size: 0.875rem; color: var(--ink-soft); }
+  .hero-bullets .tick { color: var(--pine); font-weight: 800; }
+  .hero-visual { position: relative; }
+  .dashframe { border-radius: 1rem; border: 1px solid var(--line); background: #fff; overflow: hidden; box-shadow: 0 24px 50px -20px rgba(8,63,56,.32); }
+  .dashframe .bar { display: flex; align-items: center; gap: 0.375rem; padding: 0.75rem 1rem; background: var(--paper-2); border-bottom: 1px solid var(--line); }
+  .dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; }
+  .float-chip { position: absolute; background: #fff; border: 1px solid var(--line); border-radius: 1rem; padding: 0.6rem 0.9rem; box-shadow: 0 1px 2px rgba(23,33,29,.05), 0 10px 30px -12px rgba(23,33,29,.18); }
+  .float-chip.top { top: 1.4rem; left: -1rem; }
+  .float-chip.bottom { bottom: -1rem; right: -0.75rem; }
+  @media (max-width: 64rem) { .float-chip.top { left: 0.5rem; } .float-chip.bottom { right: 0.5rem; } }
+  .fc-title { font-family: "Sora", sans-serif; font-weight: 700; font-size: 0.875rem; color: var(--pine-deep); }
+  .fc-sub { font-size: 0.75rem; color: var(--ink-faint); }
+  .stars { color: var(--star); font-size: 1.25rem; line-height: 1; }
+
+  /* ---- stats band ---- */
+  .stats { background: #fff; border-block: 1px solid var(--line); }
+  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; padding: 2.5rem 1.25rem; text-align: center; }
+  @media (min-width: 48rem) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+  .stat-num { font-family: "Sora", sans-serif; font-weight: 800; font-size: 1.875rem; letter-spacing: -0.03em; color: var(--pine-deep); }
+  .stat-label { margin-top: 0.25rem; font-size: 0.875rem; color: var(--ink-soft); }
+
+  /* ---- results compare ---- */
+  .compare-card { border-radius: 1.5rem; border: 1px solid var(--line); background: #fff; padding: 1.5rem; box-shadow: 0 1px 2px rgba(23,33,29,.05), 0 10px 30px -12px rgba(23,33,29,.18); }
+  @media (min-width: 48rem) { .compare-card { padding: 2.5rem; } }
+  .tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .tabbtn { border-radius: 999px; border: 1px solid var(--line); background: #fff; padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 600; color: var(--ink-soft); cursor: pointer; font-family: "Manrope", sans-serif; transition: all .15s; }
+  .tabbtn:hover { border-color: var(--pine); color: var(--pine); }
+  .tabbtn.active { border-color: var(--pine); background: var(--pine); color: #fff; }
+  .cmp-grid { display: grid; gap: 1.5rem; }
+  @media (min-width: 64rem) { .cmp-grid { grid-template-columns: 1fr 1.4fr; align-items: center; } }
+  .cmp-kw { font-size: 1.25rem; font-weight: 700; margin-top: 0.4rem; }
+  .cmp-body { margin-top: 0.3rem; color: var(--ink-soft); }
+  .cmp-drag { margin-top: 1rem; font-weight: 600; font-size: 0.875rem; color: var(--pine); }
+  .cmp-badge { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.1rem; border-radius: 999px; background: var(--mint-soft); padding: 0.4rem 0.8rem; font-weight: 600; font-size: 0.875rem; color: var(--pine-deep); }
+  .slider-wrap { position: relative; aspect-ratio: 1 / 1; border-radius: 1rem; overflow: hidden; user-select: none; touch-action: none; box-shadow: 0 10px 30px -12px rgba(23,33,29,.25); }
+  .slider-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .slider-clip { position: absolute; inset: 0; overflow: hidden; }
+  .label-pill { position: absolute; bottom: 0.75rem; border-radius: 999px; padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 600; color: #fff; }
+  .label-before { left: 0.75rem; background: rgba(0,0,0,.7); }
+  .label-after { right: 0.75rem; background: var(--pine); }
+  .handle-line { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,.85), 0 0 14px rgba(0,0,0,.25); }
+  .handle-knob { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 2.25rem; height: 2.25rem; border-radius: 50%; background: #fff; color: var(--pine); display: grid; place-items: center; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+  .slider-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
+
+  /* ---- nova band (dark) ---- */
+  .nova { background: var(--pine-deep); color: #fff; }
+  .nova-grid { display: grid; gap: 2.5rem; align-items: center; padding: 4.5rem 1.25rem; }
+  @media (min-width: 64rem) { .nova-grid { grid-template-columns: 1fr 1fr; } }
+  .nova .eyebrow { background: rgba(255,255,255,.15); color: #fff; }
+  .nova h2 { margin-top: 1rem; font-size: clamp(1.75rem, 3.2vw, 2.5rem); font-weight: 700; line-height: 1.1; }
+  .nova p.lead { margin-top: 1rem; color: rgba(255,255,255,.8); font-size: 1.125rem; line-height: 1.6; }
+  .nova ul { list-style: none; margin-top: 1.5rem; display: grid; gap: 0.75rem; }
+  .nova li { display: flex; gap: 0.75rem; color: rgba(255,255,255,.92); }
+  .nova li .tick { color: var(--mint); font-weight: 800; }
+  .nova-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .nova-media { border: 1px solid rgba(255,255,255,.15); border-radius: 1rem; background: rgba(255,255,255,.05); padding: 0.75rem; }
+  .nova-media img { border-radius: 0.75rem; }
+  .nova-media .cap { margin-top: 0.6rem; padding: 0 0.5rem 0.25rem; font-size: 0.875rem; color: rgba(255,255,255,.7); }
+
+  /* ---- social proof strip ---- */
+  .social .chips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2.5rem; }
+  @media (min-width: 48rem) { .social .chips { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 64rem) { .social .chips { grid-template-columns: repeat(6, 1fr); } }
+  .schip { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--paper); padding: 1.25rem 0.75rem; text-align: center; }
+  .schip .ico { width: 2.75rem; height: 2.75rem; border-radius: 0.75rem; background: var(--pine); color: #fff; display: grid; place-items: center; font-family: "Sora", sans-serif; font-weight: 700; font-size: 0.95rem; }
+  .schip .name { font-family: "Sora", sans-serif; font-weight: 700; }
+  .schip .desc { font-size: 0.8125rem; color: var(--ink-soft); }
+
+  /* ---- how it works ---- */
+  .how-grid { display: grid; gap: 1.5rem; margin-top: 2.5rem; }
+  @media (min-width: 48rem) { .how-grid { grid-template-columns: repeat(3, 1fr); } }
+  .how-card { border: 1px solid var(--line); border-radius: 1rem; background: #fff; padding: 1.5rem; box-shadow: 0 1px 2px rgba(23,33,29,.05), 0 10px 30px -12px rgba(23,33,29,.18); }
+  .how-card .n { font-family: "Sora", sans-serif; font-weight: 800; font-size: 2rem; opacity: 0.25; }
+  .how-card h3 { margin-top: 0.75rem; font-size: 1.125rem; }
+  .how-card p { margin-top: 0.6rem; color: var(--ink-soft); }
+
+  /* ---- audit band (green) ---- */
+  .audit-band { background: var(--pine); color: #fff; }
+  .audit-grid { display: grid; gap: 2rem; align-items: center; padding: 4rem 1.25rem; }
+  @media (min-width: 64rem) { .audit-grid { grid-template-columns: 1fr 1fr; } }
+  .audit-band h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); font-weight: 700; line-height: 1.15; }
+  .audit-band p { margin-top: 1rem; color: rgba(255,255,255,.85); font-size: 1.125rem; }
+
+  /* ---- pricing ---- */
+  .billing-toggle { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 2rem; }
+  .toggle-label { font-size: 0.875rem; font-weight: 600; }
+  .toggle-label.on { color: var(--pine); }
+  .toggle-label.off { color: var(--ink-faint); }
+  .switch { position: relative; width: 3.5rem; height: 2rem; border-radius: 999px; border: 1px solid var(--line); background: var(--paper-2); cursor: pointer; transition: all .2s; }
+  .switch.on { background: var(--pine); border-color: var(--pine); }
+  .switch .knob { position: absolute; top: 0.25rem; left: 0.25rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: left .2s; }
+  .switch.on .knob { left: 1.75rem; }
+  .save-badge { margin-left: 0.25rem; border-radius: 999px; background: var(--mint-soft); color: var(--pine-deep); padding: 0.25rem 0.625rem; font-size: 0.75rem; font-weight: 700; }
+  .plans-grid { display: grid; gap: 1.5rem; margin: 2.5rem auto 0; max-width: 60rem; }
+  @media (min-width: 64rem) { .plans-grid { grid-template-columns: repeat(3, 1fr); } }
+  .plan { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 1.5rem; background: #fff; padding: 1.75rem; box-shadow: 0 1px 2px rgba(23,33,29,.05), 0 10px 30px -12px rgba(23,33,29,.18); }
+  .plan.hot { border: 2px solid var(--pine); box-shadow: 0 24px 50px -20px rgba(11,63,56,.32); position: relative; }
+  .plan .badge { position: absolute; top: -0.75rem; left: 1.75rem; border-radius: 999px; background: var(--pine); color: #fff; padding: 0.25rem 0.75rem; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .plan h3 { font-size: 1.125rem; }
+  .plan .tag { margin-top: 0.25rem; font-size: 0.875rem; color: var(--ink-soft); }
+  .price-row { display: flex; align-items: baseline; gap: 0.25rem; margin-top: 1.25rem; }
+  .price { font-family: "Sora", sans-serif; font-weight: 800; font-size: 2.25rem; letter-spacing: -0.03em; color: var(--pine-deep); }
+  .price-per { color: var(--ink-soft); }
+  .year-note { margin-top: 0.25rem; font-size: 0.875rem; font-weight: 600; color: var(--pine); display: none; }
+  .plan.yearly .year-note { display: block; }
+  .plan ul { list-style: none; margin-top: 1.5rem; display: grid; gap: 0.75rem; flex: 1; }
+  .plan li { display: flex; gap: 0.65rem; color: var(--ink-soft); font-size: 0.95rem; }
+  .plan li .tick { flex-shrink: 0; margin-top: 0.1rem; color: var(--pine); font-weight: 800; }
+  .plan .btn { margin-top: 1.75rem; }
+  .early-note { text-align: center; margin-top: 2rem; font-weight: 600; color: var(--pine); }
+
+  /* ---- contact ---- */
+  .contact-wrap { background: var(--paper-2); border-top: 1px solid var(--line); }
+  .contact-grid { display: grid; gap: 2.5rem; padding: 4.5rem 1.25rem; }
+  @media (min-width: 64rem) { .contact-grid { grid-template-columns: 1fr 1.2fr; } }
+  .contact-cards { display: grid; gap: 1rem; margin-top: 2rem; }
+  .contact-card { display: flex; align-items: center; gap: 0.75rem; border: 1px solid var(--line); border-radius: 1rem; background: #fff; padding: 1rem; }
+  .contact-card:hover { border-color: var(--pine); }
+  .contact-card .ico { width: 2.75rem; height: 2.75rem; border-radius: 0.75rem; background: var(--mint-soft); color: var(--pine); display: grid; place-items: center; font-size: 1.25rem; }
+  .contact-card .lbl { font-size: 0.8125rem; color: var(--ink-faint); }
+  .contact-card .val { font-family: "Sora", sans-serif; font-weight: 700; font-size: 1.125rem; }
+  .form-card { border-radius: 1.5rem; border: 1px solid var(--line); background: #fff; padding: 1.75rem; box-shadow: 0 1px 2px rgba(23,33,29,.05), 0 10px 30px -12px rgba(23,33,29,.18); }
+  @media (min-width: 48rem) { .form-card { padding: 2.25rem; } }
+  .form-grid { display: grid; gap: 1.25rem; }
+  @media (min-width: 48rem) { .form-grid { grid-template-columns: 1fr 1fr; } }
+  .form-grid .full { grid-column: 1 / -1; }
+
+  /* ---- faq ---- */
+  .faq-list { max-width: 44rem; margin: 2.5rem auto 0; display: grid; gap: 0.75rem; }
+  .faq-item { border: 1px solid var(--line); border-radius: 1rem; background: #fff; overflow: hidden; }
+  .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; text-align: left; background: none; border: none; cursor: pointer; font-family: "Sora", sans-serif; font-weight: 700; color: var(--ink); font-size: 0.95rem; }
+  .faq-icon { flex-shrink: 0; width: 1.75rem; height: 1.75rem; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--ink-soft); font-size: 0.875rem; transition: all .15s; }
+  .faq-item.open .faq-icon { background: var(--pine); border-color: var(--pine); color: #fff; transform: rotate(45deg); }
+  .faq-a { display: none; padding: 0 1.25rem 1.25rem; color: var(--ink-soft); line-height: 1.6; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ---- final cta + footer ---- */
+  .final { background: var(--pine-deep); color: #fff; text-align: center; }
+  .final .inner { max-width: 40rem; margin: 0 auto; padding: 4rem 1.25rem; }
+  .final h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); line-height: 1.15; }
+  .final p { margin-top: 0.75rem; color: rgba(255,255,255,.8); font-size: 1.125rem; }
+  .final .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1.75rem; }
+  footer { background: var(--pine-deep); color: rgba(255,255,255,.7); border-top: 1px solid rgba(255,255,255,.1); }
+  .foot-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 2rem 1.25rem; }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.875rem; }
+  .foot-links a:hover { color: #fff; }
+  .foot-bar { border-top: 1px solid rgba(255,255,255,.1); padding: 1.25rem; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,.5); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn-audit, .btn-ghost, .btn-white { transition: none; }
+    .btn-audit:hover, .btn-ghost:hover, .btn-white:hover { transform: none; }
+  }
+</style>
+
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="https://getnoticedai.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Get Noticed AI">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Get Noticed AI — AI-Powered Local SEO That Runs Itself">
-<meta property="og:description" content="Automated Google Business Profile activity, citations, reviews, and local search visibility for small businesses.">
+<meta property="og:title" content="Get Noticed AI | Google Business Profile Optimization">
+<meta property="og:description" content="Nova runs your Google Business Profile 24/7, building citations, posting, and answering reviews so you rank on Google Maps, ChatGPT, and Gemini.">
 <meta property="og:url" content="https://getnoticedai.com/">
 <meta property="og:image" content="https://getnoticedai.com/facebook_cover.jpg">
 <meta property="og:image:alt" content="Get Noticed AI local SEO platform">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Get Noticed AI — AI-Powered Local SEO That Runs Itself">
-<meta name="twitter:description" content="Automated Google Business Profile activity, citations, reviews, and local search visibility for small businesses.">
+<meta name="twitter:title" content="Get Noticed AI | Google Business Profile Optimization">
+<meta name="twitter:description" content="Nova runs your Google Business Profile 24/7, building citations, posting, and answering reviews so you rank on Google Maps, ChatGPT, and Gemini.">
 <meta name="twitter:image" content="https://getnoticedai.com/facebook_cover.jpg">
 <meta name="google-site-verification" content="Oxo4wJi-cSeM9Rv0IOj_5TKFdsWccxLLXjGX50YOMjY" />
-<link rel="icon" href="data:image/png;base64,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" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,500,400&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://getnoticedai.com/#organization","name":"Get Noticed AI","url":"https://getnoticedai.com/","logo":"https://getnoticedai.com/logo.png","email":"eric@getnoticedai.com","telephone":"+1-727-270-9961"},{"@type":"WebSite","@id":"https://getnoticedai.com/#website","url":"https://getnoticedai.com/","name":"Get Noticed AI","publisher":{"@id":"https://getnoticedai.com/#organization"}},{"@type":"WebPage","@id":"https://getnoticedai.com/#webpage","url":"https://getnoticedai.com/","name":"Get Noticed AI — AI-Powered Local SEO That Runs Itself","description":"Automated Google Business Profile activity, citations, reviews, and local search visibility for small businesses.","isPartOf":{"@id":"https://getnoticedai.com/#website"},"inLanguage":"en-US"}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://getnoticedai.com/#organization","name":"Get Noticed AI","url":"https://getnoticedai.com/","logo":"https://getnoticedai.com/logo.png","email":"eric@getnoticedai.com","telephone":"+1-727-270-9961"},{"@type":"WebSite","@id":"https://getnoticedai.com/#website","url":"https://getnoticedai.com/","name":"Get Noticed AI","publisher":{"@id":"https://getnoticedai.com/#organization"}},{"@type":"WebPage","@id":"https://getnoticedai.com/#webpage","url":"https://getnoticedai.com/","name":"Get Noticed AI | Google Business Profile Optimization","description":"Nova runs your Google Business Profile 24/7, building citations, posting, and answering reviews so you rank on Google Maps, ChatGPT, and Gemini.","isPartOf":{"@id":"https://getnoticedai.com/#website"},"inLanguage":"en-US"}]}
 </script>
-<style>
-/* ===== TOKENS ===== */
-:root{
-  --bg:#f7f6f2;--surface:#f9f8f5;--surface2:#fbfbf9;
-  --offset:#f3f0ec;--offset2:#edeae5;
-  --divider:#dcd9d5;--border:#d4d1ca;
-  --text:#1c2624;--muted:#5c6663;--faint:#a3aba8;
-  --primary:#0b6e63;--primary-h:#08554c;--primary-a:#053e38;--primary-hl:#cfe4e0;
-  --gold:#d19900;--gold-hl:#e9e0c6;
-  --r-sm:.375rem;--r-md:.5rem;--r-lg:.75rem;--r-xl:1rem;--r-2xl:1.5rem;--r-full:9999px;
-  --ease:180ms cubic-bezier(.16,1,.3,1);
-  --sh-sm:0 1px 3px rgba(20,40,35,.1);
-  --sh-md:0 4px 16px rgba(20,40,35,.12);
-  --sh-lg:0 16px 40px rgba(20,40,35,.16);
-  --sh-xl:0 24px 60px rgba(20,40,35,.20);
-  --wide:1200px;--default:960px;--narrow:640px;
-  --fd:'Cabinet Grotesk','Georgia',serif;
-  --fb:'Satoshi','Helvetica Neue',sans-serif;
-  --xs:clamp(.72rem,.68rem+.2vw,.8rem);
-  --sm:clamp(.85rem,.8rem+.25vw,.95rem);
-  --base:clamp(.95rem,.9rem+.25vw,1.05rem);
-  --lg:clamp(1.1rem,1rem+.5vw,1.4rem);
-  --xl:clamp(1.4rem,1.1rem+1.2vw,2.1rem);
-  --2xl:clamp(1.9rem,1.1rem+2.4vw,3.3rem);
-  --3xl:clamp(2.4rem,.9rem+3.8vw,4.8rem);
-  --sp1:.25rem;--sp2:.5rem;--sp3:.75rem;--sp4:1rem;--sp5:1.25rem;--sp6:1.5rem;
-  --sp8:2rem;--sp10:2.5rem;--sp12:3rem;--sp16:4rem;--sp20:5rem;--sp24:6rem;
-}
-[data-theme="dark"]{
-  --bg:#0d1210;--surface:#121918;--surface2:#161e1b;
-  --offset:#1a201e;--offset2:#1e2622;
-  --divider:#1e2b27;--border:#283530;
-  --text:#d5e2de;--muted:#7a9490;--faint:#4a5e5a;
-  --primary:#3fa896;--primary-h:#5cc0ae;--primary-a:#7ad4c3;--primary-hl:#1a3330;
-  --sh-sm:0 1px 3px rgba(0,0,0,.35);
-  --sh-md:0 4px 16px rgba(0,0,0,.45);
-  --sh-lg:0 16px 40px rgba(0,0,0,.55);
-  --sh-xl:0 24px 60px rgba(0,0,0,.65);
-}
-/* ===== RESET ===== */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scroll-padding-top:70px;}
-body{min-height:100dvh;line-height:1.65;font-family:var(--fb);font-size:var(--base);color:var(--text);background:var(--bg);transition:background .25s,color .25s;}
-img{display:block;max-width:100%;height:auto;}
-h1,h2,h3,h4{font-family:var(--fd);line-height:1.1;text-wrap:balance;font-weight:700;}
-p,li{text-wrap:pretty;}
-a{color:inherit;text-decoration:none;}
-button{cursor:pointer;font:inherit;border:none;background:none;}
-:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:var(--r-sm);}
-.container{max-width:var(--wide);margin-inline:auto;padding-inline:var(--sp6);}
-.narrow{max-width:var(--default);margin-inline:auto;padding-inline:var(--sp6);}
 
-/* ===== BUTTONS ===== */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp2);padding:var(--sp3) var(--sp6);border-radius:var(--r-md);font-size:var(--sm);font-weight:700;letter-spacing:.01em;transition:all var(--ease);white-space:nowrap;cursor:pointer;}
-.btn-primary{background:var(--primary);color:#fff;box-shadow:var(--sh-sm);}
-.btn-primary:hover{background:var(--primary-h);box-shadow:var(--sh-md);transform:translateY(-2px);}
-.btn-ghost{background:transparent;border:1.5px solid var(--border);color:var(--text);}
-.btn-ghost:hover{background:var(--offset);border-color:var(--primary);color:var(--primary);}
-.btn-white{background:#fff;color:var(--primary-a);font-weight:700;box-shadow:var(--sh-sm);}
-.btn-white:hover{background:#f0faf8;transform:translateY(-2px);}
-.btn-outline-white{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.35);}
-.btn-outline-white:hover{background:rgba(255,255,255,.22);}
-.btn-lg{padding:var(--sp4) var(--sp10);font-size:var(--base);}
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P7QNFT5J');</script>
+<!-- End Google Tag Manager -->
 
-/* ===== HEADER ===== */
-header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--bg) 90%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--divider);transition:background .25s,box-shadow .25s;}
-.nav{display:flex;align-items:center;justify-content:space-between;padding-block:var(--sp4);gap:var(--sp4);}
-.brand{display:flex;align-items:center;gap:var(--sp3);font-family:var(--fd);font-weight:800;font-size:1.4rem;letter-spacing:-.01em;flex-shrink:0;color:var(--text);text-decoration:none;}
-/* Logo chip: white background so icon is always visible in dark/light */
-.brand-logo-wrap{
-  width:38px;height:38px;border-radius:var(--r-md);
-  background:#fff;
-  padding:3px;
-  box-shadow:var(--sh-sm);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.brand-logo-wrap img{width:32px;height:32px;border-radius:4px;display:block;}
-.navlinks{display:flex;gap:var(--sp8);align-items:center;}
-.navlinks a{font-size:var(--sm);font-weight:500;color:var(--muted);transition:color var(--ease);}
-.navlinks a:hover{color:var(--primary);}
-.nav-actions{display:flex;gap:var(--sp3);align-items:center;flex-shrink:0;}
-.theme-btn{width:36px;height:36px;border-radius:var(--r-full);background:var(--offset);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all var(--ease);flex-shrink:0;}
-.theme-btn:hover{background:var(--primary-hl);color:var(--primary);}
-.mobile-menu-btn{display:none;width:36px;height:36px;border-radius:var(--r-md);background:var(--offset);align-items:center;justify-content:center;color:var(--muted);flex-shrink:0;}
-.mobile-nav{display:none;position:fixed;inset:0;top:65px;background:var(--bg);z-index:99;padding:var(--sp6);flex-direction:column;gap:var(--sp4);overflow-y:auto;}
-.mobile-nav.open{display:flex;}
-.mobile-nav a{font-size:var(--lg);font-weight:600;color:var(--text);padding:var(--sp3) 0;border-bottom:1px solid var(--divider);}
+<!-- RB2B Visitor Identification Pixel -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_kLpneAirzOcZXFnuWl7TLq9189uCXK0cSDW7qlG0xvf',{api_host:'https://a.rb2b.com'})
+</script>
 
-/* ===== EYEBROW / PILLS ===== */
-.eyebrow{display:inline-flex;align-items:center;gap:var(--sp2);font-size:var(--xs);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--primary);background:var(--primary-hl);padding:var(--sp1) var(--sp3);border-radius:var(--r-full);}
-.badge{background:var(--gold);color:#fff;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:var(--r-full);white-space:nowrap;}
-.pill{background:var(--primary-hl);color:var(--primary);font-size:var(--xs);font-weight:700;padding:2px var(--sp2);border-radius:var(--r-full);}
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '151296705452066');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
-/* ===== SECTIONS ===== */
-.section{padding-block:clamp(var(--sp16),8vw,var(--sp24));}
-.section-alt{background:var(--surface);}
-.section-head{max-width:640px;margin-bottom:var(--sp12);}
-.section-head .eyebrow{margin-bottom:var(--sp4);}
-.section-head h2{font-size:var(--2xl);margin-bottom:var(--sp4);}
-.section-head p{color:var(--muted);font-size:var(--lg);}
-.section-head.center{text-align:center;margin-inline:auto;}
-
-/* ===== HERO ===== */
-.hero{padding-block:clamp(var(--sp16),10vw,var(--sp24)) clamp(var(--sp12),6vw,var(--sp20));overflow:hidden;}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp16);align-items:center;}
-.hero h1{font-size:var(--3xl);margin-bottom:var(--sp5);letter-spacing:-.02em;}
-.hero h1 em{color:var(--primary);font-style:normal;}
-.hero .lead{font-size:var(--lg);color:var(--muted);margin-bottom:var(--sp8);max-width:52ch;}
-.hero-ctas{display:flex;gap:var(--sp4);flex-wrap:wrap;margin-bottom:var(--sp6);}
-.hero-trust{display:flex;align-items:center;gap:var(--sp3);flex-wrap:wrap;margin-bottom:var(--sp8);}
-.stars{color:#f59e0b;letter-spacing:-.05em;}
-.hero-trust span{font-size:var(--xs);color:var(--muted);}
-.hero-stats{display:flex;gap:var(--sp8);flex-wrap:wrap;padding-top:var(--sp8);border-top:1px solid var(--divider);}
-.stat b{display:block;font-family:var(--fd);font-size:var(--xl);color:var(--primary);}
-.stat span{font-size:var(--xs);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
-
-/* Hero dashboard card — pure CSS, no images */
-.hero-visual{position:relative;}
-.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-2xl);padding:var(--sp8);box-shadow:var(--sh-xl);}
-.hero-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp6);}
-.hero-card-title{font-family:var(--fd);font-weight:700;font-size:var(--base);}
-.live-dot{width:9px;height:9px;border-radius:var(--r-full);background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.2);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.2);}50%{box-shadow:0 0 0 7px rgba(34,197,94,.08);}}
-.rank-label{font-size:var(--xs);color:var(--muted);margin-bottom:var(--sp3);text-transform:uppercase;letter-spacing:.06em;}
-.rank-row{display:flex;align-items:center;gap:var(--sp3);margin-bottom:var(--sp3);}
-.rank-kw{font-size:var(--xs);color:var(--muted);width:115px;flex-shrink:0;}
-.rank-bar-wrap{flex:1;height:7px;background:var(--offset2);border-radius:var(--r-full);overflow:hidden;}
-.rank-bar-inner{height:100%;border-radius:var(--r-full);background:linear-gradient(90deg,var(--primary),var(--primary-h));animation:grow 2s ease-out forwards;}
-@keyframes grow{from{width:0%;}to{width:var(--w);}}
-.rank-pos{font-size:var(--xs);font-weight:700;color:var(--primary);width:22px;text-align:right;flex-shrink:0;}
-.metric-row{display:flex;justify-content:space-between;align-items:center;padding:var(--sp3) 0;border-top:1px solid var(--divider);font-size:var(--sm);}
-.metric-label{color:var(--muted);}
-/* Float badges */
-.float-badge{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp2) var(--sp4);box-shadow:var(--sh-md);font-size:var(--xs);font-weight:600;display:flex;align-items:center;gap:var(--sp2);animation:float 4s ease-in-out infinite;white-space:nowrap;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-.float-badge-1{top:-18px;right:16px;animation-delay:0s;}
-.float-badge-2{bottom:16px;left:-16px;animation-delay:1.5s;}
-.float-dot{width:8px;height:8px;border-radius:var(--r-full);background:#22c55e;flex-shrink:0;}
-
-/* ===== LOGOS BAR ===== */
-.logos-bar{padding-block:var(--sp8);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);}
-.logos-bar p{text-align:center;font-size:var(--xs);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp5);}
-.logos-row{display:flex;justify-content:center;gap:var(--sp4);flex-wrap:wrap;}
-.logos-row span{font-size:var(--xs);font-weight:600;color:var(--faint);padding:var(--sp2) var(--sp4);border-radius:var(--r-full);border:1px solid var(--divider);}
-
-/* ===== INDUSTRY GUIDES ===== */
-.industry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp5);}
-.industry-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--sp7);display:flex;flex-direction:column;align-items:flex-start;min-height:270px;transition:transform var(--ease),border-color var(--ease),box-shadow var(--ease);}
-.industry-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:var(--sh-lg);}
-.industry-num{font-family:var(--fd);font-size:var(--xs);font-weight:700;letter-spacing:.1em;color:var(--primary);margin-bottom:var(--sp6);}
-.industry-card h3{font-size:var(--xl);margin-bottom:var(--sp3);}
-.industry-card p{font-size:var(--sm);line-height:1.7;color:var(--muted);margin-bottom:var(--sp6);}
-.industry-card .btn{margin-top:auto;}
-
-/* ===== FEATURES ===== */
-.feature-block{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp16);align-items:center;margin-bottom:var(--sp20);}
-.feature-block:nth-child(even) .f-copy{order:2;}
-.f-copy h3{font-size:var(--xl);margin-bottom:var(--sp4);}
-.f-copy p{color:var(--muted);margin-bottom:var(--sp5);max-width:48ch;}
-.f-list{display:flex;flex-direction:column;gap:var(--sp3);list-style:none;}
-.f-list li{display:flex;gap:var(--sp3);align-items:flex-start;font-size:var(--sm);}
-.check{color:var(--primary);flex-shrink:0;margin-top:2px;font-weight:700;}
-/* CSS dashboard mockup panels */
-.f-visual{background:var(--offset);border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--sp8);min-height:260px;display:flex;flex-direction:column;justify-content:center;gap:var(--sp3);}
-.f-bar{background:var(--surface);border-radius:var(--r-md);padding:var(--sp4);display:flex;justify-content:space-between;align-items:center;font-size:var(--sm);border:1px solid var(--divider);}
-.f-bar .num{color:var(--primary);font-weight:700;font-family:var(--fd);}
-
-/* Full feature catalog — always visible, no tabs */
-.cat-group{margin-bottom:var(--sp10);}
-.cat-group h4{font-size:var(--base);font-weight:700;color:var(--primary);margin-bottom:var(--sp4);display:flex;align-items:center;gap:var(--sp2);}
-.cat-group h4::before{content:"";width:8px;height:8px;border-radius:var(--r-full);background:var(--primary);display:inline-block;flex-shrink:0;}
-.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp3);}
-.feat-item{display:flex;gap:var(--sp3);align-items:flex-start;background:var(--surface);border:1px solid var(--divider);border-radius:var(--r-md);padding:var(--sp4);font-size:var(--sm);transition:border-color var(--ease),box-shadow var(--ease);}
-.feat-item:hover{border-color:var(--primary);box-shadow:var(--sh-sm);}
-.ft-title{font-weight:600;display:block;margin-bottom:2px;}
-.ft-desc{color:var(--muted);font-size:var(--xs);}
-
-/* ===== CITATIONS ===== */
-.citation-panel{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--sp16);align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--sp12);}
-.citation-panel h3{font-size:var(--xl);margin-bottom:var(--sp4);}
-.citation-panel p{color:var(--muted);margin-bottom:var(--sp4);}
-.citation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp3);}
-.citation-node{background:var(--surface2);border:1px solid var(--divider);border-radius:var(--r-md);padding:var(--sp4);text-align:center;font-size:var(--xs);color:var(--muted);transition:all var(--ease);}
-.citation-node.active{border-color:var(--primary);color:var(--primary);font-weight:700;background:var(--primary-hl);}
-
-/* ===== PRICING ===== */
-/* Toggle — simple two-button approach, no sliding background */
-.pricing-toggle{display:flex;justify-content:center;margin-bottom:var(--sp12);}
-.toggle-btn{
-  padding:12px 32px;
-  font-size:1rem;
-  font-weight:700;
-  cursor:pointer;
-  border:2px solid var(--primary);
-  background:transparent;
-  color:var(--primary);
-  transition:background .15s,color .15s;
-  white-space:nowrap;
-  line-height:1.4;
-  display:inline-block;
-}
-.toggle-btn:first-child{border-radius:50px 0 0 50px;border-right:1px solid var(--primary);}
-.toggle-btn:last-child{border-radius:0 50px 50px 0;border-left:1px solid var(--primary);}
-.toggle-btn.active{background:var(--primary);color:#fff;}
-.toggle-save-badge{
-  display:inline-block;
-  background:#d19900;
-  color:#fff;
-  font-size:0.6rem;
-  font-weight:800;
-  padding:2px 7px;
-  border-radius:50px;
-  margin-left:6px;
-  vertical-align:middle;
-  text-transform:uppercase;
-}
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp8);max-width:900px;margin-inline:auto;}
-.plan{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:var(--sp10);position:relative;transition:box-shadow var(--ease);}
-.plan:hover{box-shadow:var(--sh-lg);}
-.plan.featured{border-color:var(--primary);box-shadow:var(--sh-lg);}
-.plan.featured::before{
-  content:"MOST POPULAR \2014 INCLUDES CITATIONS";
-  position:absolute;top:-14px;left:var(--sp8);
-  background:var(--primary);color:#fff;
-  font-size:var(--xs);font-weight:700;letter-spacing:.06em;
-  padding:3px var(--sp4);border-radius:var(--r-full);
-  white-space:nowrap;
-}
-.plan h3{font-size:var(--lg);margin-bottom:var(--sp2);}
-.plan .price{font-family:var(--fd);font-size:var(--2xl);color:var(--text);margin-bottom:var(--sp1);}
-.plan .price span{font-size:var(--sm);color:var(--muted);font-family:var(--fb);font-weight:400;}
-.plan .yearly-note{font-size:var(--xs);color:var(--primary);font-weight:700;margin-bottom:var(--sp6);min-height:1.4em;}
-.plan ul{display:flex;flex-direction:column;gap:var(--sp3);margin:var(--sp6) 0 var(--sp8);list-style:none;}
-.plan li{display:flex;gap:var(--sp3);font-size:var(--sm);}
-.plan .btn{width:100%;justify-content:center;}
-.pricing-note{text-align:center;font-size:var(--sm);color:var(--muted);margin-top:var(--sp8);}
-
-/* ===== GHL BOOKING ===== */
-.booking-section{background:var(--surface);border-radius:var(--r-xl);padding:clamp(var(--sp12),6vw,var(--sp20));border:1px solid var(--border);}
-.booking-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:var(--sp16);align-items:start;}
-.booking-copy h2{font-size:var(--2xl);margin-bottom:var(--sp4);}
-.booking-copy p{color:var(--muted);margin-bottom:var(--sp6);font-size:var(--lg);}
-.booking-points{display:flex;flex-direction:column;gap:var(--sp4);margin-bottom:var(--sp8);}
-.booking-point{display:flex;gap:var(--sp3);align-items:flex-start;font-size:var(--sm);}
-.booking-icon{width:36px;height:36px;border-radius:var(--r-md);background:var(--primary-hl);display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0;font-size:var(--base);}
-.booking-point-text strong{display:block;font-weight:700;margin-bottom:2px;}
-.booking-point-text span{color:var(--muted);font-size:var(--xs);}
-.ghl-embed{background:var(--bg);border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--border);}
-.ghl-embed iframe{width:100%;height:620px;border:none;display:block;}
-.ghl-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:520px;gap:var(--sp4);text-align:center;padding:var(--sp8);}
-.ghl-placeholder .icon-lg{font-size:3rem;}
-.ghl-placeholder h3{font-size:var(--xl);}
-.ghl-placeholder p{color:var(--muted);font-size:var(--sm);max-width:38ch;}
-.ghl-code-hint{background:var(--offset);border:1px solid var(--border);border-radius:var(--r-md);padding:var(--sp4);font-size:var(--xs);color:var(--muted);font-family:monospace;margin-top:var(--sp2);text-align:left;width:100%;max-width:380px;line-height:1.7;}
-
-/* ===== FAQ ===== */
-details.faq-item{border-bottom:1px solid var(--divider);padding-block:var(--sp5);}
-details.faq-item summary{
-  display:flex;justify-content:space-between;align-items:center;
-  font-weight:600;font-size:var(--base);cursor:pointer;gap:var(--sp4);
-  list-style:none;
-}
-details.faq-item summary::-webkit-details-marker{display:none;}
-details.faq-item summary:hover{color:var(--primary);}
-.faq-icon{color:var(--primary);font-size:var(--lg);flex-shrink:0;transition:transform .2s;}
-details.faq-item[open] .faq-icon{transform:rotate(45deg);}
-.faq-a{color:var(--muted);margin-top:var(--sp4);font-size:var(--sm);max-width:70ch;line-height:1.75;padding-bottom:var(--sp2);}
-
-/* ===== CTA ===== */
-.cta-section{background:linear-gradient(135deg,var(--primary-a) 0%,var(--primary) 55%,#1a9e8e 100%);border-radius:var(--r-xl);padding:clamp(var(--sp12),6vw,var(--sp20));color:#fff;display:grid;grid-template-columns:1.2fr .8fr;gap:var(--sp10);align-items:center;position:relative;overflow:hidden;}
-.cta-section::before{content:"";position:absolute;top:-40%;right:-8%;width:380px;height:380px;border-radius:var(--r-full);background:rgba(255,255,255,.06);pointer-events:none;}
-.cta-section h2{color:#fff;font-size:var(--2xl);margin-bottom:var(--sp4);}
-.cta-section p{opacity:.9;margin-bottom:var(--sp6);max-width:48ch;font-size:var(--lg);}
-.cta-actions{display:flex;gap:var(--sp4);flex-wrap:wrap;}
-.cta-trust{display:flex;flex-direction:column;gap:var(--sp4);}
-.cta-trust-item{display:flex;align-items:center;gap:var(--sp3);background:rgba(255,255,255,.1);border-radius:var(--r-lg);padding:var(--sp4) var(--sp5);}
-.cta-trust-item .icon{font-size:1.4rem;flex-shrink:0;}
-.cta-trust-item strong{display:block;font-size:var(--sm);}
-.cta-trust-item span{font-size:var(--xs);opacity:.8;}
-
-/* ===== FOOTER ===== */
-footer{border-top:1px solid var(--divider);padding-block:var(--sp12);}
-.footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--sp8);}
-.footer-brand{display:flex;flex-direction:column;gap:var(--sp3);max-width:300px;}
-.footer-brand p{font-size:var(--sm);color:var(--muted);line-height:1.7;}
-.footer-links{display:flex;gap:var(--sp12);flex-wrap:wrap;}
-.footer-col h4{font-size:var(--sm);font-weight:700;margin-bottom:var(--sp4);}
-.footer-col a{display:block;font-size:var(--sm);color:var(--muted);margin-bottom:var(--sp2);transition:color var(--ease);}
-.footer-col a:hover{color:var(--primary);}
-.footer-bottom{margin-top:var(--sp10);padding-top:var(--sp6);border-top:1px solid var(--divider);font-size:var(--xs);color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--sp4);}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:960px){
-  .hero-grid,.feature-block,.citation-panel,.cta-section,.booking-grid{grid-template-columns:1fr;}
-  .feature-block .f-copy{order:1!important;}
-  .plans{grid-template-columns:1fr;max-width:480px;}
-  .navlinks{display:none;}
-  .mobile-menu-btn{display:flex;}
-  .cta-section .cta-trust{display:none;}
-  .float-badge{display:none;}
-}
-@media(max-width:640px){
-  .feat-grid,.citation-grid,.industry-grid{grid-template-columns:1fr;}
-  .hero-stats{gap:var(--sp6);}
-  .logos-row{gap:var(--sp2);}
-  .toggle-opt{padding:var(--sp3) var(--sp6);font-size:var(--sm);}
-  .plan.featured::before{font-size:.55rem;left:var(--sp4);}
-}
-</style>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P7QNFT5J');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- RB2B Visitor Identification Pixel -->
-  <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_kLpneAirzOcZXFnuWl7TLq9189uCXK0cSDW7qlG0xvf',{api_host:'https://a.rb2b.com'})
-  </script>
-
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '151296705452066');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header>
-  <div class="container nav">
-    <a class="brand" href="#top">
-      <div class="brand-logo-wrap">
-        <img src="data:image/png;base64,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" alt="Get Noticed AI logo" width="32" height="32" loading="eager">
-      </div>
-      Get Noticed AI
-    </a>
-    <nav class="navlinks" aria-label="Main navigation">
-      <a href="#features">Features</a>
-      <a href="#industries">Industries</a>
-      <a href="#citations">Citations</a>
-      <a href="#pricing">Pricing</a>
-      <a href="/blog/">Blog</a>
-      <a href="https://audit.app.getnoticedai.com" style="color:var(--primary);font-weight:700;">Free Audit</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="theme-btn" data-theme-toggle aria-label="Toggle dark mode">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      </button>
-      <button class="mobile-menu-btn" data-mobile-menu aria-label="Open menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-      <a href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank" rel="noopener" class="btn btn-primary">Get Started</a>
-    </div>
+<!-- ==================== TOP OFFER BAR ==================== -->
+<div class="topbar">
+  Early bird: first 5 clients lock in <b>$200 off every month</b> forever. Code <code>EARLYBIRD</code>
+</div>
+
+<!-- ==================== NAV ==================== -->
+<header class="wrap nav" style="position: sticky">
+  <a href="#top" class="brand">
+    <span class="mark"><svg width="18" height="18" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M20 44V26h5v8l12-12h8L25 48h-5z" fill="#fff"/><circle cx="44" cy="32" r="4" fill="#43b48f"/></svg></span>
+    Get Noticed AI
+  </a>
+  <nav class="nav-links">
+    <a href="#results">Results</a>
+    <a href="#how">How it works</a>
+    <a href="#nova">Meet Nova</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a href="https://audit.app.getnoticedai.com" class="btn-text">Free audit</a>
+    <a href="#pricing" class="btn-audit" style="padding:0.5rem 1rem; font-size:0.875rem">Get started</a>
   </div>
 </header>
 
-<nav class="mobile-nav" id="mobileNav">
-  <a href="#features" data-close-menu>Features</a>
-  <a href="#industries" data-close-menu>Industries</a>
-  <a href="#citations" data-close-menu>Citations</a>
-  <a href="#pricing" data-close-menu>Pricing</a>
-  <a href="#faq" data-close-menu>FAQ</a>
-  <a href="/blog/" data-close-menu>Blog</a>
-  <a href="#affiliate" data-close-menu>Partner Program</a>
-  <a href="https://audit.app.getnoticedai.com" data-close-menu style="color:var(--primary);font-weight:700;">Free Audit</a>
-  <a href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank" rel="noopener" class="btn btn-primary" data-close-menu style="margin-top:var(--sp4);">Get Started</a>
-</nav>
+<main>
 
-<main id="top">
-
-<!-- ===== EARLY BIRD BANNER ===== -->
-<div id="early-bird-bar" style="background:linear-gradient(90deg,#1a6b5e 0%,var(--primary) 100%);color:#fff;text-align:center;padding:12px 20px;font-size:.85rem;font-weight:600;position:relative;">
-  <span style="background:rgba(255,255,255,.2);border-radius:50px;padding:2px 10px;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-right:10px;">Early Bird</span>
-  First 5 clients only - lock in <strong>$200/mo off forever</strong> &bull; Use code <strong style="background:rgba(255,255,255,.25);padding:1px 8px;border-radius:4px;letter-spacing:.05em;">EARLYBIRD</strong> at checkout
-  <span style="background:rgba(255,255,255,.15);border-radius:50px;padding:2px 12px;font-size:.8rem;margin-left:12px;">&#9679; 5 spots remaining</span>
-  <a href="#pricing" style="color:#fff;text-decoration:underline;margin-left:12px;font-weight:700;">Claim yours &rarr;</a>
-</div>
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="container hero-grid">
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">AI-Powered Local SEO</span>
-      <h1>Get found on Google Maps -<br><em>automatically.</em></h1>
-      <p class="lead">Get Noticed AI runs your Google Business Profile 24/7 - writing posts, replying to reviews, building citations, and getting you ranked on Google Maps, ChatGPT, and Gemini. Set it up in 10 minutes. Zero SEO knowledge needed.</p>
+      <span class="eyebrow">AI-powered local SEO</span>
+      <h1>Get found on Google Maps, automatically.</h1>
+      <p class="lead">Nova runs your Google Business Profile 24/7: writing posts, building citations, and replying to reviews, so you rank on Google Maps, ChatGPT, and Gemini. Set up in 10 minutes. Zero SEO knowledge needed.</p>
       <div class="hero-ctas">
-        <a href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Get Started Now &rarr;</a>
-        <a href="#reporting" class="btn btn-ghost btn-lg">See Monthly Reports &darr;</a>
+        <!-- AUDIT CTA: point this to your free-audit page (GHL/audit.app) -->
+        <a href="#audit" class="btn-audit">Get my free audit</a>
+        <a href="#results" class="btn-ghost">See results &darr;</a>
       </div>
-      <div class="hero-trust">
-        <span style="background:var(--primary-hl);color:var(--primary);font-size:var(--xs);font-weight:700;padding:3px 10px;border-radius:var(--r-full);">No contracts - cancel anytime</span>
-        <span class="trust-sep">|</span>
-        <span>10-minute setup</span>
-        <span class="trust-sep">|</span>
-        <span>Results in 30&ndash;90 days</span>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><b>24/7</b><span>Automated</span></div>
-        <div class="stat"><b>62+</b><span>Directories</span></div>
-        <div class="stat"><b>6</b><span>AI Platforms</span></div>
-        <div class="stat"><b>10K+</b><span>Profiles Managed</span></div>
+      <div class="hero-bullets">
+        <span><span class="tick">&#10003;</span> No contracts</span>
+        <span><span class="tick">&#10003;</span> 10-minute setup</span>
+        <span><span class="tick">&#10003;</span> Results in 30-90 days</span>
       </div>
     </div>
+
     <div class="hero-visual">
-
-      <div class="hero-card">
-        <div class="hero-card-header">
-          <span class="hero-card-title">Your GBP Dashboard</span>
-          <span class="live-dot" title="Live"></span>
+      <div class="dashframe">
+        <div class="bar">
+          <span class="dot" style="background:#f0a93b"></span>
+          <span class="dot" style="background:#e8c078"></span>
+          <span class="dot" style="background:#f4d9a6"></span>
+          <span style="margin-left:0.75rem; font-size:0.75rem; color:var(--ink-faint)">Your GBP dashboard</span>
         </div>
-        <div style="margin-bottom:var(--sp5);">
-          <div class="rank-label">Keyword Rankings This Month</div>
-          <div class="rank-row">
-            <span class="rank-kw">"plumber near me"</span>
-            <div class="rank-bar-wrap"><div class="rank-bar-inner" style="--w:88%"></div></div>
-            <span class="rank-pos">#2</span>
-          </div>
-          <div class="rank-row">
-            <span class="rank-kw">"roof repair [city]"</span>
-            <div class="rank-bar-wrap"><div class="rank-bar-inner" style="--w:72%;animation-delay:.3s"></div></div>
-            <span class="rank-pos">#4</span>
-          </div>
-          <div class="rank-row">
-            <span class="rank-kw">"best dentist near"</span>
-            <div class="rank-bar-wrap"><div class="rank-bar-inner" style="--w:95%;animation-delay:.6s"></div></div>
-            <span class="rank-pos">#1</span>
-          </div>
+        <img src="assets/product/dashboard-1.jpg" alt="Get Noticed AI dashboard" />
+      </div>
+      <div class="float-chip top">
+        <p class="fc-title">24/7 · Fully automated</p>
+        <p class="fc-sub">Ranking: #2 for "roof repair city"</p>
+      </div>
+      <div class="float-chip bottom">
+        <p><span class="stars">★★★★★</span></p>
+        <p class="fc-sub">+12 new reviews this month</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STATS ==================== -->
+<section class="stats">
+  <div class="wrap stats-grid" style="padding:2.5rem 1.25rem">
+    <div><p class="stat-num">24/7</p><p class="stat-label">Fully automated</p></div>
+    <div><p class="stat-num">62+</p><p class="stat-label">Citations &amp; directories</p></div>
+    <div><p class="stat-num">6+</p><p class="stat-label">AI platforms covered</p></div>
+    <div><p class="stat-num">10,000+</p><p class="stat-label">Profiles managed</p></div>
+  </div>
+</section>
+
+<!-- ==================== RESULTS (before/after) ==================== -->
+<section class="section" id="results">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Proof it works</span>
+      <h2>Real rankings. Real businesses. No work from the owner.</h2>
+      <p class="sub">These profiles ran hands-off. Each pair shows the same business, same keyword, before and after.</p>
+    </div>
+
+    <div class="compare-card" style="margin-top:2.5rem">
+      <div class="tabs" id="tabs">
+        <button class="tabbtn active" data-id="salon">Salon</button>
+        <button class="tabbtn" data-id="spa">Spa</button>
+        <button class="tabbtn" data-id="contractor">Contractor</button>
+        <button class="tabbtn" data-id="restaurant">Restaurant</button>
+        <button class="tabbtn" data-id="agency">Agency</button>
+        <button class="tabbtn" data-id="solar">Solar</button>
+        <button class="tabbtn" data-id="golf">Golf</button>
+        <button class="tabbtn" data-id="puppy">Puppy trainer</button>
+        <button class="tabbtn" data-id="laundry">Laundry</button>
+      </div>
+
+      <div class="cmp-grid">
+        <div>
+          <p class="eyebrow" style="text-transform:none">Real Google Maps rankings</p>
+          <h3 class="cmp-kw" id="cmp-kw">hair extensions</h3>
+          <p class="cmp-body" id="cmp-body">The target keyword moved up across the map in just 1 month, with no work from the owner.</p>
+          <p class="cmp-drag">Drag the slider to see it work</p>
+          <span class="cmp-badge">&#10003; Ran by Nova, fully automated</span>
         </div>
-        <div class="metric-row"><span class="metric-label">AI Search Visibility</span><span class="pill">ChatGPT &middot; Gemini &middot; Perplexity</span></div>
-        <div class="metric-row"><span class="metric-label">Reviews This Month</span><span class="pill">+14 new &#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-        <div class="metric-row"><span class="metric-label">Posts Published</span><span class="pill">Automated &#10003;</span></div>
-        <div class="metric-row"><span class="metric-label">Citations Synced</span><span class="pill">62 directories</span></div>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- Logos bar — expanded industries -->
-<div class="logos-bar">
-  <div class="container">
-    <p>Built for virtually any local business</p>
-    <div class="logos-row">
-      <span>Contractors &amp; Trades</span>
-      <span>Medical &amp; Wellness</span>
-      <span>Retail &amp; E-commerce</span>
-      <span>Home Services</span>
-      <span>Real Estate</span>
-      <span>Restaurants &amp; Hospitality</span>
-      <span>Legal &amp; Financial</span>
-      <span>Auto &amp; Powersports</span>
-      <span>Fitness &amp; Personal Care</span>
-      <span>Pet Services</span>
-      <span>Childcare &amp; Education</span>
-      <span>Cleaning Services</span>
-      <span>Landscaping</span>
-      <span>&hellip;and hundreds more</span>
-    </div>
-  </div>
-</div>
-
-<!-- ===== INDUSTRY GUIDES ===== -->
-<section class="section section-alt" id="industries">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Who we help</span>
-      <h2>Built for the local businesses where trust starts in search.</h2>
-      <p>Explore practical local-visibility systems for the industries where customers compare providers before they call, book, or request an estimate.</p>
-    </div>
-    <div class="industry-grid">
-      <article class="industry-card">
-        <span class="industry-num">01 / MEDICAL SPAS</span>
-        <h3>Medical spas</h3>
-        <p>Give prospective patients a clearer way to understand your services, business details, review standards, and local presence while keeping the marketing workflow practical.</p>
-        <a href="/local-seo-for-med-spas/" class="btn btn-ghost">Explore med-spa SEO →</a>
-      </article>
-      <article class="industry-card">
-        <span class="industry-num">02 / ROOFING</span>
-        <h3>Roofers</h3>
-        <p>Build a stronger local-search presence before storm-season demand, with current business details, useful service explanations, review operations, and citation consistency.</p>
-        <a href="/local-seo-for-roofers/" class="btn btn-ghost">Explore roofer SEO →</a>
-      </article>
-      <article class="industry-card">
-        <span class="industry-num">03 / PLUMBING</span>
-        <h3>Plumbers</h3>
-        <p>Stay easier to find when urgent searches turn into phone calls, with a clearer Google Business Profile, consistent local data, review workflows, and answer-ready service content.</p>
-        <a href="/local-seo-for-plumbers/" class="btn btn-ghost">Explore plumber SEO →</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FEATURES ===== -->
-<section class="section" id="features">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">The Platform</span>
-      <h2>One AI agent. Every ranking factor.</h2>
-      <p>Get Noticed AI doesn&rsquo;t just suggest changes - it executes them, every single day, without you lifting a finger.</p>
-    </div>
-
-    <div class="feature-block">
-      <div class="f-copy">
-        <h3>Profile optimization that never stops</h3>
-        <p>Your Google Business Profile description, services, attributes, and social links are continuously rewritten and optimized against what&rsquo;s working across 10,000+ similar businesses.</p>
-        <ul class="f-list">
-          <li><span class="check">&#10003;</span> AI-written business descriptions and service copy</li>
-          <li><span class="check">&#10003;</span> Automatic attribute and category optimization</li>
-          <li><span class="check">&#10003;</span> Strategy shifts automatically toward what&rsquo;s ranking</li>
-          <li><span class="check">&#10003;</span> Social, appointment, and contact link sync</li>
-        </ul>
-      </div>
-      <div class="f-visual">
-        <div class="f-bar"><span>Business Description</span><span class="num">Optimized &#10003;</span></div>
-        <div class="f-bar"><span>Services List</span><span class="num">Updated &#10003;</span></div>
-        <div class="f-bar"><span>Attributes</span><span class="num">Maximized &#10003;</span></div>
-        <div class="f-bar"><span>Social Links</span><span class="num">Synced &#10003;</span></div>
-      </div>
-    </div>
-
-    <div class="feature-block">
-      <div class="f-copy">
-        <h3>Reviews handled end to end</h3>
-        <p>Automated review requests via SMS, email, or WhatsApp - with smart follow-ups for customers who forget - plus AI-written replies that sound exactly like you.</p>
-        <ul class="f-list">
-          <li><span class="check">&#10003;</span> Auto follow-up campaigns that recover missed reviews</li>
-          <li><span class="check">&#10003;</span> Auto-flags 1&ndash;3 star reviews that may violate Google&rsquo;s terms</li>
-          <li><span class="check">&#10003;</span> Turns 5-star reviews into ready-to-post social content</li>
-          <li><span class="check">&#10003;</span> QR code review requests for in-person use</li>
-        </ul>
-      </div>
-      <div class="f-visual">
-        <div class="f-bar"><span>Review Requests</span><span class="num">Automated &#10003;</span></div>
-        <div class="f-bar"><span>Follow-Ups</span><span class="num">Scheduled &#10003;</span></div>
-        <div class="f-bar"><span>Auto-Replies</span><span class="num">On-Brand &#10003;</span></div>
-        <div class="f-bar"><span>Bad Review Flags</span><span class="num">Active &#10003;</span></div>
-      </div>
-    </div>
-
-    <div class="feature-block">
-      <div class="f-copy">
-        <h3>Content that publishes itself</h3>
-        <p>Seasonal, holiday-aware Google posts, images, offers, and AI-generated YouTube videos get created and published to your profile and social channels automatically.</p>
-        <ul class="f-list">
-          <li><span class="check">&#10003;</span> Posts, offers, and images dripped on a schedule</li>
-          <li><span class="check">&#10003;</span> Auto-repurposed to Facebook, Instagram, LinkedIn, YouTube</li>
-          <li><span class="check">&#10003;</span> Full approval controls if you want to review first</li>
-          <li><span class="check">&#10003;</span> Holiday and seasonal awareness built in</li>
-        </ul>
-      </div>
-      <div class="f-visual">
-        <div class="f-bar"><span>Google Posts</span><span class="num">Ongoing &#10003;</span></div>
-        <div class="f-bar"><span>Images Dripped</span><span class="num">Scheduled &#10003;</span></div>
-        <div class="f-bar"><span>Social Cross-Posts</span><span class="num">Automated &#10003;</span></div>
-        <div class="f-bar"><span>YouTube Videos</span><span class="num">Published &#10003;</span></div>
-      </div>
-    </div>
-
-    <!-- FULL FEATURE CATALOG — always visible, no tabs, no clicks required -->
-    <div class="section-head" style="margin-top:var(--sp16);">
-      <span class="eyebrow">Everything Included</span>
-      <h2>The complete feature catalog</h2>
-      <p>Every plan includes the full stack below - no hidden add-ons, no feature tiers to unlock.</p>
-    </div>
-
-    <div class="cat-group">
-      <h4>GBP Optimization</h4>
-      <div class="feat-grid">
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Optimized business description</span><span class="ft-desc">AI-written targeting your services and target cities.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Services list optimization</span><span class="ft-desc">Suggests and adds services so Google sees everything you offer.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Service description writing</span><span class="ft-desc">SEO-optimized copy for every individual service.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Attribute optimization</span><span class="ft-desc">Enables every supported attribute Google and AI results rely on.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Social &amp; contact link sync</span><span class="ft-desc">Publishes social, appointment, and communication links.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Auto strategy adjustments</span><span class="ft-desc">Continuously shifts toward what&rsquo;s performing best across the network.</span></div></div>
-      </div>
-    </div>
-
-    <div class="cat-group">
-      <h4>Reputation Management</h4>
-      <div class="feat-grid">
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Smart review request links</span><span class="ft-desc">Routes customers to leave reviews, with photo collection built in.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Automated review replies</span><span class="ft-desc">Full auto-reply or approval-first, matched to your brand voice.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">QR code review requests</span><span class="ft-desc">Printable QR code that routes straight to your review link.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Bad review auto-flagging</span><span class="ft-desc">Flags 1&ndash;3 star reviews that may violate platform terms.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Automated follow-up campaigns</span><span class="ft-desc">Re-asks customers who didn&rsquo;t leave a review the first time.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">SMS, email &amp; WhatsApp requests</span><span class="ft-desc">Multi-channel review requests via webhook and automation triggers.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Reviews &rarr; social content</span><span class="ft-desc">Turns 5-star reviews into ready-to-publish social posts.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Review funnel analytics</span><span class="ft-desc">Shows exactly where customers drop off in the review process.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Review backup</span><span class="ft-desc">Keeps a backup copy in case Google removes any reviews.</span></div></div>
-      </div>
-    </div>
-
-    <div class="cat-group" id="reporting">
-      <h4>Reporting &amp; AI Rank Tracking</h4>
-      <div class="feat-grid">
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Monthly before &amp; after heatmap reports</span><span class="ft-desc">Automated local ranking heatmap audits sent every month - compare before and after results across up to 10 target keywords so you can see exactly how rankings are moving.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Weekly progress updates</span><span class="ft-desc">Every week you get a full summary of exactly what was done in the past 7 days and what&rsquo;s scheduled for the week ahead - complete visibility into every action taken on your behalf.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">AI rank reports</span><span class="ft-desc">See your visibility on ChatGPT, Gemini, Perplexity, Grok, Llama &amp; Claude - not just Google.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Full action log</span><span class="ft-desc">Every post published, every review replied to, every update made - all logged and viewable in your dashboard.</span></div></div>
-      </div>
-    </div>
-
-    <div class="cat-group">
-      <h4>Automation</h4>
-      <div class="feat-grid">
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Automated image uploads</span><span class="ft-desc">Drips fresh images onto your Google Business Profile on a steady schedule.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Automated video uploads</span><span class="ft-desc">Creates and uploads video content to your profile&rsquo;s media section.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Automated posts &amp; offers</span><span class="ft-desc">Holiday and seasonally aware posts, scheduled and published for you.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Weekly progress &amp; change alerts</span><span class="ft-desc">Notifies you of GBP changes and what&rsquo;s happening next week.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Proactive review &amp; image reminders</span><span class="ft-desc">Nudges you or your team when activity slows down.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Approval request emails</span><span class="ft-desc">The AI can ask for your approval before publishing any content type.</span></div></div>
-      </div>
-    </div>
-
-    <div class="cat-group">
-      <h4>Social &amp; Website</h4>
-      <div class="feat-grid">
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Facebook, Instagram &amp; LinkedIn posting</span><span class="ft-desc">Repurposes every Google post across your social channels.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Automated YouTube videos</span><span class="ft-desc">Creates and publishes videos directly to your YouTube channel.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Website post &amp; review widgets</span><span class="ft-desc">Displays your latest posts and 5-star reviews live on your website.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Schema &amp; FAQ markup</span><span class="ft-desc">SEO-optimized schema and FAQ code so AI tools understand your business.</span></div></div>
-      </div>
-    </div>
-
-    <div class="cat-group">
-      <h4>Support</h4>
-      <div class="feat-grid">
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">Live chat support</span><span class="ft-desc">Real human support available directly from within the platform, including screen-share calls when needed.</span></div></div>
-        <div class="feat-item"><span class="check">&#10003;</span><div><span class="ft-title">AI-powered instant answers</span><span class="ft-desc">Get immediate answers to common questions 24/7 without waiting for a human.</span></div></div>
+        <div class="slider-wrap" id="sliderWrap">
+          <img src="assets/results/salon-after.webp" alt="After rankings" class="slider-after" />
+          <div class="slider-clip" id="sliderClip">
+            <img src="assets/results/salon-before.webp" alt="Before rankings" class="slider-before" />
+          </div>
+          <span class="label-pill label-before">Before</span>
+          <span class="label-pill label-after">After</span>
+          <div class="handle-line" id="handleLine">
+            <div class="handle-knob">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <input type="range" min="0" max="100" value="50" aria-label="Reveal before and after rankings" class="slider-range" id="sliderRange" />
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CITATIONS ===== -->
-<section class="section section-alt" id="citations">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Why It Matters</span>
-      <h2>Citations: the trust signal most businesses skip</h2>
-      <p>A citation is a mention of your business name, address, and phone number on another trusted website or directory. Search engines cross-reference these to decide if your business is real, active, and worth ranking.</p>
+<!-- ==================== MEET NOVA ==================== -->
+<section class="nova" id="nova">
+  <div class="wrap nova-grid">
+    <div>
+      <span class="eyebrow">Meet Nova</span>
+      <h2>Your 24/7 local SEO agent, no salary, no meetings.</h2>
+      <p class="lead">Nova is an autonomous agent built for local businesses. It studies what ranks in your market, then does the work: writes and schedules posts, replies to reviews in your voice, builds citations, and keeps your profile active around the clock.</p>
+      <ul>
+        <li><span class="tick">&#10003;</span> Writes and publishes Google posts on schedule</li>
+        <li><span class="tick">&#10003;</span> Replies to every review in your brand voice</li>
+        <li><span class="tick">&#10003;</span> Builds citations across 62+ directories</li>
+        <li><span class="tick">&#10003;</span> Sends review requests, then follows up automatically</li>
+        <li><span class="tick">&#10003;</span> Reports your rankings every month, no login required</li>
+      </ul>
+      <div class="nova-ctas">
+        <a href="#audit" class="btn-white">Try Nova free</a>
+        <a href="#pricing" class="btn-text" style="color:var(--mint); border-color:currentColor">See pricing</a>
+      </div>
     </div>
-    <div class="citation-panel">
-      <div>
-        <h3>Why citations move rankings</h3>
-        <p>Inconsistent or missing citations are one of the most common reasons a Google Business Profile stalls. They now feed the data AI platforms like ChatGPT, Gemini, and Perplexity use to recommend local businesses.</p>
-        <ul class="f-list">
-          <li><span class="check">&#10003;</span> Confirms your name, address &amp; phone number are accurate everywhere</li>
-          <li><span class="check">&#10003;</span> Feeds the data aggregators Google cross-checks directly</li>
-          <li><span class="check">&#10003;</span> Increases the odds AI search tools recommend your business</li>
-          <li><span class="check">&#10003;</span> Duplicate listing detection &amp; cleanup included</li>
-        </ul>
-        <p style="margin-top:var(--sp5);font-size:var(--sm);color:var(--primary);font-weight:700;">&#9650; Citation Management is included in the Authority plan ($697/mo)</p>
-      </div>
-      <div class="citation-grid">
-        <div class="citation-node active">Google</div>
-        <div class="citation-node active">Data Aggregators</div>
-        <div class="citation-node active">Apple Maps</div>
-        <div class="citation-node active">Bing Places</div>
-        <div class="citation-node active">Yelp</div>
-        <div class="citation-node active">Facebook</div>
-        <div class="citation-node">ChatGPT Index</div>
-        <div class="citation-node">Gemini Index</div>
-        <div class="citation-node">62+ Directories</div>
-      </div>
+    <div class="nova-media">
+      <img src="assets/product/dashboard-2.jpg" alt="Nova automating posts, reviews, and citations" loading="lazy" />
+      <p class="cap">Nova publishing a post, replying to a review, and syncing a citation. All hands-off.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== PRICING ===== -->
-<!-- ===== HOW IT WORKS ===== -->
-<section class="section section-alt" id="how-it-works">
-  <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">Simple Setup</span>
+<!-- ==================== SOCIAL AUTOMATION ==================== -->
+<section class="section social" id="social" style="background:#fff; border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Social media, on autopilot</span>
+      <h2>One system runs your Google profile and your socials.</h2>
+      <p class="sub">Nova repurposes every Google post to Facebook, Instagram, and LinkedIn, and publishes YouTube videos, so your whole local presence stays active without you touching it.</p>
+    </div>
+    <div class="chips">
+      <div class="schip"><span class="ico">G</span><span class="name">Google Maps</span><span class="desc">Posts, photos, offers</span></div>
+      <div class="schip"><span class="ico">f</span><span class="name">Facebook</span><span class="desc">Auto cross-posted</span></div>
+      <div class="schip"><span class="ico">&#9678;</span><span class="name">Instagram</span><span class="desc">Photo + story drip</span></div>
+      <div class="schip"><span class="ico">in</span><span class="name">LinkedIn</span><span class="desc">Repurposed posts</span></div>
+      <div class="schip"><span class="ico">&#9654;</span><span class="name">YouTube</span><span class="desc">AI-made videos</span></div>
+      <div class="schip"><span class="ico">AI</span><span class="name">ChatGPT &amp; Gemini</span><span class="desc">Cited in AI answers</span></div>
+    </div>
+    <p class="sub" style="max-width:34rem; margin:1.75rem auto 0; text-align:center; color:var(--ink-soft)">Every channel gets fresh, on-brand content on schedule. You approve everything or let it run fully automated, your call.</p>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Simple setup</span>
       <h2>Up and running in 10 minutes</h2>
-      <p>You fill out one form. We handle everything else.</p>
+      <p class="sub">You fill one form. Nova handles everything after that.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp8);margin-top:var(--sp12);">
-      <div style="text-align:center;padding:var(--sp8);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-2xl);">
-        <div style="width:56px;height:56px;background:var(--primary-hl);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp5);font-size:1.5rem;font-weight:800;color:var(--primary);">1</div>
-        <h3 style="font-size:var(--lg);margin-bottom:var(--sp3);">Sign up &amp; fill out your intake form</h3>
-        <p style="color:var(--muted);font-size:var(--sm);">Tell us your keywords, target cities, and connect your Google Business Profile. Takes about 10 minutes.</p>
-      </div>
-      <div style="text-align:center;padding:var(--sp8);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-2xl);">
-        <div style="width:56px;height:56px;background:var(--primary-hl);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp5);font-size:1.5rem;font-weight:800;color:var(--primary);">2</div>
-        <h3 style="font-size:var(--lg);margin-bottom:var(--sp3);">AI learns your business</h3>
-        <p style="color:var(--muted);font-size:var(--sm);">The AI reads your website, reviews, and business info to write content that sounds exactly like you - not a robot.</p>
-      </div>
-      <div style="text-align:center;padding:var(--sp8);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-2xl);">
-        <div style="width:56px;height:56px;background:var(--primary-hl);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp5);font-size:1.5rem;font-weight:800;color:var(--primary);">3</div>
-        <h3 style="font-size:var(--lg);margin-bottom:var(--sp3);">Rankings climb on autopilot</h3>
-        <p style="color:var(--muted);font-size:var(--sm);">Posts go out weekly. Reviews get replied to. Citations sync. You get monthly ranking reports. You do nothing.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:var(--sp10);padding:var(--sp5) var(--sp8);background:var(--primary-hl);border-radius:var(--r-2xl);max-width:600px;margin-left:auto;margin-right:auto;">
-      <p style="color:var(--primary);font-weight:700;font-size:var(--base);margin:0;">&#10003; Choose fully automated or approve content before it posts - your call.</p>
+    <div class="how-grid">
+      <div class="how-card"><span class="n">01</span><h3>Connect your profile</h3><p>Tell Nova your business, keywords, and target cities. Connect your Google Business Profile. That is it.</p></div>
+      <div class="how-card"><span class="n">02</span><h3>Nova learns your business</h3><p>Nova reads your reviews and website to match your voice, then builds a ranking plan for your market.</p></div>
+      <div class="how-card"><span class="n">03</span><h3>Rankings climb on autopilot</h3><p>Posts go out. Reviews get answered. Citations sync. You get monthly reports and do nothing.</p></div>
     </div>
   </div>
 </section>
 
+<!-- ==================== AUDIT CAPTURE (email form) ==================== -->
+<section class="audit-band" id="audit">
+  <div class="wrap audit-grid">
+    <div>
+      <h2>Run a free AI audit of your Google Business Profile</h2>
+      <p>Nova checks your rankings on Google Maps, ChatGPT, and Gemini, then shows you exactly what is holding you back. Free, no card required.</p>
+    </div>
+    <!-- PLAIN FORM, no submission logic. Wire your GHL form-post URL to action= -->
+    <form class="dark" method="post" action="" autocomplete="on">
+      <div>
+        <label class="field-label" for="audit-name">First name</label>
+        <input class="field-input" type="text" name="name" id="audit-name" placeholder="Alex" />
+      </div>
+      <div style="margin-top:0.75rem">
+        <label class="field-label" for="audit-email">Work email</label>
+        <input class="field-input" type="email" name="email" id="audit-email" placeholder="you@yourbusiness.com" required />
+      </div>
+      <button type="submit" class="btn-white" style="margin-top:1rem; width:100%">Get my free audit</button>
+      <p class="form-note" style="color:rgba(255,255,255,.7)">Free audit, no card required. Unsubscribe any time.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
 <section class="section" id="pricing">
-  <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">Simple Pricing</span>
-      <h2>Choose your plan</h2>
-      <p>Per Google Business Profile. Cancel anytime. No contracts.</p>
-    </div>
-    <!-- Early Bird Notice -->
-    <div style="background:linear-gradient(135deg,#1a6b5e,var(--primary));border-radius:var(--r-2xl);padding:var(--sp5) var(--sp8);margin-bottom:var(--sp8);text-align:center;">
-      <p style="color:#fff;font-weight:800;font-size:var(--lg);margin:0 0 6px;">&#127381; Early Bird Pricing - First 5 Clients Only</p>
-      <p style="color:rgba(255,255,255,.85);font-size:var(--sm);margin:0;">Lock in <strong>$200/mo off forever</strong> before we raise prices. <span style="background:rgba(255,255,255,.2);border-radius:50px;padding:2px 10px;font-size:.8rem;font-weight:700;">5 spots remaining</span></p>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Simple pricing</span>
+      <h2>Plans for every budget, no contracts, cancel anytime.</h2>
+      <p class="sub">Per Google Business Profile. Most clients need one extra customer to cover the cost.</p>
     </div>
 
-    <!-- Toggle -->
-    <div class="pricing-toggle">
-      <button class="toggle-btn active" id="optMonthly">Monthly</button>
-      <button class="toggle-btn" id="optYearly">Yearly <span class="toggle-save-badge">Save 2 months</span></button>
+    <div class="billing-toggle">
+      <span class="toggle-label on" id="lblMonthly">Monthly</span>
+      <button class="switch" id="billingSwitch" role="switch" aria-checked="false" aria-label="Toggle yearly billing">
+        <span class="knob"></span>
+      </button>
+      <span class="toggle-label off" id="lblYearly">Yearly</span>
+      <span class="save-badge">Save 2 months</span>
     </div>
 
-    <div class="plans">
-      <div class="plan">
+    <div class="plans-grid">
+      <!-- Starter -->
+      <div class="plan" data-monthly="149" data-yearly="124">
+        <h3>Starter</h3>
+        <p class="tag">Core automation for one profile</p>
+        <div class="price-row"><span class="price price-val">$149</span><span class="price-per">/mo</span></div>
+        <p class="year-note" data-yearnote>Billed yearly, 2 months free</p>
+        <ul>
+          <li><span class="tick">&#10003;</span> Google Business Profile optimization</li>
+          <li><span class="tick">&#10003;</span> Automated posts on your profile</li>
+          <li><span class="tick">&#10003;</span> Review replies in your voice</li>
+          <li><span class="tick">&#10003;</span> Monthly ranking report</li>
+        </ul>
+        <!-- STARTED CTA: link your GHL checkout / booking -->
+        <a href="#audit" class="btn-ghost btn">Get started</a>
+      </div>
+
+      <!-- Growth -->
+      <div class="plan hot" data-monthly="497" data-yearly="414">
+        <span class="badge">Most popular</span>
         <h3>Growth</h3>
-        <div class="price" id="price1"><strong>$497</strong><span id="price1-label">/mo per business</span></div>
-        <div class="yearly-note" id="note1">&nbsp;</div>
+        <p class="tag">Everything a single profile needs</p>
+        <div class="price-row"><span class="price price-val">$497</span><span class="price-per">/mo</span></div>
+        <p class="year-note" data-yearnote>Billed yearly, 2 months free</p>
         <ul>
-          <li><span class="check">&#10003;</span> Full Google Business Profile optimization &amp; automation</li>
-          <li><span class="check">&#10003;</span> Automated review requests, replies &amp; follow-ups</li>
-          <li><span class="check">&#10003;</span> Posts, images, offers &amp; video published automatically</li>
-          <li><span class="check">&#10003;</span> Monthly heatmap rank reporting (10 keywords)</li>
-          <li><span class="check">&#10003;</span> AI rank reports for ChatGPT, Gemini, Perplexity &amp; more</li>
+          <li><span class="tick">&#10003;</span> Full Google Business Profile optimization</li>
+          <li><span class="tick">&#10003;</span> Automated review requests, replies, follow-ups</li>
+          <li><span class="tick">&#10003;</span> Posts, images, offers, and video on autopilot</li>
+          <li><span class="tick">&#10003;</span> Social repurposing to FB, IG, LinkedIn, YouTube</li>
+          <li><span class="tick">&#10003;</span> Monthly ranking reports (10 keywords)</li>
+          <li><span class="tick">&#10003;</span> AI rank reports for ChatGPT, Gemini, Perplexity</li>
         </ul>
-        <a href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank" rel="noopener" class="btn btn-primary">Get Started &rarr;</a>
+        <a href="#audit" class="btn-audit btn">Get started</a>
       </div>
-      <div class="plan featured">
+
+      <!-- Authority -->
+      <div class="plan" data-monthly="697" data-yearly="581">
         <h3>Authority</h3>
-        <div class="price" id="price2"><strong>$697</strong><span id="price2-label">/mo per business</span></div>
-        <div class="yearly-note" id="note2">&nbsp;</div>
+        <p class="tag">Everything in Growth, plus citations</p>
+        <div class="price-row"><span class="price price-val">$697</span><span class="price-per">/mo</span></div>
+        <p class="year-note" data-yearnote>Billed yearly, 2 months free</p>
         <ul>
-          <li><span class="check">&#10003;</span> Everything in Growth, plus:</li>
-          <li><span class="check">&#10003;</span> <strong>Citation Management</strong> - syncs to 62+ directories and the major data aggregators Google and AI platforms cross-check</li>
-          <li><span class="check">&#10003;</span> Duplicate listing detection &amp; cleanup</li>
-          <li><span class="check">&#10003;</span> 1-click citation setup and auto-sync with your profile</li>
-          <li><span class="check">&#10003;</span> Priority support &amp; onboarding</li>
+          <li><span class="tick">&#10003;</span> Everything in Growth</li>
+          <li><span class="tick">&#10003;</span> Citation management across 62+ directories</li>
+          <li><span class="tick">&#10003;</span> Duplicate listing detection and cleanup</li>
+          <li><span class="tick">&#10003;</span> One-click citation setup with auto-sync</li>
+          <li><span class="tick">&#10003;</span> Priority support and onboarding</li>
         </ul>
-        <a href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank" rel="noopener" class="btn btn-primary">Get Started &rarr;</a>
+        <a href="#audit" class="btn-ghost btn">Get started</a>
       </div>
     </div>
-    <p class="pricing-note">Most clients only need <strong>one new customer</strong> to cover the monthly cost.</p>
+
+    <p class="early-note">Early bird: lock in <b>$200 off every month</b> with code EARLYBIRD</p>
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section class="section" id="booking" style="background:linear-gradient(135deg,var(--primary) 0%,#0a7a6a 100%);padding:clamp(60px,8vw,100px) 0;">
-  <div class="container" style="text-align:center;max-width:680px;">
-    <span style="display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 14px;border-radius:50px;margin-bottom:20px;">Get Started Today</span>
-    <h2 style="color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px;line-height:1.15;">Ready to dominate local search?</h2>
-    <p style="color:rgba(255,255,255,.85);font-size:1.1rem;margin-bottom:36px;max-width:52ch;margin-left:auto;margin-right:auto;">Most accounts are fully set up and actively optimizing within 10 minutes. No SEO knowledge required. No contracts.</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;">
-      <a href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank" rel="noopener" class="btn" style="background:#fff;color:var(--primary);font-weight:800;font-size:1.05rem;padding:16px 40px;border-radius:50px;text-decoration:none;display:inline-block;box-shadow:0 4px 24px rgba(0,0,0,.18);">Start Now &rarr;</a>
-      <a href="#pricing" class="btn" style="background:transparent;color:#fff;font-weight:700;font-size:1rem;padding:16px 32px;border-radius:50px;text-decoration:none;display:inline-block;border:2px solid rgba(255,255,255,.5);">View Pricing</a>
+<!-- ==================== CONTACT ==================== -->
+<section class="contact-wrap" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="sec-head" style="text-align:left; margin:0">
+        <span class="eyebrow">Talk to a human</span>
+        <h2 style="text-align:left">Questions? We respond within a few hours.</h2>
+        <p class="sub" style="text-align:left">Prefer to talk? Call or text us directly, or drop a message and we will get right back to you.</p>
+      </div>
+      <div class="contact-cards">
+        <a class="contact-card" href="tel:+17272709961">
+          <span class="ico">&#9742;</span>
+          <span><span class="lbl">Call or text</span><br /><span class="val">(727) 270-9961</span></span>
+        </a>
+        <a class="contact-card" href="mailto:hello@getnoticedai.com">
+          <span class="ico">&#9993;</span>
+          <span><span class="lbl">Email us</span><br /><span class="val">hello@getnoticedai.com</span></span>
+        </a>
+      </div>
     </div>
-    <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;">
-      <span style="color:rgba(255,255,255,.8);font-size:.85rem;display:flex;align-items:center;gap:6px;">&#10003; No contracts</span>
-      <span style="color:rgba(255,255,255,.8);font-size:.85rem;display:flex;align-items:center;gap:6px;">&#10003; Cancel anytime</span>
-      <span style="color:rgba(255,255,255,.8);font-size:.85rem;display:flex;align-items:center;gap:6px;">&#10003; 10-minute setup</span>
-      <span style="color:rgba(255,255,255,.8);font-size:.85rem;display:flex;align-items:center;gap:6px;">&#10003; Results in 30&ndash;90 days</span>
-    </div>
+
+    <!-- PLAIN FORM, no submission logic. Wire your GHL / service URL to action= -->
+    <form class="form-card" method="post" action="">
+      <div class="form-grid">
+        <div>
+          <label class="field-label" for="cf-name">Your name</label>
+          <input class="field-input" type="text" name="name" id="cf-name" placeholder="Alex Johnson" />
+        </div>
+        <div>
+          <label class="field-label" for="cf-email">Email</label>
+          <input class="field-input" type="email" name="email" id="cf-email" placeholder="you@yourbusiness.com" required />
+        </div>
+        <div>
+          <label class="field-label" for="cf-phone">Phone</label>
+          <input class="field-input" type="tel" name="phone" id="cf-phone" placeholder="(555) 123-4567" />
+        </div>
+        <div>
+          <label class="field-label" for="cf-type">Business type</label>
+          <select class="field-input" name="business_type" id="cf-type">
+            <option value="">Select one</option>
+            <option>Contractor / trades</option>
+            <option>Medical / wellness</option>
+            <option>Home services</option>
+            <option>Restaurant / hospitality</option>
+            <option>Retail</option>
+            <option>Legal / financial</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="full">
+          <label class="field-label" for="cf-msg">How can we help?</label>
+          <textarea class="field-input" name="message" id="cf-msg" rows="4" style="resize:vertical" placeholder="Tell us about your business and what you are trying to achieve."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn-audit" style="width:100%; margin-top:1.5rem">Send message</button>
+      <p class="form-note" style="text-align:center">We only use your info to help you rank better. No spam, no reselling.</p>
+    </form>
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
+<!-- ==================== FAQ ==================== -->
 <section class="section" id="faq">
-  <div class="container narrow">
-    <div class="section-head">
+  <div class="wrap">
+    <div class="sec-head">
       <span class="eyebrow">Questions</span>
       <h2>Frequently asked questions</h2>
-      <p>If you don&rsquo;t see your question here, reach out directly via the contact info in the footer - we&rsquo;re here to help.</p>
     </div>
     <div class="faq-list">
-
-      <details class="faq-item" open>
-        <summary>How fast can I get set up? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Most accounts are fully configured and actively optimizing within about 10 minutes of connecting your Google Business Profile - no technical setup or SEO knowledge required. It only takes 10 minutes to get everything running, and you&rsquo;ll start seeing the AI work immediately.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can I manage more than one Google Business Profile in a single account? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes! Once your account is created you can add as many Google Business Profiles as you need, and they all appear in the same dashboard. Each Google Business Profile is billed separately per month at your plan rate.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can I connect more than one Google account if my profiles are spread across multiple Google accounts? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes. If you manage Google Business Profiles across multiple Google email addresses, you can connect all of them to the same account to keep everything in one place.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Does this help me rank in AI search results like ChatGPT, Gemini, and Perplexity? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes! The platform is designed to help businesses rank across the most popular search platforms consumers use for finding local businesses. This includes Google Maps, Google Search, ChatGPT, Gemini, Perplexity, Llama, popular search directories, YouTube, Facebook, Instagram, and more.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Does this help businesses rank specifically on ChatGPT? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes. Content gets published across multiple sources that ChatGPT and other AI search platforms use for training data. While the primary focus is Google Search, Google Maps, and Google AI Mode (where 90%+ of local searches happen), the platform also gives you a meaningful visibility boost on ChatGPT, Gemini, Perplexity, and beyond.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Are YouTube videos actually helpful for ranking a local business? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes! Currently, YouTube is the second most cited source in Google AI Mode results, which is why automated video creation and publishing to your YouTube channel is included with every plan - with almost no extra effort required from you.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Does this include citation building? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes - citation management is included in the Authority plan ($697/mo per profile). It syncs your business information across 62+ directories and the major data aggregators that Google and AI platforms cross-reference. The Growth plan includes everything else but not citations.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What languages does the platform work in? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Content can be generated in English, Spanish, French, German, Italian, Portuguese, Dutch, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Bengali, Urdu, Turkish, Vietnamese, Polish, Ukrainian, Romanian, Greek, Hebrew, Thai, Indonesian, Malay, Czech, Hungarian, Swedish, Danish, Finnish, Norwegian, Filipino, Swahili, and many other major world languages.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Do you offer live support? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes. There is live chat support from within the platform. The support team can also do screen-share calls when needed. Instant AI-powered answers are also available for common questions. We will not let you fail!</div>
-      </details>
-
-
-
-      <details class="faq-item">
-        <summary>Is there an affiliate program? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes! You can earn 20% of revenue from every business you refer, fully automated. Ask us about the affiliate program when you sign up.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Does this help businesses rank on ChatGPT specifically? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes. The platform&rsquo;s content gets published across multiple sources that ChatGPT and other AI search platforms use for training data. While the primary focus is Google Search, Google Maps, and Google AI Mode, it also gives you a visibility boost on ChatGPT, Gemini, Perplexity, and beyond.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What makes this better than other AI SEO tools? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Most AI SEO tools are assistants - you still log in, do research, and click publish. Get Noticed AI is an autonomous agent built AI-first from day one, not a legacy platform with AI features bolted on. It executes strategies, writes content, and publishes updates 24/7 without any manual input. That&rsquo;s why it has helped 10,000+ businesses within 18 months of launching.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How does this differ from tools like BrightLocal or LocalViking? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">BrightLocal and LocalViking are dashboards for manual rank tracking and post scheduling - they require you to log in and do the work. Get Noticed AI is an autonomous execution agent: it identifies the opportunity, creates the content, and publishes the update itself. It&rsquo;s a worker, not a toolbox.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What does &ldquo;fully automated SEO&rdquo; actually mean? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">It means the AI independently identifies ranking opportunities and pushes updates directly to your Google Business Profile. It doesn&rsquo;t just suggest keywords - it actively manages your business&rsquo;s entire digital presence, making it a true set-it-and-forget-it solution for local search visibility.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can the AI handle local rankings without a human SEO specialist? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes. The platform is engineered to function as an autonomous SEO agent. It replaces the need for a human specialist to perform repetitive tasks like post scheduling, image optimization, and keyword integration. You don&rsquo;t need to know anything about SEO to get results.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Is there a learning curve, or is this truly set-and-forget? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">It&rsquo;s genuinely set-and-forget. After a brief initial setup where the AI learns about your business, it takes over completely. There is no complex software to learn and no need to log in daily to check on things. Over 80% of users let the AI run fully on autopilot without approving content first.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How does it manage Google Business Profile posts automatically? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Proprietary algorithms scan your business information and industry trends to create and publish hyper-relevant posts. Posts have holiday and seasonal awareness, are grounded in your real business information, and are written so that customers, prospects, and Google cannot tell they weren&rsquo;t written by you. Your GBP stays active and authoritative 24/7.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can this be used alongside GoHighLevel (GHL)? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">Yes. GoHighLevel is an excellent CRM and marketing platform. Get Noticed AI acts as the specialized AI SEO fulfillment layer - doing the actual posting, optimization, and ranking work - while GHL handles leads, communication, and pipelines. Agencies often use both together for a complete local marketing stack.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What makes this the best AI SEO tool for agencies and small business owners? <span class="faq-icon">+</span></summary>
-        <div class="faq-a">The platform stands out because it is not just a generator; it is an executor. For agencies looking to scale and small businesses looking to grow, it provides a scalable, autonomous SEO workforce that delivers consistent, high-quality optimization without the overhead of human staff or the limitations of manual SEO software.</div>
-      </details>
-
-
-
+      <div class="faq-item open">
+        <button class="faq-q">How fast can I get set up?<span class="faq-icon">+</span></button>
+        <div class="faq-a">About 10 minutes. You fill one intake form, connect your Google Business Profile, and Nova starts optimizing the same day. No technical or SEO knowledge needed.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will this get my profile flagged or suspended?<span class="faq-icon">+</span></button>
+        <div class="faq-a">No. Nova only uses white-hat, Google-approved methods: real posts, real review replies, accurate citations, and on-profile optimization. We stay inside Google Business Profile best practices at all times.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long until I see results?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Most owners see movement in 30 to 90 days. Local ranking compounds, so visibility keeps building the longer Nova runs.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I have to stay on contract?<span class="faq-icon">+</span></button>
+        <div class="faq-a">No. Cancel any time, no contracts, no lock-in. The service is billed per Google Business Profile, monthly or yearly.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What is the Starter plan?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Starter is one profile of core automation: GBP optimization, posts, review replies, and a monthly ranking report. It is the simplest, lowest-cost way to test whether Nova works for your business before adding social and citations.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does this help me rank on ChatGPT and Gemini?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. Nova builds citations and content across the directories AI search tools reference, so your business is more likely to be recommended in AI answers too.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I manage more than one business?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. Add as many Google Business Profiles as you need and they all appear in one dashboard. Each profile is billed separately at the plan rate.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if my profiles are on different Google accounts?<span class="faq-icon">+</span></button>
+        <div class="faq-a">No problem. You can connect profiles spread across multiple Google accounts and manage them all from the same dashboard.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is citation building included?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Citation management across 62+ directories and the major data aggregators is included in the Authority plan. Growth includes everything else except citations.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How is this different from a dashboard tool?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Most tools are dashboards where you do the work. Nova is an agent, it does the work for you: writes posts, replies to reviews, builds citations, and publishes on schedule. You set it up and leave it.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I use this alongside GoHighLevel (GHL)?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes, and agencies often use them together. GHL is an excellent CRM that handles leads, communication, and pipelines. Nova is the specialized SEO fulfillment layer that does the actual posting, optimization, and ranking work. Together they form a complete local marketing stack.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I have to approve content before it posts?<span class="faq-icon">+</span></button>
+        <div class="faq-a">No, but you can. Choose fully automated, or have Nova ask for your approval before any content type publishes. Over 80% of clients let Nova run on autopilot without approving first.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What languages does it work in?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Nova writes content in dozens of major languages, including English, Spanish, French, German, Italian, Portuguese, Chinese, Japanese, Korean, Arabic, and Hindi, among many others.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How does this automate social media too?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Nova takes every Google post and repurposes it to Facebook, Instagram, and LinkedIn, and can create and publish YouTube videos, all on schedule. One system runs your Google profile and your social presence without extra effort.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you offer live support?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. Live chat is built in, and the team can do screen-share calls when needed. Instant AI answers handle common questions 24/7.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is there an affiliate program?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. Refer other businesses and earn recurring commission on every sign up. Ask about it when you start your free audit or contact us.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== AFFILIATE / PARTNER PROGRAM ===== -->
-<section class="section" id="affiliate" style="background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);">
-  <div class="container">
-    <div style="text-align:center;max-width:700px;margin:0 auto 3rem;">
-      <span style="display:inline-block;background:var(--primary-hl);color:var(--primary);font-size:var(--sm);font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.35rem 1rem;border-radius:9999px;margin-bottom:1rem;">Partner Program</span>
-      <h2 style="font-size:var(--2xl);margin-bottom:1rem;">Earn 20% on Every Referral</h2>
-      <p style="color:var(--muted);font-size:var(--base);max-width:560px;margin:0 auto;">Know a local business that needs to get found on Google? Refer them and earn 20% of their monthly subscription — automatically, every month they stay active.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:900px;margin:0 auto 3rem;">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;text-align:center;">
-        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);font-family:var(--fd);margin-bottom:.5rem;">20%</div>
-        <div style="font-weight:700;margin-bottom:.35rem;">Recurring Commission</div>
-        <div style="color:var(--muted);font-size:var(--sm);">Paid every month for the lifetime of the customer</div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;text-align:center;">
-        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);font-family:var(--fd);margin-bottom:.5rem;">$99+</div>
-        <div style="font-weight:700;margin-bottom:.35rem;">Per Referral Per Month</div>
-        <div style="color:var(--muted);font-size:var(--sm);">Based on the Growth plan at $497/mo</div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;text-align:center;">
-        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);font-family:var(--fd);margin-bottom:.5rem;">Auto</div>
-        <div style="font-weight:700;margin-bottom:.35rem;">Fully Automated</div>
-        <div style="color:var(--muted);font-size:var(--sm);">Tracking, attribution, and payouts handled for you</div>
-      </div>
-    </div>
-    <div style="text-align:center;">
-      <a href="/partner.html" class="btn btn-primary btn-lg">Apply to Become a Partner &rarr;</a>
-      <p style="color:var(--muted);font-size:var(--sm);margin-top:1rem;">Fill out a 2-minute application. We&apos;ll send your unique referral link within 1 business day.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FINAL CTA ===== -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="cta-section">
-      <div>
-        <h2>Start getting noticed today.</h2>
-        <p>Set up in 10 minutes. No SEO knowledge needed. No contracts. Cancel anytime.</p>
-        <div class="cta-actions">
-          <a href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank" rel="noopener" class="btn btn-white btn-lg">Get Started Now &rarr;</a>
-          <a href="#pricing" class="btn btn-outline-white btn-lg">View Pricing</a>
-        </div>
-      </div>
-      <div class="cta-trust">
-        <div class="cta-trust-item">
-          <span class="icon">&#10003;</span>
-          <div><strong>Cancel Anytime</strong><span>No contracts. Keep it flexible.</span></div>
-        </div>
-        <div class="cta-trust-item">
-          <span class="icon">&#128274;</span>
-          <div><strong>Secure &amp; Compliant</strong><span>Built for safe business workflows.</span></div>
-        </div>
-        <div class="cta-trust-item">
-          <span class="icon">&#127911;</span>
-          <div><strong>Expert Support</strong><span>Real humans plus instant AI answers.</span></div>
-        </div>
-        <div class="cta-trust-item">
-          <span class="icon">&#11088;</span>
-          <div><strong>AI-Powered Local SEO</strong><span>Set it up in 10 minutes. Results in 30&ndash;90 days.</span></div>
-        </div>
-      </div>
+<!-- ==================== FINAL CTA ==================== -->
+<section class="final">
+  <div class="final inner">
+    <h2>Ready to get noticed on Google Maps?</h2>
+    <p>Set up in 10 minutes. No contracts. Cancel anytime.</p>
+    <div class="ctas">
+      <a href="#audit" class="btn-white">Get my free audit</a>
+      <a href="tel:+17272709961" class="btn-text" style="color:var(--mint); border-color:currentColor">Or call (727) 270-9961</a>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- GHL EMAIL CAPTURE POPUP -->
-<!-- To activate: replace YOUR_GHL_FORM_URL with your GHL form share URL and remove the outer comment tags -->
-<!--
-<div id="email-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;">
-  <div style="background:var(--surface);border-radius:16px;padding:40px;max-width:480px;width:90%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4);">
-    <button onclick="document.getElementById('email-popup').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);">&times;</button>
-    <div style="text-align:center;margin-bottom:24px;">
-      <span style="font-size:2rem;">&#128205;</span>
-      <h3 style="margin:12px 0 8px;font-size:1.4rem;">Before you go...</h3>
-      <p style="color:var(--muted);font-size:.95rem;">Get a free Google Maps ranking audit for your business. We'll show you exactly where you rank and what's holding you back.</p>
-    </div>
-    <iframe src="YOUR_GHL_FORM_URL" style="width:100%;height:320px;border:none;border-radius:8px;" scrolling="no"></iframe>
-    <p style="text-align:center;color:var(--muted);font-size:.75rem;margin-top:12px;">No spam. Unsubscribe anytime.</p>
-  </div>
-</div>
-<script>
-  // Show popup after 45 seconds or on exit intent
-  setTimeout(function(){
-    document.getElementById('email-popup').style.display='flex';
-  }, 45000);
-  document.addEventListener('mouseleave', function(e){
-    if(e.clientY < 10){
-      document.getElementById('email-popup').style.display='flex';
-    }
-  });
-</script>
--->
-
-<!-- ===== CONTACT ===== -->
-<section class="section" id="contact">
-  <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">Get In Touch</span>
-      <h2>Have a question?</h2>
-      <p>We respond to every message within a few hours. Prefer to talk? Call or text us directly.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--sp6);margin-top:var(--sp10);max-width:860px;margin-left:auto;margin-right:auto;">
-      <a href="tel:+17272709961" style="display:flex;align-items:center;gap:var(--sp4);padding:var(--sp6) var(--sp8);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-2xl);text-decoration:none;color:var(--text);transition:border-color 180ms;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="width:48px;height:48px;background:var(--primary-hl);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128222;</div>
-        <div><strong style="display:block;font-size:var(--base);">Call or Text</strong><span style="color:var(--muted);font-size:var(--sm);">(727) 270-9961</span></div>
-      </a>
-      <a href="mailto:eric@getnoticedai.com" style="display:flex;align-items:center;gap:var(--sp4);padding:var(--sp6) var(--sp8);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-2xl);text-decoration:none;color:var(--text);transition:border-color 180ms;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="width:48px;height:48px;background:var(--primary-hl);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#9993;</div>
-        <div><strong style="display:block;font-size:var(--base);">Email Us</strong><span style="color:var(--muted);font-size:var(--sm);">eric@getnoticedai.com</span></div>
-      </a>
-      <a href="javascript:void(0)" onclick="var cw=document.querySelector('chat-widget');if(cw&&cw.shadowRoot){var btn=cw.shadowRoot.querySelector('button');if(btn)btn.click();}" style="display:flex;align-items:center;gap:var(--sp4);padding:var(--sp6) var(--sp8);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-2xl);text-decoration:none;color:var(--text);cursor:pointer;transition:border-color 180ms;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="width:48px;height:48px;background:var(--primary-hl);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128172;</div>
-        <div><strong style="display:block;font-size:var(--base);">Live Chat</strong><span style="color:var(--muted);font-size:var(--sm);">Click to open chat - we reply fast</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
+<!-- ==================== FOOTER ==================== -->
 <footer>
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <a class="brand" href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-        <div class="brand-logo-wrap">
-          <img src="data:image/png;base64,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" alt="Get Noticed AI" width="32" height="32" loading="lazy">
-        </div>
-        <span style="font-weight:700;font-size:1.1rem;color:var(--text);">Get Noticed AI</span>
-      </a>
-      <p>Fully automated local SEO for small businesses. AI-powered, set-and-forget, and built to get you found on Google Maps and AI search.</p>
-    </div>
-    <div class="footer-links">
-      <div class="footer-col">
-        <h4>Product</h4>
-        <a href="#features">Features</a>
-        <a href="#citations">Citations</a>
-        <a href="#pricing">Pricing</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="#faq">FAQ</a>
-        <a href="/local-seo-for-plumbers/">For Plumbers</a>
-        <a href="/local-seo-for-roofers/">For Roofers</a>
-        <a href="/local-seo-for-med-spas/">For Med Spas</a>
-        <a href="https://link.iintelv.com/payment-link/6a774bd3c8cc9a2ce7266eef" target="_blank" rel="noopener">Get Started</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-        <a href="/terms.html" target="_blank" rel="noopener">Terms of Service</a>
-        <a href="https://audit.app.getnoticedai.com">Free Audit</a>
-        <a href="#contact">Contact Us</a>
-      </div>
-    </div>
+  <div class="foot-inner">
+    <a href="#top" class="brand" style="color:#fff">
+      <span class="mark"><svg width="18" height="18" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M20 44V26h5v8l12-12h8L25 48h-5z" fill="#fff"/><circle cx="44" cy="32" r="4" fill="#43b48f"/></svg></span>
+      Get Noticed AI
+    </a>
+    <nav class="foot-links">
+      <a href="#results">Results</a>
+      <a href="#how">How it works</a>
+      <a href="#nova">Meet Nova</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p style="font-size:0.8125rem">No contracts &#183; Cancel anytime &#183; (727) 270-9961</p>
   </div>
-  <div class="container footer-bottom">
-    <span>&copy; 2026 Get Noticed AI. All rights reserved.</span>
-    <span>Powered by AI. Built for local businesses.</span>
+  <div class="foot-bar">
+    &copy; <span id="year">2026</span> Get Noticed AI. All rights reserved.
   </div>
 </footer>
 
-<!-- ===== JAVASCRIPT ===== -->
+<!-- ==================== LIGHT VM BEHAVIOR ==================== -->
 <script>
-(function(){
-  'use strict';
+  (function () {
+    // --- yearly billing toggle ---
+    var yearly = false;
+    var switchEl = document.getElementById("billingSwitch");
+    var lblM = document.getElementById("lblMonthly");
+    var lblY = document.getElementById("lblYearly");
 
-  /* Dark/light toggle — default dark */
-  const sunSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
-  const moonSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  const themeBtn=document.querySelector('[data-theme-toggle]');
-  const root=document.documentElement;
-  let theme=localStorage.getItem('gna-theme')||'dark';
-  root.setAttribute('data-theme',theme);
-  themeBtn.innerHTML=theme==='dark'?sunSVG:moonSVG;
-  themeBtn.addEventListener('click',()=>{
-    theme=theme==='dark'?'light':'dark';
-    root.setAttribute('data-theme',theme);
-    localStorage.setItem('gna-theme',theme);
-    themeBtn.innerHTML=theme==='dark'?sunSVG:moonSVG;
-    themeBtn.setAttribute('aria-label','Switch to '+(theme==='dark'?'light':'dark')+' mode');
-  });
-
-  /* Mobile menu */
-  const menuBtn=document.querySelector('[data-mobile-menu]');
-  const mobileNav=document.getElementById('mobileNav');
-  const openIcon='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
-  const closeIcon='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
-  menuBtn.addEventListener('click',()=>{
-    const open=mobileNav.classList.toggle('open');
-    menuBtn.innerHTML=open?closeIcon:openIcon;
-  });
-  document.querySelectorAll('[data-close-menu]').forEach(l=>l.addEventListener('click',()=>{
-    mobileNav.classList.remove('open');
-    menuBtn.innerHTML=openIcon;
-  }));
-
-  /* FAQ uses native <details>/<summary> — no JS needed */
-
-  /* Pricing toggle */
-  (function() {
-    var btnM = document.getElementById('optMonthly');
-    var btnY = document.getElementById('optYearly');
-
-    function setMode(yearly) {
-      if (yearly) {
-        btnM.classList.remove('active');
-        btnY.classList.add('active');
-        // Growth
-        document.getElementById('price1').innerHTML = '<strong>$414</strong><span>/mo, billed yearly</span>';
-        document.getElementById('note1').textContent = '$4,970/yr total — save $994 (2 months free)';
-        // Authority
-        document.getElementById('price2').innerHTML = '<strong>$581</strong><span>/mo, billed yearly</span>';
-        document.getElementById('note2').textContent = '$6,970/yr total — save $1,394 (2 months free)';
-      } else {
-        btnY.classList.remove('active');
-        btnM.classList.add('active');
-        document.getElementById('price1').innerHTML = '<strong>$497</strong><span>/mo per business</span>';
-        document.getElementById('note1').innerHTML = '&nbsp;';
-        document.getElementById('price2').innerHTML = '<strong>$697</strong><span>/mo per business</span>';
-        document.getElementById('note2').innerHTML = '&nbsp;';
-      }
-    }
-
-    btnM.onclick = function() { setMode(false); };
-    btnY.onclick = function() { setMode(true); };
-  })();
-
-  /* Sticky header shadow */
-  const header=document.querySelector('header');
-  window.addEventListener('scroll',()=>{
-    header.style.boxShadow=window.scrollY>10?'0 2px 20px rgba(0,0,0,.15)':'none';
-  },{passive:true});
-
-  /* Scroll entrance animations */
-  if('IntersectionObserver' in window){
-    const obs=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.style.opacity='1';
-          e.target.style.transform='translateY(0)';
-          obs.unobserve(e.target);
-        }
+    function applyBilling() {
+      document.querySelectorAll(".plan").forEach(function (plan) {
+        var monthly = parseFloat(plan.getAttribute("data-monthly"));
+        var y = parseFloat(plan.getAttribute("data-yearly"));
+        var val = plan.querySelector(".price-val");
+        val.textContent = "$" + Math.round(yearly ? y : monthly);
+        plan.classList.toggle("yearly", yearly);
       });
-    },{threshold:0.08});
-    document.querySelectorAll('.feat-item,.plan,.citation-node').forEach(el=>{
-      el.style.opacity='0';
-      el.style.transform='translateY(16px)';
-      el.style.transition='opacity .45s ease,transform .45s ease';
-      obs.observe(el);
+      lblM.className = "toggle-label " + (yearly ? "off" : "on");
+      lblY.className = "toggle-label " + (yearly ? "on" : "off");
+      switchEl.classList.toggle("on", yearly);
+      switchEl.setAttribute("aria-checked", String(yearly));
+    }
+    switchEl.addEventListener("click", function () {
+      yearly = !yearly;
+      applyBilling();
     });
-  }
-})();
+
+    // --- before/after slider ---
+    var wrap = document.getElementById("sliderWrap");
+    var clip = document.getElementById("sliderClip");
+    var handle = document.getElementById("handleLine");
+    var range = document.getElementById("sliderRange");
+
+    function setPos(p) {
+      clip.style.clipPath = "inset(0 " + (100 - p) + "% 0 0)";
+      handle.style.left = p + "%";
+    }
+    range.addEventListener("input", function () { setPos(parseFloat(range.value)); });
+    setPos(50);
+
+    // --- industry tabs ---
+    var data = {
+      salon:      { kw: "hair extensions",         time: "1 month" },
+      spa:        { kw: "hot stone massage",       time: "4 months" },
+      contractor: { kw: "water damage repair",     time: "1 month" },
+      restaurant: { kw: "french restaurant",       time: "3 months" },
+      agency:     { kw: "local seo",               time: "3 months" },
+      solar:      { kw: "solar panel sales",       time: "1 month" },
+      golf:       { kw: "golf simulator",          time: "2 months" },
+      puppy:      { kw: "puppy classes",           time: "6 months" },
+      laundry:    { kw: "wash and fold",           time: "1 month" }
+    };
+    var kw = document.getElementById("cmp-kw");
+    var body = document.getElementById("cmp-body");
+    var afterImg = wrap.querySelector(".slider-after");
+    var beforeImg = clip.querySelector(".slider-before");
+
+    document.querySelectorAll(".tabbtn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = btn.getAttribute("data-id");
+        document.querySelectorAll(".tabbtn").forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        var d = data[id];
+        kw.textContent = d.kw;
+        body.textContent = "The target keyword moved up across the map in just " + d.time + ", with no work from the owner.";
+        afterImg.src = "assets/results/" + id + "-after.webp";
+        afterImg.alt = id + " rankings after Nova";
+        beforeImg.src = "assets/results/" + id + "-before.webp";
+        beforeImg.alt = id + " rankings before";
+        range.value = 50;
+        setPos(50);
+      });
+    });
+
+    // --- FAQ accordion ---
+    document.querySelectorAll(".faq-q").forEach(function (q) {
+      q.addEventListener("click", function () {
+        var item = q.parentElement;
+        var wasOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach(function (el) { el.classList.remove("open"); });
+        if (!wasOpen) item.classList.add("open");
+      });
+    });
+
+    // --- year ---
+    document.getElementById("year").textContent = new Date().getFullYear();
+  })();
 </script>
-<script>
-function openChat() {
-  var cw = document.querySelector('chat-widget');
-  if (cw) {
-    cw.setAttribute('data-active', 'true');
-    try {
-      var shadow = cw.shadowRoot;
-      if (shadow) {
-        var btns = shadow.querySelectorAll('button');
-        btns.forEach(function(b) { b.click(); });
-      }
-    } catch(e) {}
-    cw.dispatchEvent(new CustomEvent('open', {bubbles: true, composed: true}));
-    if (typeof cw.open === 'function') cw.open();
-    return;
-  }
-  window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
-}
-</script>
+
+
 <!-- GHL Affiliate Tracking -->
 <script type="text/javascript">
 (function() {
