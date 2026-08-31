@@ -128,7 +128,13 @@
   .nav-links { display: flex; gap: 1.75rem; font-size: 0.875rem; font-weight: 600; color: var(--ink-soft); }
   .nav-links a:hover { color: var(--pine); }
   .nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+  .nav-command-mobile { display: none; align-items: center; border: 1px solid var(--pine); border-radius: 999px; padding: 0.45rem 0.7rem; color: var(--pine-deep); font-family: "Sora", sans-serif; font-size: 0.75rem; font-weight: 700; }
   @media (max-width: 820px) { .nav-links { display: none; } }
+  @media (max-width: 520px) {
+    .nav-cta { gap: 0.4rem; }
+    .nav-cta .btn-text { display: none; }
+    .nav-command-mobile { display: inline-flex; }
+  }
 
   /* ---- hero ---- */
   .hero { position: relative; overflow: hidden; }
@@ -366,12 +372,14 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
     <a href="#results">Results</a>
     <a href="#how">How it works</a>
     <a href="#nova">Meet Nova</a>
+    <a href="/command/" data-command-entry="desktop-nav">Command</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
     <a href="partner.html">Refer &amp; earn 20%</a>
   </nav>
   <div class="nav-cta">
     <a href="https://audit.app.getnoticedai.com" class="btn-text">Free audit</a>
+    <a href="/command/" class="nav-command-mobile" data-command-entry="mobile-nav">Command</a>
     <a href="#pricing" class="btn-audit" style="padding:0.5rem 1rem; font-size:0.875rem">Get started</a>
   </div>
 </header>
@@ -781,6 +789,7 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
       <a href="#results">Results</a>
       <a href="#how">How it works</a>
       <a href="#nova">Meet Nova</a>
+      <a href="/command/" data-command-entry="footer">Command</a>
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
       <a href="partner.html">Partner Program</a>
@@ -883,6 +892,23 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
 
     // --- year ---
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // --- Command entry tracking ---
+    document.querySelectorAll("[data-command-entry]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "command_entry_click",
+          placement: link.getAttribute("data-command-entry") || "unknown",
+          destination: "/command/"
+        });
+        if (window.fbq) {
+          window.fbq("trackCustom", "command_entry_click", {
+            placement: link.getAttribute("data-command-entry") || "unknown"
+          });
+        }
+      });
+    });
   })();
 </script>
 
