@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free AI Visibility Audit | Get Noticed AI</title>
   <meta id="page-description" name="description" content="Find out if ChatGPT, Google Maps, and Gemini know your business exists. Free local SEO audit in 60 seconds.">
+  <link rel="canonical" href="https://getnoticedai.com/audit.html">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Get Noticed AI"><meta property="og:title" content="Free AI Visibility Audit | Get Noticed AI"><meta property="og:description" content="Check how your business appears across Google Maps and leading AI answer tools."><meta property="og:url" content="https://getnoticedai.com/audit.html"><meta property="og:image" content="https://getnoticedai.com/facebook_cover.jpg"><meta property="og:image:alt" content="Get Noticed AI local visibility platform">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Free AI Visibility Audit | Get Noticed AI"><meta name="twitter:description" content="Check how your business appears across Google Maps and leading AI answer tools."><meta name="twitter:image" content="https://getnoticedai.com/facebook_cover.jpg">
+  <script src="/assets/site-events.js" defer></script>
   <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -409,6 +413,9 @@
         if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'audit_form_submit', lead_source: 'audit-form' });
+        const successEvent = { event: 'lead_submit_success', form_id: 'visibility_audit', offer_path: 'audit', page_group: 'audit', lead_source: 'audit-form' };
+        window.dataLayer.push(successEvent);
+        try { window.posthog && window.posthog.capture('lead_submit_success', successEvent); } catch (_) {}
       }
     } catch (_) {
       // The estimate remains available if a network interruption delays the CRM handoff.

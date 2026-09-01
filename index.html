@@ -212,7 +212,7 @@
   .slider-wrap:focus-within { outline: 4px solid rgba(67,180,143,.42); outline-offset: 4px; }
   .methodology-line { margin-top: .9rem; color: var(--ink-soft); font-size: .78rem; font-weight: 700; line-height: 1.5; }
   .methodology-details { margin-top: .55rem; border-top: 1px solid var(--line); padding-top: .6rem; }
-  .methodology-details summary { color: var(--pine); cursor: pointer; font-size: .8rem; font-weight: 700; list-style-position: inside; }
+  .methodology-details summary { display: flex; min-height: 44px; align-items: center; color: var(--pine); cursor: pointer; font-size: .8rem; font-weight: 700; list-style-position: inside; }
   .methodology-details p { margin-top: .55rem; color: var(--ink-soft); font-size: .8rem; line-height: 1.6; }
 
   /* ---- compact Nova-to-Command bridge ---- */
@@ -292,10 +292,10 @@
   .toggle-label { font-size: 0.875rem; font-weight: 600; }
   .toggle-label.on { color: var(--pine); }
   .toggle-label.off { color: var(--ink-faint); }
-  .switch { position: relative; width: 3.5rem; height: 2rem; border-radius: 999px; border: 1px solid var(--line); background: var(--paper-2); cursor: pointer; transition: all .2s; }
+  .switch { position: relative; width: 4rem; height: 2.75rem; border-radius: 999px; border: 1px solid var(--line); background: var(--paper-2); cursor: pointer; transition: all .2s; }
   .switch.on { background: var(--pine); border-color: var(--pine); }
-  .switch .knob { position: absolute; top: 0.25rem; left: 0.25rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: left .2s; }
-  .switch.on .knob { left: 1.75rem; }
+  .switch .knob { position: absolute; top: 0.3125rem; left: 0.3125rem; width: 2rem; height: 2rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: left .2s; }
+  .switch.on .knob { left: 1.625rem; }
   .save-badge { margin-left: 0.25rem; border-radius: 999px; background: var(--mint-soft); color: var(--pine-deep); padding: 0.25rem 0.625rem; font-size: 0.75rem; font-weight: 700; }
   .plans-grid { display: grid; gap: 1.5rem; margin: 2.5rem auto 0; max-width: 60rem; }
   @media (min-width: 64rem) { .plans-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -403,7 +403,7 @@ fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
-/></noscript>
+ alt="" /></noscript>
 <!-- End Meta Pixel Code -->
 
 </head>
@@ -1048,6 +1048,62 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
           });
         }
       });
+    });
+
+    // --- Privacy-safe unified funnel events ---
+    function analyticsValue(value) {
+      return String(value || "none").replace(/[^a-zA-Z0-9._~-]/g, "_").slice(0, 80) || "none";
+    }
+    function analyticsContext() {
+      var params = new URLSearchParams(window.location.search);
+      var referrerHost = "direct";
+      try { referrerHost = document.referrer ? new URL(document.referrer).hostname : "direct"; } catch (_) {}
+      return {
+        page_path: window.location.pathname,
+        page_group: "home",
+        offer_path: "nova",
+        viewport: window.innerWidth < 768 ? "mobile" : "desktop",
+        utm_source: analyticsValue(params.get("utm_source") || "direct"),
+        utm_medium: analyticsValue(params.get("utm_medium") || "none"),
+        utm_campaign: analyticsValue(params.get("utm_campaign") || "none"),
+        utm_content: analyticsValue(params.get("utm_content") || "none"),
+        referrer_host: analyticsValue(referrerHost)
+      };
+    }
+    function pushUnifiedEvent(name, details) {
+      var payload = Object.assign({ event: name }, analyticsContext(), details || {});
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(payload);
+      try { window.posthog && window.posthog.capture(name, payload); } catch (_) {}
+    }
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest("a[href]");
+      if (!link) return;
+      var rawHref = link.getAttribute("href") || "";
+      var target;
+      try { target = new URL(rawHref, window.location.href); } catch (_) { return; }
+      var placement = analyticsValue(link.getAttribute("data-command-entry") || link.id || link.className || link.textContent.trim());
+      var destinationType = target.hostname === "link.getnoticedai.com" ? "payment" : target.hostname === "audit.app.getnoticedai.com" ? "audit" : target.origin === window.location.origin ? "internal" : "external";
+      if (link.classList.contains("plan-cta")) {
+        var plan = link.closest(".plan");
+        var planName = plan && plan.querySelector("h3") ? plan.querySelector("h3").textContent.trim().toLowerCase() : "unknown";
+        var billing = document.getElementById("billingSwitch") && document.getElementById("billingSwitch").getAttribute("aria-checked") === "true" ? "yearly" : "monthly";
+        var pricingDetails = { plan: analyticsValue(planName), billing: billing, placement: "homepage_pricing", destination_type: destinationType };
+        pushUnifiedEvent("pricing_click", pricingDetails);
+        pushUnifiedEvent("nova_click", pricingDetails);
+        if (destinationType === "payment") pushUnifiedEvent("checkout_start", pricingDetails);
+        return;
+      }
+      if (target.hostname === "audit.app.getnoticedai.com") {
+        pushUnifiedEvent("audit_click", { placement: placement, destination_type: destinationType });
+      } else if (target.pathname.indexOf("/command/") === 0) {
+        if (!link.hasAttribute("data-command-entry")) pushUnifiedEvent("command_entry_click", { placement: placement, destination_type: destinationType });
+      } else if (target.hash === "#pricing") {
+        pushUnifiedEvent("pricing_click", { plan: "unspecified", billing: "unspecified", placement: placement, destination_type: destinationType });
+        pushUnifiedEvent("nova_click", { plan: "unspecified", billing: "unspecified", placement: placement, destination_type: destinationType });
+      } else if (/^\/(resources|compare|guides|industries|blog|local-seo-for-)/.test(target.pathname)) {
+        pushUnifiedEvent("resource_click", { content_id: analyticsValue(target.pathname), placement: placement, destination_type: destinationType });
+      }
     });
   })();
 </script>
