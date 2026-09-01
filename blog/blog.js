@@ -56,4 +56,45 @@
       header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,.15)' : 'none';
     }, { passive: true });
   }
+
+  /* ---- Privacy-safe content and funnel events ---- */
+  function clean(value) { return String(value || 'none').replace(/[^a-zA-Z0-9._~-]/g, '_').slice(0, 80) || 'none'; }
+  var query = new URLSearchParams(window.location.search);
+  var referrerHost = 'direct';
+  try { referrerHost = document.referrer ? new URL(document.referrer).hostname : 'direct'; } catch (e) {}
+  var analyticsContext = {
+    page_path: window.location.pathname,
+    page_group: window.location.pathname === '/blog/' ? 'blog_hub' : 'article',
+    offer_path: 'education',
+    viewport: window.innerWidth < 768 ? 'mobile' : 'desktop',
+    utm_source: clean(query.get('utm_source') || 'direct'),
+    utm_medium: clean(query.get('utm_medium') || 'none'),
+    utm_campaign: clean(query.get('utm_campaign') || 'none'),
+    utm_content: clean(query.get('utm_content') || 'none'),
+    referrer_host: clean(referrerHost)
+  };
+  function pushEvent(name, details) {
+    var payload = Object.assign({ event: name }, analyticsContext, details || {});
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(payload);
+    try { window.posthog && window.posthog.capture(name, payload); } catch (e) {}
+  }
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('a[href]');
+    if (!link) return;
+    var target;
+    try { target = new URL(link.getAttribute('href') || '', window.location.href); } catch (e) { return; }
+    var placement = clean(link.id || link.className || link.textContent.trim());
+    var destinationType = target.hostname === 'audit.app.getnoticedai.com' ? 'audit' : target.origin === window.location.origin ? 'internal' : 'external';
+    if (target.hostname === 'audit.app.getnoticedai.com') {
+      pushEvent('audit_click', { placement: placement, destination_type: destinationType });
+    } else if (target.pathname.indexOf('/command/') === 0) {
+      pushEvent('command_entry_click', { placement: placement, destination_type: destinationType });
+    } else if (target.hash === '#pricing') {
+      pushEvent('pricing_click', { plan: 'unspecified', billing: 'unspecified', placement: placement, destination_type: destinationType });
+      pushEvent('nova_click', { plan: 'unspecified', billing: 'unspecified', placement: placement, destination_type: destinationType });
+    } else if (/^\/(resources|compare|guides|industries|blog|local-seo-for-)/.test(target.pathname)) {
+      pushEvent('resource_click', { content_id: clean(target.pathname), placement: placement, destination_type: destinationType });
+    }
+  });
 })();
