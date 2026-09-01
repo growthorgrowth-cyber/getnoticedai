@@ -183,21 +183,70 @@
   .tabbtn { border-radius: 999px; border: 1px solid var(--line); background: #fff; padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 600; color: var(--ink-soft); cursor: pointer; font-family: "Manrope", sans-serif; transition: all .15s; }
   .tabbtn:hover { border-color: var(--pine); color: var(--pine); }
   .tabbtn.active { border-color: var(--pine); background: var(--pine); color: #fff; }
+  .tabbtn:focus-visible { outline: 3px solid rgba(67,180,143,.35); outline-offset: 3px; }
   .cmp-grid { display: grid; gap: 1.5rem; }
-  @media (min-width: 64rem) { .cmp-grid { grid-template-columns: 1fr 1.4fr; align-items: center; } }
-  .cmp-kw { font-size: 1.25rem; font-weight: 700; margin-top: 0.4rem; }
-  .cmp-body { margin-top: 0.3rem; color: var(--ink-soft); }
-  .cmp-drag { margin-top: 1rem; font-weight: 600; font-size: 0.875rem; color: var(--pine); }
-  .cmp-badge { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.1rem; border-radius: 999px; background: var(--mint-soft); padding: 0.4rem 0.8rem; font-weight: 600; font-size: 0.875rem; color: var(--pine-deep); }
+  @media (min-width: 64rem) { .cmp-grid { grid-template-columns: minmax(16rem,.82fr) minmax(0,1.3fr); align-items: center; gap: 2.75rem; } }
+  .result-summary { min-width: 0; }
+  .result-industry { font-family: "Sora", sans-serif; font-size: .75rem; font-weight: 800; letter-spacing: .1em; color: var(--pine); text-transform: uppercase; }
+  .result-meta { display: grid; grid-template-columns: minmax(0,1fr) minmax(8rem,.55fr); gap: .75rem; margin-top: .9rem; }
+  .result-meta > div { min-width: 0; padding: .85rem 1rem; border: 1px solid var(--line); border-radius: .9rem; background: var(--paper); }
+  .result-meta span { display: block; color: var(--ink-faint); font-size: .6875rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .result-meta strong { display: block; margin-top: .2rem; color: var(--pine-deep); font-family: "Sora", sans-serif; font-size: .95rem; line-height: 1.35; overflow-wrap: anywhere; }
+  .cmp-title { margin-top: 1.25rem; font-size: clamp(1.45rem,2.5vw,2rem); line-height: 1.18; }
+  .cmp-title span { color: var(--pine); white-space: nowrap; }
+  .cmp-body { margin-top: .6rem; color: var(--ink-soft); }
+  .cmp-drag { margin-bottom: .7rem; color: var(--ink-faint); font-size: .8rem; font-weight: 600; text-align: right; }
+  .cmp-badge { display: inline-grid; gap: .15rem; margin-top: 1.1rem; border: 1px solid rgba(14,107,91,.16); border-radius: .9rem; background: var(--mint-soft); padding: .7rem .85rem; color: var(--pine-deep); }
+  .cmp-badge strong { font-family: "Sora", sans-serif; font-size: .7rem; letter-spacing: .08em; }
+  .cmp-badge span { font-size: .78rem; color: var(--ink-soft); }
+  .slider-panel { min-width: 0; }
   .slider-wrap { position: relative; aspect-ratio: 1 / 1; border-radius: 1rem; overflow: hidden; user-select: none; touch-action: none; box-shadow: 0 10px 30px -12px rgba(23,33,29,.25); }
   .slider-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .slider-clip { position: absolute; inset: 0; overflow: hidden; }
-  .label-pill { position: absolute; bottom: 0.75rem; border-radius: 999px; padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 600; color: #fff; }
-  .label-before { left: 0.75rem; background: rgba(0,0,0,.7); }
+  .label-pill { position: absolute; bottom: 0.75rem; z-index: 3; border: 2px solid rgba(255,255,255,.9); border-radius: 999px; padding: 0.35rem 0.8rem; color: #fff; font-family: "Sora", sans-serif; font-size: 0.7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; box-shadow: 0 4px 16px rgba(0,0,0,.2); }
+  .label-before { left: 0.75rem; background: #47514d; }
   .label-after { right: 0.75rem; background: var(--pine); }
   .handle-line { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,.85), 0 0 14px rgba(0,0,0,.25); }
   .handle-knob { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 2.25rem; height: 2.25rem; border-radius: 50%; background: #fff; color: var(--pine); display: grid; place-items: center; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
   .slider-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
+  .slider-wrap:focus-within { outline: 4px solid rgba(67,180,143,.42); outline-offset: 4px; }
+  .methodology-line { margin-top: .9rem; color: var(--ink-soft); font-size: .78rem; font-weight: 700; line-height: 1.5; }
+  .methodology-details { margin-top: .55rem; border-top: 1px solid var(--line); padding-top: .6rem; }
+  .methodology-details summary { color: var(--pine); cursor: pointer; font-size: .8rem; font-weight: 700; list-style-position: inside; }
+  .methodology-details p { margin-top: .55rem; color: var(--ink-soft); font-size: .8rem; line-height: 1.6; }
+
+  /* ---- compact Nova-to-Command bridge ---- */
+  .command-bridge { border-block: 1px solid rgba(255,255,255,.12); background: linear-gradient(120deg,#052f2b,#083f38); color: #fff; }
+  .command-bridge-grid { display: grid; gap: 1.5rem; align-items: center; padding: 2.4rem 1.25rem; }
+  @media (min-width: 64rem) { .command-bridge-grid { grid-template-columns: 10rem minmax(0,1fr) 17rem; gap: 2.25rem; padding-block: 2.8rem; } }
+  .command-mark { display: inline-grid; width: fit-content; gap: .15rem; font-family: "Sora", sans-serif; font-size: .65rem; font-weight: 700; letter-spacing: .16em; color: rgba(255,255,255,.65); }
+  .command-mark strong { color: #fff; font-size: 1.05rem; letter-spacing: .18em; }
+  .command-copy .eyebrow { margin-bottom: .75rem; background: rgba(255,255,255,.12); color: var(--mint); }
+  .command-copy h2 { font-size: clamp(1.6rem,2.6vw,2.35rem); line-height: 1.12; }
+  .command-copy p { max-width: 49rem; margin-top: .65rem; color: rgba(255,255,255,.78); font-size: .95rem; line-height: 1.55; }
+  .command-copy .command-owner { color: #fff; }
+  .command-action { display: grid; justify-items: start; gap: .65rem; }
+  .command-cta { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; border-radius: 999px; background: #fff; padding: .75rem 1.15rem; color: var(--pine-deep); font-family: "Sora", sans-serif; font-size: .8rem; font-weight: 800; text-decoration: none; transition: transform .15s, background .15s; }
+  .command-cta:hover { transform: translateY(-2px); background: var(--mint-soft); }
+  .command-cta:focus-visible { outline: 3px solid var(--mint); outline-offset: 3px; }
+  .command-price { color: rgba(255,255,255,.85); font-size: .72rem; font-weight: 700; line-height: 1.45; }
+  .command-fit { color: rgba(255,255,255,.58); font-size: .7rem; line-height: 1.45; }
+
+  @media (max-width: 47.99rem) {
+    .tabs { flex-wrap: nowrap; overflow-x: auto; margin-inline: -1.5rem; padding: .15rem 1.5rem .8rem; scrollbar-width: thin; scrollbar-color: var(--mint) transparent; }
+    .tabbtn { flex: 0 0 auto; min-height: 44px; }
+    .result-meta { grid-template-columns: 1fr; }
+    .cmp-title span { white-space: normal; }
+    .cmp-drag { text-align: left; }
+    .methodology-line { font-size: .75rem; }
+    .command-bridge-grid { gap: 1rem; padding-block: 1.55rem; }
+    .command-mark { gap: .05rem; }
+    .command-mark strong { font-size: .95rem; }
+    .command-copy .eyebrow { margin-bottom: .55rem; }
+    .command-copy p { margin-top: .5rem; font-size: .9rem; line-height: 1.45; }
+    .command-action { gap: .5rem; }
+    .command-fit { display: none; }
+  }
 
   /* ---- nova band (dark) ---- */
   .nova { background: var(--pine-deep); color: #fff; }
@@ -437,56 +486,85 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
     <div><p class="stat-num">24/7</p><p class="stat-label">Fully automated</p></div>
     <div><p class="stat-num">62+</p><p class="stat-label">Citations &amp; directories</p></div>
     <div><p class="stat-num">6+</p><p class="stat-label">AI platforms covered</p></div>
-    <div><p class="stat-num">10,000+</p><p class="stat-label">Profiles managed</p></div>
+    <div><p class="stat-num">10,000+</p><p class="stat-label">Profiles running on Nova</p></div>
   </div>
 </section>
 
 <!-- ==================== RESULTS (before/after) ==================== -->
-<section class="section" id="results">
+<section class="section" id="results" aria-labelledby="results-title">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Proof it works</span>
-      <h2>Real rankings. Real businesses. No work from the owner.</h2>
-      <p class="sub">These profiles ran hands-off. Each pair shows the same business, same keyword, before and after.</p>
+      <h2 id="results-title">Real businesses. Real ranking movement. Almost nothing for the owner to do.</h2>
+      <p class="sub">Each example compares the same business, same target keyword, and same geographic ranking grid before and after Nova had time to work.</p>
     </div>
 
     <div class="compare-card" style="margin-top:2.5rem">
-      <div class="tabs" id="tabs">
-        <button class="tabbtn active" data-id="salon">Salon</button>
-        <button class="tabbtn" data-id="spa">Spa</button>
-        <button class="tabbtn" data-id="contractor">Contractor</button>
-        <button class="tabbtn" data-id="restaurant">Restaurant</button>
-        <button class="tabbtn" data-id="agency">Agency</button>
-        <button class="tabbtn" data-id="solar">Solar</button>
-        <button class="tabbtn" data-id="golf">Golf</button>
-        <button class="tabbtn" data-id="puppy">Puppy trainer</button>
-        <button class="tabbtn" data-id="laundry">Laundry</button>
+      <div class="tabs" id="tabs" role="tablist" aria-label="Choose a business result">
+        <button class="tabbtn active" id="tab-contractor" data-id="contractor" role="tab" aria-selected="true" aria-controls="result-panel" tabindex="0">Contractor</button>
+        <button class="tabbtn" id="tab-spa" data-id="spa" role="tab" aria-selected="false" aria-controls="result-panel" tabindex="-1">Spa</button>
+        <button class="tabbtn" id="tab-solar" data-id="solar" role="tab" aria-selected="false" aria-controls="result-panel" tabindex="-1">Solar</button>
+        <button class="tabbtn" id="tab-restaurant" data-id="restaurant" role="tab" aria-selected="false" aria-controls="result-panel" tabindex="-1">Restaurant</button>
+        <button class="tabbtn" id="tab-salon" data-id="salon" role="tab" aria-selected="false" aria-controls="result-panel" tabindex="-1">Salon</button>
+        <button class="tabbtn" id="tab-agency" data-id="agency" role="tab" aria-selected="false" aria-controls="result-panel" tabindex="-1">Agency</button>
+        <button class="tabbtn" id="tab-golf" data-id="golf" role="tab" aria-selected="false" aria-controls="result-panel" tabindex="-1">Golf</button>
+        <button class="tabbtn" id="tab-laundry" data-id="laundry" role="tab" aria-selected="false" aria-controls="result-panel" tabindex="-1">Laundry</button>
+        <button class="tabbtn" id="tab-puppy" data-id="puppy" role="tab" aria-selected="false" aria-controls="result-panel" tabindex="-1">Puppy Trainer</button>
       </div>
 
-      <div class="cmp-grid">
-        <div>
-          <p class="eyebrow" style="text-transform:none">Real Google Maps rankings</p>
-          <h3 class="cmp-kw" id="cmp-kw">hair extensions</h3>
-          <p class="cmp-body" id="cmp-body">The target keyword moved up across the map in just 1 month, with no work from the owner.</p>
-          <p class="cmp-drag">Drag the slider to see it work</p>
-          <span class="cmp-badge">&#10003; Ran by Nova, fully automated</span>
+      <div class="cmp-grid" id="result-panel" role="tabpanel" aria-live="polite" aria-labelledby="tab-contractor">
+        <div class="result-summary">
+          <p class="result-industry" id="result-industry">Contractor</p>
+          <div class="result-meta">
+            <div><span>Target keyword</span><strong id="cmp-kw">water damage repair</strong></div>
+            <div><span>Measured period</span><strong id="cmp-time">1 month</strong></div>
+          </div>
+          <h3 class="cmp-title">Google Maps visibility: <span>Before &rarr; After</span></h3>
+          <p class="cmp-body">Same business. Same keyword. Same geographic grid.</p>
+          <span class="cmp-badge"><strong>NOVA AUTOMATED</strong><span>Recurring profile optimization handled automatically.</span></span>
         </div>
 
-        <div class="slider-wrap" id="sliderWrap">
-          <img src="assets/results/salon-after.webp" alt="After rankings" class="slider-after" />
-          <div class="slider-clip" id="sliderClip">
-            <img src="assets/results/salon-before.webp" alt="Before rankings" class="slider-before" />
-          </div>
-          <span class="label-pill label-before">Before</span>
-          <span class="label-pill label-after">After</span>
-          <div class="handle-line" id="handleLine">
-            <div class="handle-knob">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="slider-panel">
+          <p class="cmp-drag">Drag the slider to compare</p>
+          <div class="slider-wrap" id="sliderWrap">
+            <img src="assets/results/contractor-after.webp" alt="Contractor Google Maps geographic ranking grid for water damage repair after 1 month" class="slider-after" />
+            <div class="slider-clip" id="sliderClip">
+              <img src="assets/results/contractor-before.webp" alt="Contractor Google Maps geographic ranking grid for water damage repair before Nova optimization" class="slider-before" />
             </div>
+            <span class="label-pill label-before">Before</span>
+            <span class="label-pill label-after">After</span>
+            <div class="handle-line" id="handleLine" aria-hidden="true">
+              <div class="handle-knob">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <input type="range" min="0" max="100" value="50" aria-label="Compare Contractor Google Maps rankings for water damage repair before and after 1 month" aria-describedby="slider-methodology" aria-valuetext="Before image revealed to 50 percent" class="slider-range" id="sliderRange" />
           </div>
-          <input type="range" min="0" max="100" value="50" aria-label="Reveal before and after rankings" class="slider-range" id="sliderRange" />
+          <p class="methodology-line" id="slider-methodology">Same business · Same keyword · Same geographic grid · <span id="methodology-time">1 month apart</span></p>
+          <details class="methodology-details">
+            <summary>How this result was measured</summary>
+            <p>Google Maps rankings were measured geographically for the same target keyword. The before and after images compare visibility across the same tracked area after the measured period shown above.</p>
+          </details>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COMMAND BRIDGE ==================== -->
+<section class="command-bridge" aria-labelledby="command-bridge-title">
+  <div class="wrap command-bridge-grid">
+    <div class="command-mark" aria-label="Get Noticed AI Command"><span>GET NOTICED AI</span><strong>COMMAND</strong></div>
+    <div class="command-copy">
+      <span class="eyebrow">Need more than visibility?</span>
+      <h2 id="command-bridge-title">Getting found is step one.</h2>
+      <p>Nova helps your business get found. For established businesses that also want missed-call response, booking, follow-up, reactivation, and reviews managed as one system, there is Command.</p>
+      <p class="command-owner">Command also reduces how much routine follow-up depends on the owner personally checking, chasing, and remembering what happens next.</p>
+    </div>
+    <div class="command-action">
+      <a href="/command/" class="command-cta" data-track="home_results_command_bridge">See Get Noticed Command &rarr;</a>
+      <p class="command-price">$5,000 implementation · $3,500/month management · Application only</p>
+      <p class="command-fit">Built for businesses where the customer economics justify a managed system.</p>
     </div>
   </div>
 </section>
@@ -879,41 +957,66 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
     function setPos(p) {
       clip.style.clipPath = "inset(0 " + (100 - p) + "% 0 0)";
       handle.style.left = p + "%";
+      range.setAttribute("aria-valuetext", "Before image revealed to " + Math.round(p) + " percent");
     }
     range.addEventListener("input", function () { setPos(parseFloat(range.value)); });
     setPos(50);
 
     // --- industry tabs ---
     var data = {
-      salon:      { kw: "hair extensions",         time: "1 month" },
-      spa:        { kw: "hot stone massage",       time: "4 months" },
-      contractor: { kw: "water damage repair",     time: "1 month" },
-      restaurant: { kw: "french restaurant",       time: "3 months" },
-      agency:     { kw: "local seo",               time: "3 months" },
-      solar:      { kw: "solar panel sales",       time: "1 month" },
-      golf:       { kw: "golf simulator",          time: "2 months" },
-      puppy:      { kw: "puppy classes",           time: "6 months" },
-      laundry:    { kw: "wash and fold",           time: "1 month" }
+      contractor: { industry: "Contractor",    kw: "water damage repair", time: "1 month" },
+      spa:        { industry: "Spa",           kw: "hot stone massage",   time: "4 months" },
+      solar:      { industry: "Solar",         kw: "solar panel sales",   time: "1 month" },
+      restaurant: { industry: "Restaurant",    kw: "french restaurant",   time: "3 months" },
+      salon:      { industry: "Salon",         kw: "hair extensions",     time: "1 month" },
+      agency:     { industry: "Agency",        kw: "local seo",           time: "3 months" },
+      golf:       { industry: "Golf",          kw: "golf simulator",      time: "2 months" },
+      laundry:    { industry: "Laundry",       kw: "wash and fold",       time: "1 month" },
+      puppy:      { industry: "Puppy Trainer", kw: "puppy classes",       time: "6 months" }
     };
+    var industry = document.getElementById("result-industry");
     var kw = document.getElementById("cmp-kw");
-    var body = document.getElementById("cmp-body");
+    var time = document.getElementById("cmp-time");
+    var methodologyTime = document.getElementById("methodology-time");
+    var resultPanel = document.getElementById("result-panel");
     var afterImg = wrap.querySelector(".slider-after");
     var beforeImg = clip.querySelector(".slider-before");
 
-    document.querySelectorAll(".tabbtn").forEach(function (btn) {
-      btn.addEventListener("click", function () {
+    function selectResult(btn) {
         var id = btn.getAttribute("data-id");
-        document.querySelectorAll(".tabbtn").forEach(function (b) { b.classList.remove("active"); });
+        document.querySelectorAll(".tabbtn").forEach(function (b) {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+          b.setAttribute("tabindex", "-1");
+        });
         btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
+        btn.setAttribute("tabindex", "0");
         var d = data[id];
+        industry.textContent = d.industry;
         kw.textContent = d.kw;
-        body.textContent = "The target keyword moved up across the map in just " + d.time + ", with no work from the owner.";
+        time.textContent = d.time;
+        methodologyTime.textContent = d.time + " apart";
+        resultPanel.setAttribute("aria-labelledby", "tab-" + id);
         afterImg.src = "assets/results/" + id + "-after.webp";
-        afterImg.alt = id + " rankings after Nova";
+        afterImg.alt = d.industry + " Google Maps geographic ranking grid for " + d.kw + " after " + d.time;
         beforeImg.src = "assets/results/" + id + "-before.webp";
-        beforeImg.alt = id + " rankings before";
+        beforeImg.alt = d.industry + " Google Maps geographic ranking grid for " + d.kw + " before Nova optimization";
+        range.setAttribute("aria-label", "Compare " + d.industry + " Google Maps rankings for " + d.kw + " before and after " + d.time);
         range.value = 50;
         setPos(50);
+    }
+
+    document.querySelectorAll(".tabbtn").forEach(function (btn) {
+      btn.addEventListener("click", function () { selectResult(btn); });
+      btn.addEventListener("keydown", function (event) {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        var buttons = Array.from(document.querySelectorAll(".tabbtn"));
+        var current = buttons.indexOf(btn);
+        var next = event.key === "Home" ? 0 : event.key === "End" ? buttons.length - 1 : event.key === "ArrowRight" ? (current + 1) % buttons.length : (current - 1 + buttons.length) % buttons.length;
+        buttons[next].focus();
+        selectResult(buttons[next]);
       });
     });
 
