@@ -5,7 +5,7 @@
 ## Primary pages
 
 - [Get Noticed AI home](https://getnoticedai.com/): Product overview, features, citations, and pricing.
-- [Free visibility audit](https://getnoticedai.com/audit.html): Request a review of local search visibility.
+- [Free visibility audit](https://getnoticedai.com/audit/): Request a review of local search visibility.
 - [Local SEO for plumbers](https://getnoticedai.com/local-seo-for-plumbers/): Local-search workflow for plumbing companies.
 - [Local SEO for roofers](https://getnoticedai.com/local-seo-for-roofers/): Local-search workflow for roofing companies.
 - [Local SEO for med spas](https://getnoticedai.com/local-seo-for-med-spas/): Local-search workflow for medical spas.
