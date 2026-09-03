@@ -30,14 +30,14 @@
     var target;
     try{target=new URL(href,location.href);}catch(_){return;}
     var placement=clean(link.getAttribute('data-track')||link.id||link.className||link.textContent.trim());
-    var destinationType=target.hostname==='link.getnoticedai.com'?'payment':target.hostname==='audit.app.getnoticedai.com'?'audit':target.origin===location.origin?'internal':'external';
+    var destinationType=target.hostname==='link.getnoticedai.com'?'payment':(target.hostname==='audit.app.getnoticedai.com'||/^\/audit(\.html)?\/?$/.test(target.pathname))?'audit':target.origin===location.origin?'internal':'external';
     if(link.hasAttribute('data-track')){
       var legacy=Object.assign({event:'seo_cta_click',cta_name:link.getAttribute('data-track'),cta_destination:href||'none'},attribution);
       window.dataLayer.push(legacy);
       try{window.fbq&&window.fbq('trackCustom','SEOCTA',legacy);}catch(_){}
       try{window.posthog&&window.posthog.capture('seo_cta_click',legacy);}catch(_){}
     }
-    if(target.hostname==='audit.app.getnoticedai.com'){
+    if(target.hostname==='audit.app.getnoticedai.com'||/^\/audit(\.html)?\/?$/.test(target.pathname)){
       push('audit_click',{placement:placement,destination_type:destinationType});
     }else if(target.pathname.indexOf('/command/')===0){
       push('command_entry_click',{placement:placement,destination_type:destinationType});
