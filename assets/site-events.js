@@ -10,8 +10,8 @@
     var link=event.target.closest('a[href]');if(!link)return;
     var target;try{target=new URL(link.getAttribute('href')||'',location.href);}catch(_){return;}
     var placement=clean(link.id||link.className||link.textContent.trim());
-    var destinationType=target.hostname==='audit.app.getnoticedai.com'?'audit':target.origin===location.origin?'internal':'external';
-    if(target.hostname==='audit.app.getnoticedai.com')push('audit_click',{placement:placement,destination_type:destinationType});
+    var destinationType=(target.hostname==='audit.app.getnoticedai.com'||/^\/audit(\.html)?\/?$/.test(target.pathname))?'audit':target.origin===location.origin?'internal':'external';
+    if(target.hostname==='audit.app.getnoticedai.com'||/^\/audit(\.html)?\/?$/.test(target.pathname))push('audit_click',{placement:placement,destination_type:destinationType});
     else if(target.pathname.indexOf('/command/')===0)push('command_entry_click',{placement:placement,destination_type:destinationType});
     else if(target.hash==='#pricing'){push('pricing_click',{plan:'unspecified',billing:'unspecified',placement:placement,destination_type:destinationType});push('nova_click',{plan:'unspecified',billing:'unspecified',placement:placement,destination_type:destinationType});}
     else if(/^\/(resources|compare|guides|industries|blog|local-seo-for-)/.test(target.pathname))push('resource_click',{content_id:clean(target.pathname),placement:placement,destination_type:destinationType});

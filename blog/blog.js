@@ -85,8 +85,8 @@
     var target;
     try { target = new URL(link.getAttribute('href') || '', window.location.href); } catch (e) { return; }
     var placement = clean(link.id || link.className || link.textContent.trim());
-    var destinationType = target.hostname === 'audit.app.getnoticedai.com' ? 'audit' : target.origin === window.location.origin ? 'internal' : 'external';
-    if (target.hostname === 'audit.app.getnoticedai.com') {
+    var destinationType = (target.hostname === 'audit.app.getnoticedai.com' || /^\/audit(\.html)?\/?$/.test(target.pathname)) ? 'audit' : target.origin === window.location.origin ? 'internal' : 'external';
+    if (target.hostname === 'audit.app.getnoticedai.com' || /^\/audit(\.html)?\/?$/.test(target.pathname)) {
       pushEvent('audit_click', { placement: placement, destination_type: destinationType });
     } else if (target.pathname.indexOf('/command/') === 0) {
       pushEvent('command_entry_click', { placement: placement, destination_type: destinationType });

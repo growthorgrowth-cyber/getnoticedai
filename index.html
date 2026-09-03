@@ -431,7 +431,7 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
     <a href="partner.html">Partner program</a>
   </nav>
   <div class="nav-cta">
-    <a href="https://audit.app.getnoticedai.com" class="btn-text">Free audit</a>
+    <a href="/audit" class="btn-text">Free audit</a>
     <a href="/command/" class="nav-command-mobile" data-command-entry="mobile-nav">Command</a>
     <a href="#pricing" class="btn-audit" style="padding:0.5rem 1rem; font-size:0.875rem">Get started</a>
   </div>
@@ -447,8 +447,8 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
       <h1>Get found on Google Maps, automatically.</h1>
       <p class="lead">Nova runs your Google Business Profile 24/7: writing posts, building citations, and replying to reviews, so you rank on Google Maps, ChatGPT, and Gemini. Set up in 10 minutes. Zero SEO knowledge needed.</p>
       <div class="hero-ctas">
-        <!-- AUDIT CTA: point this to your free-audit page (GHL/audit.app) -->
-        <a href="#audit" class="btn-audit">Get my free audit</a>
+        <!-- AUDIT CTA: single public path -->
+        <a href="/audit" class="btn-audit">Get my free audit</a>
         <a href="#results" class="btn-ghost">See results &darr;</a>
       </div>
       <div class="hero-bullets">
@@ -584,7 +584,7 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
         <li><span class="tick">&#10003;</span> Reports your rankings every month, no login required</li>
       </ul>
       <div class="nova-ctas">
-        <a href="#audit" class="btn-white">Try Nova free</a>
+        <a href="/audit" class="btn-white">Try Nova free</a>
         <a href="#pricing" class="btn-text" style="color:var(--mint); border-color:currentColor">See pricing</a>
       </div>
     </div>
@@ -631,27 +631,17 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ==================== AUDIT CAPTURE (email form) ==================== -->
+<!-- ==================== AUDIT CAPTURE ==================== -->
 <section class="audit-band" id="audit">
   <div class="wrap audit-grid">
     <div>
       <h2>Run a free AI audit of your Google Business Profile</h2>
       <p>Nova checks your rankings on Google Maps, ChatGPT, and Gemini, then shows you exactly what is holding you back. Free, no card required.</p>
     </div>
-    <!-- Wired to GHL "Lead Generation" form (KFjmKsZ679lmQ5Uec7Xh) -->
-    <form class="dark" method="POST" action="https://services.leadconnectorhq.com/appengine/form/KFjmKsZ679lmQ5Uec7Xh" autocomplete="on">
-      <input type="hidden" name="formId" value="KFjmKsZ679lmQ5Uec7Xh" />
-      <div>
-        <label class="field-label" for="audit-name">First name</label>
-        <input class="field-input" type="text" name="name" id="audit-name" placeholder="Alex" />
-      </div>
-      <div style="margin-top:0.75rem">
-        <label class="field-label" for="audit-email">Work email</label>
-        <input class="field-input" type="email" name="email" id="audit-email" placeholder="you@yourbusiness.com" required />
-      </div>
-      <button type="submit" class="btn-white" style="margin-top:1rem; width:100%">Get my free audit</button>
-      <p class="form-note" style="color:rgba(255,255,255,.7)">Free audit, no card required. Unsubscribe any time.</p>
-    </form>
+    <div>
+      <a href="/audit" class="btn-white" data-audit-cta="homepage-band" style="display:inline-flex;width:100%;justify-content:center">Get my free audit</a>
+      <p class="form-note" style="color:rgba(255,255,255,.7);margin-top:1rem">Takes about 60 seconds. No card required.</p>
+    </div>
   </div>
 </section>
 
@@ -884,7 +874,7 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
     <h2>Ready to get noticed on Google Maps?</h2>
     <p>Set up in 10 minutes. No contracts. Cancel anytime.</p>
     <div class="ctas">
-      <a href="#audit" class="btn-white">Get my free audit</a>
+      <a href="/audit" class="btn-white">Get my free audit</a>
       <a href="tel:+17272709961" class="btn-text" style="color:var(--mint); border-color:currentColor">Or call (727) 270-9961</a>
     </div>
   </div>
@@ -907,7 +897,9 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
       <a href="/resources/">Resources</a>
-      <a href="/audit.html" data-audit-cta="footer">Free Audit</a>
+      <a href="/audit" data-audit-cta="footer">Free Audit</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
       <a href="partner.html">Partner Program</a>
     </nav>
     <p style="font-size:0.8125rem">No contracts &#183; Cancel anytime &#183; (727) 270-9961</p>
@@ -1084,7 +1076,7 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
       var target;
       try { target = new URL(rawHref, window.location.href); } catch (_) { return; }
       var placement = analyticsValue(link.getAttribute("data-command-entry") || link.id || link.className || link.textContent.trim());
-      var destinationType = target.hostname === "link.getnoticedai.com" ? "payment" : target.hostname === "audit.app.getnoticedai.com" ? "audit" : target.origin === window.location.origin ? "internal" : "external";
+      var destinationType = target.hostname === "link.getnoticedai.com" ? "payment" : (target.hostname === "audit.app.getnoticedai.com" || /^\/audit(\.html)?\/?$/.test(target.pathname)) ? "audit" : target.origin === window.location.origin ? "internal" : "external";
       if (link.classList.contains("plan-cta")) {
         var plan = link.closest(".plan");
         var planName = plan && plan.querySelector("h3") ? plan.querySelector("h3").textContent.trim().toLowerCase() : "unknown";
@@ -1095,7 +1087,7 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
         if (destinationType === "payment") pushUnifiedEvent("checkout_start", pricingDetails);
         return;
       }
-      if (target.hostname === "audit.app.getnoticedai.com") {
+      if (target.hostname === "audit.app.getnoticedai.com" || /^\/audit(\.html)?\/?$/.test(target.pathname)) {
         pushUnifiedEvent("audit_click", { placement: placement, destination_type: destinationType });
       } else if (target.pathname.indexOf("/command/") === 0) {
         if (!link.hasAttribute("data-command-entry")) pushUnifiedEvent("command_entry_click", { placement: placement, destination_type: destinationType });
