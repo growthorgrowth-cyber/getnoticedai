@@ -1,0 +1,45 @@
+name: Apply P0 homepage claims
+on:
+  workflow_dispatch:
+  push:
+    branches: [p0/trust-claim-sitemap-2026-09-10]
+    paths:
+      - apply-p0-claims.yml
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: p0/trust-claim-sitemap-2026-09-10
+      - name: Soften unverified homepage claims
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+          p = Path('index.html')
+          t = p.read_text(encoding='utf-8')
+          if 'EARLYBIRD' not in t and '10,000+' not in t and 'Ranking: #2' not in t:
+              print('already patched')
+              raise SystemExit(0)
+          t2 = re.sub(r'(<div class="topbar">).*?(</div>)', r'\1\n  \2', t, count=1, flags=re.S)
+          t2 = t2.replace('<p class="fc-sub">Ranking: #2 for "roof repair city"</p>',
+                          '<p class="fc-sub">Local visibility snapshot (illustrative)</p>')
+          t2 = t2.replace('<div><p class="stat-num">10,000+</p><p class="stat-label">Profiles running on Nova</p></div>',
+                          '<div><p class="stat-num">$0</p><p class="stat-label">Setup fee on paid plans</p></div>')
+          t2 = re.sub(r'\s*<p class="early-note">.*?</p>', '', t2, count=1, flags=re.S)
+          if 'EARLYBIRD' in t2 or '10,000+' in t2 or 'Ranking: #2' in t2:
+              raise SystemExit('patch incomplete')
+          p.write_text(t2, encoding='utf-8')
+          print('patched ok')
+          PY
+      - name: Commit and push
+        run: |
+          git config user.name "growthorgrowth-cyber"
+          git config user.email "growthorgrowth@gmail.com"
+          git add index.html
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "P0: soften unverified homepage claims (EARLYBIRD, 10k+, Ranking #2)"
+          git push
