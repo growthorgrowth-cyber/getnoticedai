@@ -27,6 +27,7 @@
   function metaTrackCustom(eventName, params){
     try{ if (typeof window.fbq==='function') window.fbq('trackCustom', eventName, params||{}); }catch(_){}
   }
+  // Key page views for ads optimization
   if (/^\/audit(\/|\.html)?$/.test(location.pathname) || location.pathname.indexOf('/audit/')===0){
     metaTrack('ViewContent',{content_name:'free_audit',content_category:'lead_magnet'});
   }
