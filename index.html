@@ -7,6 +7,8 @@
 <meta name="description" content="Done-for-you Google Business Profile optimization for local businesses that want more visibility on Google Maps and AI search, backed by a 90-day visibility guarantee." />
 <meta name="theme-color" content="#0e6b5b" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="preload" href="assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/sora-800.woff2" as="font" type="font/woff2" crossorigin />
 
 <!-- Self-hosted fonts (local files in assets/fonts, no CDN dependency) -->
 <style>
@@ -307,11 +309,15 @@
   .plan h3 { font-size: 1.125rem; }
   .plan .tag { margin-top: 0.25rem; font-size: 0.875rem; color: var(--ink-soft); }
   .price-row { display: flex; align-items: baseline; gap: 0.25rem; margin-top: 1.25rem; }
+  .sms-consent { display: flex; gap: 0.6rem; align-items: flex-start; margin-top: 1.25rem; font-size: 0.8rem; line-height: 1.45; color: var(--ink-soft); cursor: pointer; }
+  .sms-consent input { margin-top: 0.2rem; width: 1rem; height: 1rem; flex: 0 0 auto; accent-color: var(--pine); }
+  .sms-consent a { color: var(--pine); text-decoration: underline; }
   .setup-note { margin-top: 0.35rem; color: var(--ink-soft); font-size: 0.875rem; font-weight: 700; }
   .price { font-family: "Sora", sans-serif; font-weight: 800; font-size: 2.25rem; letter-spacing: -0.03em; color: var(--pine-deep); }
   .price-per { color: var(--ink-soft); }
   .year-note { margin-top: 0.25rem; font-size: 0.875rem; font-weight: 600; color: var(--pine); display: none; }
   .plan.yearly .year-note { display: block; }
+  .plan.yearly .setup-monthly { display: none; }
   .plan ul { list-style: none; margin-top: 1.5rem; display: grid; gap: 0.75rem; flex: 1; }
   .plan li { display: flex; gap: 0.65rem; color: var(--ink-soft); font-size: 0.95rem; }
   .plan li .tick { flex-shrink: 0; margin-top: 0.1rem; color: var(--pine); font-weight: 800; }
@@ -383,17 +389,30 @@
 <meta name="facebook-domain-verification" content="14xacihwhu8pp8w7eaw8kwqu2h6x38" />
   
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://getnoticedai.com/#organization","name":"Get Noticed AI","url":"https://getnoticedai.com/","logo":"https://getnoticedai.com/logo.png","email":"eric@getnoticedai.co","telephone":"+1-727-270-9961"},{"@type":"WebSite","@id":"https://getnoticedai.com/#website","url":"https://getnoticedai.com/","name":"Get Noticed AI","publisher":{"@id":"https://getnoticedai.com/#organization"}},{"@type":"WebPage","@id":"https://getnoticedai.com/#webpage","url":"https://getnoticedai.com/","name":"Get Noticed AI | Google Business Profile Optimization","description":"Done-for-you Google Business Profile optimization for local businesses that want more visibility on Google Maps and AI search, backed by a 90-day visibility guarantee.","isPartOf":{"@id":"https://getnoticedai.com/#website"},"inLanguage":"en-US"}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://getnoticedai.com/#organization","name":"Get Noticed AI","url":"https://getnoticedai.com/","logo":"https://getnoticedai.com/logo.png","email":"eric@getnoticedai.com","telephone":"+1-727-270-9961"},{"@type":"WebSite","@id":"https://getnoticedai.com/#website","url":"https://getnoticedai.com/","name":"Get Noticed AI","publisher":{"@id":"https://getnoticedai.com/#organization"}},{"@type":"WebPage","@id":"https://getnoticedai.com/#webpage","url":"https://getnoticedai.com/","name":"Get Noticed AI | Google Business Profile Optimization","description":"Done-for-you Google Business Profile optimization for local businesses that want more visibility on Google Maps and AI search, backed by a 90-day visibility guarantee.","isPartOf":{"@id":"https://getnoticedai.com/#website"},"inLanguage":"en-US"}]}
+</script>
+
+<!-- Load third-party tags after first interaction or shortly after page load (keeps the page fast; queued events like PageView still fire) -->
+<script>
+(function(w){var q=[],go=false,ev=["scroll","pointerdown","keydown","touchstart","mousemove"];
+w.gnaLater=function(fn){if(go){try{fn()}catch(e){}}else q.push(fn)};
+function run(){if(go)return;go=true;ev.forEach(function(e){w.removeEventListener(e,run,{passive:true})});q.forEach(function(fn){try{fn()}catch(e){}});q=[]}
+ev.forEach(function(e){w.addEventListener(e,run,{passive:true})});
+w.addEventListener("load",function(){setTimeout(run,3000)});
+})(window);
+function gnaScript(src,attrs){var t=document.createElement("script");t.async=true;t.src=src;if(attrs)for(var k in attrs)t.setAttribute(k,attrs[k]);document.body.appendChild(t);return t}
 </script>
 
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P7QNFT5J');</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var dl=l!='dataLayer'?'&l='+l:'';gnaLater(function(){var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);});})(window,document,'script','dataLayer','GTM-P7QNFT5J');</script>
 <!-- End Google Tag Manager -->
 
 <!-- RB2B Visitor Identification Pixel -->
 <script>
+gnaLater(function(){
   !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
   posthog.init('phc_kLpneAirzOcZXFnuWl7TLq9189uCXK0cSDW7qlG0xvf',{api_host:'https://a.rb2b.com'})
+});
 </script>
 
 <!-- Meta Pixel Code -->
@@ -402,9 +421,9 @@
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
+n.queue=[];gnaLater(function(){t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
+s.parentNode.insertBefore(t,s)})}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '151296705452066');
 fbq('track', 'PageView');
@@ -470,7 +489,7 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
           <span class="dot" style="background:#f4d9a6"></span>
           <span style="margin-left:0.75rem; font-size:0.75rem; color:var(--ink-faint)">Your GBP dashboard</span>
         </div>
-        <img src="assets/product/dashboard-1.jpg" alt="Get Noticed AI dashboard" />
+        <picture><source type="image/webp" srcset="assets/product/dashboard-1-640.webp 640w, assets/product/dashboard-1.webp 1080w" sizes="(min-width: 64rem) 560px, 92vw" /><img src="assets/product/dashboard-1.jpg" alt="Get Noticed AI dashboard" width="1080" height="986" decoding="async" /></picture>
       </div>
       <div class="float-chip top">
         <p class="fc-title">24/7 · Fully automated</p>
@@ -531,9 +550,9 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
         <div class="slider-panel">
           <p class="cmp-drag">Drag the slider to compare</p>
           <div class="slider-wrap" id="sliderWrap">
-            <img src="assets/results/contractor-after.webp" alt="Contractor Google Maps geographic ranking grid for water damage repair after 1 month" class="slider-after" />
+            <img src="assets/results/contractor-after.webp" alt="Contractor Google Maps geographic ranking grid for water damage repair after 1 month" class="slider-after" loading="lazy" decoding="async" />
             <div class="slider-clip" id="sliderClip">
-              <img src="assets/results/contractor-before.webp" alt="Contractor Google Maps geographic ranking grid for water damage repair before Nova optimization" class="slider-before" />
+              <img src="assets/results/contractor-before.webp" alt="Contractor Google Maps geographic ranking grid for water damage repair before Nova optimization" class="slider-before" loading="lazy" decoding="async" />
             </div>
             <span class="label-pill label-before">Before</span>
             <span class="label-pill label-after">After</span>
@@ -588,12 +607,12 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
         <li><span class="tick">&#10003;</span> Reports your rankings every month, no login required</li>
       </ul>
       <div class="nova-ctas">
-        <a href="/audit" class="btn-white">Try Nova free</a>
+        <a href="/audit" class="btn-white">Run my free audit</a>
         <a href="#pricing" class="btn-text" style="color:var(--mint); border-color:currentColor">See pricing</a>
       </div>
     </div>
     <div class="nova-media">
-      <img src="assets/product/dashboard-2.jpg" alt="Nova automating posts, reviews, and citations" loading="lazy" />
+      <picture><source type="image/webp" srcset="assets/product/dashboard-2-640.webp 640w, assets/product/dashboard-2.webp 1080w" sizes="(min-width: 64rem) 560px, 92vw" /><img src="assets/product/dashboard-2.jpg" alt="Nova automating posts, reviews, and citations" loading="lazy" decoding="async" width="1080" height="986" /></picture>
       <p class="cap">Nova publishing a post, replying to a review, and syncing a citation. All hands-off.</p>
     </div>
   </div>
@@ -674,12 +693,14 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
         <h3>Growth</h3>
         <p class="tag">Everything a single profile needs</p>
         <div class="price-row"><span class="price price-val">$497</span><span class="price-per">/mo</span></div>
-        <p class="year-note" data-yearnote>Billed yearly, 2 months free</p>
+        <p class="setup-note setup-monthly">+ $248.50 one-time setup</p>
+        <p class="year-note" data-yearnote>Billed yearly, 2 months free, no setup fee</p>
         <ul>
           <li><span class="tick">&#10003;</span> Full Google Business Profile optimization</li>
           <li><span class="tick">&#10003;</span> Automated review requests, replies, follow-ups</li>
           <li><span class="tick">&#10003;</span> Posts, images, offers, and video on autopilot</li>
           <li><span class="tick">&#10003;</span> Monthly ranking reports (10 keywords)</li>
+          <li><span class="tick">&#10003;</span> 90-Day Visibility Guarantee</li>
         </ul>
         <a href="https://link.getnoticedai.com/payment-link/6a77228701f25252cc1b7bee" class="btn-audit btn plan-cta">Get started</a>
       </div>
@@ -689,7 +710,8 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
         <h3>Authority</h3>
         <p class="tag">Everything in Growth, plus authority signals</p>
         <div class="price-row"><span class="price price-val">$697</span><span class="price-per">/mo</span></div>
-        <p class="year-note" data-yearnote>Billed yearly, 2 months free</p>
+        <p class="setup-note setup-monthly">+ $348.50 one-time setup</p>
+        <p class="year-note" data-yearnote>Billed yearly, 2 months free, no setup fee</p>
         <ul>
           <li><span class="tick">&#10003;</span> Everything in Growth</li>
           <li><span class="tick">&#10003;</span> Social repurposing to FB, IG, LinkedIn, YouTube</li>
@@ -698,6 +720,7 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
           <li><span class="tick">&#10003;</span> Duplicate listing detection and cleanup</li>
           <li><span class="tick">&#10003;</span> One-click citation setup with auto-sync</li>
           <li><span class="tick">&#10003;</span> Priority support and onboarding</li>
+          <li><span class="tick">&#10003;</span> 90-Day Visibility Guarantee</li>
         </ul>
         <a href="https://link.getnoticedai.com/payment-link/6a7722d001f25252cc1b7bef" class="btn-ghost btn plan-cta">Get started</a>
       </div>
@@ -723,8 +746,8 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
     </div>
 
     <div class="guarantee-panel">
-      <h3>90-Day Visibility Guarantee</h3>
-      <p>If we do not improve your agreed visibility metrics within 90 days, we keep working at no management fee until we do.</p>
+      <h3>90-Day Visibility Guarantee on every plan</h3>
+      <p>Growth, Authority, and Market Leader all include it. If we do not improve your agreed visibility metrics within 90 days, we keep working at no management fee until we do.</p>
     </div>
   </div>
 </section>
@@ -775,9 +798,9 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
           <span class="ico">&#9742;</span>
           <span><span class="lbl">Call or text</span><br /><span class="val">(727) 270-9961</span></span>
         </a>
-        <a class="contact-card" href="mailto:eric@getnoticedai.co">
+        <a class="contact-card" href="mailto:eric@getnoticedai.com">
           <span class="ico">&#9993;</span>
-          <span><span class="lbl">Email us</span><br /><span class="val">eric@getnoticedai.co</span></span>
+          <span><span class="lbl">Email us</span><br /><span class="val">eric@getnoticedai.com</span></span>
         </a>
       </div>
     </div>
@@ -816,6 +839,10 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
           <textarea class="field-input" name="message" id="cf-msg" rows="4" style="resize:vertical" placeholder="Tell us about your business and what you are trying to achieve."></textarea>
         </div>
       </div>
+      <label class="sms-consent" for="cf-sms">
+        <input type="checkbox" name="sms_consent" id="cf-sms" value="yes" />
+        <span>Optional: I agree to receive text messages from Get Noticed AI at the phone number above about my inquiry, account, and offers. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase. See our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms</a>.</span>
+      </label>
       <button type="submit" class="btn-audit" style="width:100%; margin-top:1.5rem">Send message</button>
       <p class="form-note" style="text-align:center">We only use your info to help you rank better. No spam, no reselling.</p>
     </form>
@@ -1134,7 +1161,7 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
 
 <!-- GHL Affiliate Tracking -->
 <script type="text/javascript">
-(function() {
+gnaLater(function() {
   var t = document.createElement("script");
   t.type = "text/javascript", t.async = !0, t.src = 'https://link.msgsndr.com/js/am.js', t.onload = t.onreadystatechange = function() {
     var t = this.readyState;
@@ -1144,14 +1171,14 @@ src="https://www.facebook.com/tr?id=151296705452066&ev=PageView&noscript=1"
   };
   var e = document.getElementsByTagName("script")[0];
   e.parentNode.insertBefore(t, e)
-})();
+});
 </script>
 
 <!-- GHL Chat Widget -->
-<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a7717cb6d7a5e86d21c3b55"></script>
+<script>gnaLater(function(){gnaScript("https://widgets.leadconnectorhq.com/loader.js",{"data-resources-url":"https://widgets.leadconnectorhq.com/chat-widget/loader.js","data-widget-id":"6a7717cb6d7a5e86d21c3b55"})});</script>
 
 <!-- Get Noticed AI CRM external tracking -->
-<script src="https://link.getnoticedai.com/js/external-tracking.js" data-tracking-id="tk_fe47b95ddb0b4430a78a80bbbcf0ce96"></script>
+<script>gnaLater(function(){gnaScript("https://link.getnoticedai.com/js/external-tracking.js",{"data-tracking-id":"tk_fe47b95ddb0b4430a78a80bbbcf0ce96"})});</script>
 <!-- End Get Noticed AI CRM external tracking -->
 </body>
 </html>
